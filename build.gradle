@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+
+    test {
+        java {
+            srcDirs = ['test']
+        }
+    }
+}
+
+compileJava {
+    options.incremental = true
+    options.fork = true
+    options.failOnError = false
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+}
