@@ -8,5 +8,5 @@ package tree
  * @param right 执行右侧子节点的指针
  */
 class BinaryTreeNode(var value: Int = 0,
-                     val left: BinaryTreeNode? = null,
-                     val right: BinaryTreeNode? = null)
+                     var left: BinaryTreeNode? = null,
+                     var right: BinaryTreeNode? = null)
