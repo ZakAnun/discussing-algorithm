@@ -1,6 +1,11 @@
 package tree;
 
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 /**
  * 二叉树的遍历
  *
@@ -29,6 +34,11 @@ public class BinTreeTraversal {
         System.out.println("后序遍历结果如下:");
         postOrderTraversal(root);
         System.out.println();
+        System.out.println("自顶向下层序遍历结果如下:");
+        topToBottomLevelOrder(root);
+        System.out.println();
+        System.out.println("自底向上层序遍历结果如下:");
+        bottomToTopLevelOrder(root);
     }
 
     /**
@@ -71,5 +81,63 @@ public class BinTreeTraversal {
         postOrderTraversal(treeNode.getLeft());
         postOrderTraversal(treeNode.getRight());
         System.out.print(treeNode.getValue() + " ");
+    }
+
+    /**
+     * 自顶向下的层序遍历
+     *
+     * @param treeNode treeNode
+     */
+    public static void topToBottomLevelOrder(BinaryTreeNode treeNode) {
+        if (treeNode == null) {
+            return;
+        }
+
+        Queue<BinaryTreeNode> queue = new LinkedList<>();
+        queue.offer(treeNode);
+        while (!queue.isEmpty()) {
+            int currentLevelSize = queue.size();
+            for (int i = 0; i < currentLevelSize; i++) {
+                BinaryTreeNode node = queue.poll();
+                System.out.print(node.getValue() + " ");
+                if (node.getLeft() != null) {
+                    queue.offer(node.getLeft());
+                }
+                if (node.getRight() != null) {
+                    queue.offer(node.getRight());
+                }
+            }
+        }
+    }
+
+    /**
+     * 自底向上的层序遍历
+     *
+     * @param treeNode treeNode
+     */
+    public static void bottomToTopLevelOrder(BinaryTreeNode treeNode) {
+        if (treeNode == null) {
+            return;
+        }
+        Queue<BinaryTreeNode> queue = new LinkedList<>();
+        // 用于记录结果
+        List<Integer> result = new ArrayList<>();
+        queue.offer(treeNode);
+        while (!queue.isEmpty()) {
+            int currentLevel = queue.size();
+            for (int i = 0; i < currentLevel; i++) {
+                BinaryTreeNode node = queue.poll();
+                result.add(0, node.getValue());
+                if (node.getLeft() != null) {
+                    queue.offer(node.getLeft());
+                }
+                if (node.getRight() != null) {
+                    queue.offer(node.getRight());
+                }
+            }
+        }
+        for (int item: result) {
+            System.out.print(item + " ");
+        }
     }
 }
