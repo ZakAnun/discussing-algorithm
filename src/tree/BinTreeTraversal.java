@@ -25,20 +25,23 @@ public class BinTreeTraversal {
         thrLeft.setValue(3);
         secRight.setLeft(thrLeft);
 
-        System.out.println("前序遍历结果如下:");
+        System.out.println("二叉树前序遍历结果如下:");
         preOrderTraversal(root);
         System.out.println();
-        System.out.println("中序遍历结果如下:");
+        System.out.println("二叉树中序遍历结果如下:");
         inOrderTraversal(root);
         System.out.println();
-        System.out.println("后序遍历结果如下:");
+        System.out.println("二叉树后序遍历结果如下:");
         postOrderTraversal(root);
         System.out.println();
-        System.out.println("自顶向下层序遍历结果如下:");
+        System.out.println("二叉树自顶向下层序遍历结果如下:");
         topToBottomLevelOrder(root);
         System.out.println();
-        System.out.println("自底向上层序遍历结果如下:");
+        System.out.println("二叉树自底向上层序遍历结果如下:");
         bottomToTopLevelOrder(root);
+        System.out.println();
+        System.out.println("二叉树锯齿形层序遍历结果如下：");
+        jaggedOrder(root);
     }
 
     /**
@@ -99,12 +102,14 @@ public class BinTreeTraversal {
             int currentLevelSize = queue.size();
             for (int i = 0; i < currentLevelSize; i++) {
                 BinaryTreeNode node = queue.poll();
-                System.out.print(node.getValue() + " ");
-                if (node.getLeft() != null) {
-                    queue.offer(node.getLeft());
-                }
-                if (node.getRight() != null) {
-                    queue.offer(node.getRight());
+                if (node != null) {
+                    System.out.print(node.getValue() + " ");
+                    if (node.getLeft() != null) {
+                        queue.offer(node.getLeft());
+                    }
+                    if (node.getRight() != null) {
+                        queue.offer(node.getRight());
+                    }
                 }
             }
         }
@@ -120,24 +125,69 @@ public class BinTreeTraversal {
             return;
         }
         Queue<BinaryTreeNode> queue = new LinkedList<>();
-        // 用于记录结果
+        // 用于记录结果（与实际的遍历过程无关～）
         List<Integer> result = new ArrayList<>();
         queue.offer(treeNode);
         while (!queue.isEmpty()) {
             int currentLevel = queue.size();
             for (int i = 0; i < currentLevel; i++) {
                 BinaryTreeNode node = queue.poll();
-                result.add(0, node.getValue());
-                if (node.getLeft() != null) {
-                    queue.offer(node.getLeft());
-                }
-                if (node.getRight() != null) {
-                    queue.offer(node.getRight());
+                if (node != null) {
+                    result.add(0, node.getValue());
+                    if (node.getLeft() != null) {
+                        queue.offer(node.getLeft());
+                    }
+                    if (node.getRight() != null) {
+                        queue.offer(node.getRight());
+                    }
                 }
             }
         }
         for (int item: result) {
             System.out.print(item + " ");
+        }
+    }
+
+
+    /**
+     * 二叉树的锯齿形层序遍历
+     *
+     * @param treeNode treeNode
+     */
+    public static void jaggedOrder(BinaryTreeNode treeNode) {
+        if (treeNode == null) {
+            return;
+        }
+        Queue<BinaryTreeNode> queue = new LinkedList<>();
+        queue.offer(treeNode);
+        int countIndex = 0;
+        List<List<Integer>> result = new ArrayList<>();
+        while (!queue.isEmpty()) {
+            countIndex++;
+            int currentLevel = queue.size();
+            List<Integer> group = new ArrayList<>();
+            for (int i = 0; i < currentLevel; i++) {
+                BinaryTreeNode node = queue.poll();
+                if (node != null) {
+                    if (countIndex % 2 == 0) {
+                        group.add(0, node.getValue());
+                    } else {
+                        group.add(node.getValue());
+                    }
+                    if (node.getLeft() != null) {
+                        queue.offer(node.getLeft());
+                    }
+                    if (node.getRight() != null) {
+                        queue.offer(node.getRight());
+                    }
+                }
+            }
+            result.add(group);
+        }
+        for (List<Integer> group : result) {
+            for (Integer item : group) {
+                System.out.print(item + " ");
+            }
         }
     }
 }
