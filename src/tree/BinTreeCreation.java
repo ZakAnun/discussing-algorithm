@@ -26,7 +26,11 @@ public class BinTreeCreation {
         System.out.println("======== 105 ========");
     }
 
-    private static Map<Integer, Integer> indexMap;
+    /**
+     * 105.从前序与中序遍历序列构造二叉树
+     * 构造哈希映射，帮助我们快速定位根节点
+     */
+    private static Map<Integer, Integer> indexMap = new HashMap<>();
 
     /**
      * 105.从前序与中序遍历序列构造二叉树
@@ -35,8 +39,6 @@ public class BinTreeCreation {
      */
     public static BinaryTreeNode buildTreeWithPreOrderAndInOrder(int[] preOrder, int[] inOrder) {
         int n = preOrder.length;
-        // 构造哈希映射，帮助我们快速定位根节点
-        indexMap = new HashMap<Integer, Integer>();
         for (int i = 0; i < n; i++) {
             indexMap.put(inOrder[i], i);
         }
