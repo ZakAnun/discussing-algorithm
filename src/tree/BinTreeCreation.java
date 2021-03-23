@@ -30,7 +30,7 @@ public class BinTreeCreation {
      * 105.从前序与中序遍历序列构造二叉树
      * 构造哈希映射，帮助我们快速定位根节点
      */
-    private static Map<Integer, Integer> indexMap = new HashMap<>();
+    private static final Map<Integer, Integer> indexMap = new HashMap<>();
 
     /**
      * 105.从前序与中序遍历序列构造二叉树
