@@ -119,19 +119,36 @@ public class BinTreeCreation {
         return doBuildTreeWithInOrderAndPostOrder(inOrder, 0, resultLength - 1, postOrder, 0, resultLength - 1);
     }
 
+    /**
+     * 执行构建
+     *
+     * @param inOrder           中序遍历序列
+     * @param inOrderStart      中序遍历开始下标
+     * @param inOrderEnd        中序遍历结束下标
+     * @param postOrder         后序遍历序列
+     * @param postOrderStart    后序遍历开始下标
+     * @param postOrderEnd      后序遍历结束下标
+     *
+     * @return  构建后的树
+     */
     private static BinaryTreeNode doBuildTreeWithInOrderAndPostOrder(int[] inOrder, int inOrderStart, int inOrderEnd,
                                                                      int[] postOrder, int postOrderStart, int postOrderEnd) {
         if (inOrderStart > inOrderEnd) {
             return null;
         }
 
+        // 拿到中序遍历的根节点
         int rootInMid = postOrder[postOrderEnd];
+        // 拿到中序遍历根节点的下标
         int rootIndexInMid = InAndPostIndexMap.get(rootInMid);
-
+        // 拿到左子树的大小
         int leftTreeSize = rootIndexInMid - inOrderStart;
 
+        // 构建树
         return new BinaryTreeNode(rootInMid,
-                doBuildTreeWithInOrderAndPostOrder(inOrder, inOrderStart, rootIndexInMid - 1, postOrder, postOrderStart, postOrderStart + leftTreeSize - 1),
-                doBuildTreeWithInOrderAndPostOrder(inOrder, rootIndexInMid + 1, inOrderEnd, postOrder, postOrderStart + leftTreeSize, postOrderEnd - 1));
+                doBuildTreeWithInOrderAndPostOrder(inOrder, inOrderStart, rootIndexInMid - 1,
+                        postOrder, postOrderStart, postOrderStart + leftTreeSize - 1),
+                doBuildTreeWithInOrderAndPostOrder(inOrder, rootIndexInMid + 1, inOrderEnd,
+                        postOrder, postOrderStart + leftTreeSize, postOrderEnd - 1));
     }
 }
