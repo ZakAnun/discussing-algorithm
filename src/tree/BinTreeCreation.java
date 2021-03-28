@@ -1,5 +1,6 @@
 package tree;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +40,23 @@ public class BinTreeCreation {
         BinTreeTraversal.postOrderTraversal(result106);
         System.out.println();
         System.out.println("======== 106 ========");
+
+        int[] pre = new int[] {1, 2, 4, 5, 3, 6, 7};
+        int[] post = new int[] {4, 5, 2, 6, 7, 3, 1};
+        System.out.println();
+        System.out.println("======== 889 ========");
+        BinaryTreeNode result889 = buildTreeWithPreOrderAndPostOrder(pre, post);
+        System.out.println("根据前序遍历和后序遍历序列得出构造的结果树为: ");
+        System.out.print("前序遍历: ");
+        BinTreeTraversal.preOrderTraversal(result889);
+        System.out.println();
+        System.out.print("中序遍历: ");
+        BinTreeTraversal.inOrderTraversal(result889);
+        System.out.println();
+        System.out.print("后序遍历: ");
+        BinTreeTraversal.postOrderTraversal(result889);
+        System.out.println();
+        System.out.println("======== 889 ========");
     }
 
     /**
@@ -150,5 +168,39 @@ public class BinTreeCreation {
                         postOrder, postOrderStart, postOrderStart + leftTreeSize - 1),
                 doBuildTreeWithInOrderAndPostOrder(inOrder, rootIndexInMid + 1, inOrderEnd,
                         postOrder, postOrderStart + leftTreeSize, postOrderEnd - 1));
+    }
+
+    /**
+     * 根据前序遍历和后序遍历构造二叉树
+     *
+     * @param preOrder  前序遍历结果集     [根节点, [左子树前序], [右子树前序]]
+     * @param postOrder 后序遍历结果集     [[左子树后序], [右子树后序], 根节点]
+     * @return          返回构建后的二叉树
+     */
+    public static BinaryTreeNode buildTreeWithPreOrderAndPostOrder(int[] preOrder, int[] postOrder) {
+
+        int preLength = preOrder.length;
+        if (preLength == 0) {
+            return null;
+        }
+        BinaryTreeNode root = new BinaryTreeNode(preOrder[0], null, null);
+        if (preLength == 1) {
+            return root;
+        }
+
+        // 确定子树的节点数
+        int subTreeNodeCount = 0;
+        for (int i = 0; i < preLength; ++i) {
+            if (preOrder[1] == postOrder[i]) {
+                subTreeNodeCount = i + 1;
+            }
+        }
+
+        root.setLeft(buildTreeWithPreOrderAndPostOrder(Arrays.copyOfRange(preOrder, 1, subTreeNodeCount + 1),
+                Arrays.copyOfRange(postOrder, 0, subTreeNodeCount)));
+        root.setRight(buildTreeWithPreOrderAndPostOrder(Arrays.copyOfRange(preOrder, subTreeNodeCount + 1, preLength),
+                Arrays.copyOfRange(postOrder, subTreeNodeCount, preLength - 1)));
+
+        return root;
     }
 }
