@@ -25,15 +25,30 @@ public class BinTreePractice {
      * @return 由二叉树转换后的字符串
      */
     public static String tree2Str(BinaryTreeNode treeNode) {
+        String result = "";
+
         if (treeNode == null) {
-            return "";
+            return result;
         }
-        if (treeNode.getLeft() == null && treeNode.getRight() == null) {
-            return String.valueOf(treeNode.getValue());
+
+        result += treeNode.getValue();
+
+        if (treeNode.getLeft() == null) {
+            if (treeNode.getRight() == null) {
+                result += "";
+            } else {
+                result += "()";
+            }
+        } else {
+            result += "(" + tree2Str(treeNode.getLeft()) + ")";
         }
+
         if (treeNode.getRight() == null) {
-            return treeNode.getValue() + "(" + tree2Str(treeNode.getLeft()) + ")";
+            result += "";
+        } else {
+            result += "(" + tree2Str(treeNode.getRight()) + ")";
         }
-        return treeNode.getValue() + "(" + tree2Str(treeNode.getLeft()) + ")(" + tree2Str(treeNode.getRight()) + ")";
+
+        return result;
     }
 }
