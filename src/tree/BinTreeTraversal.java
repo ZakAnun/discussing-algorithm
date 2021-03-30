@@ -27,13 +27,13 @@ public class BinTreeTraversal {
         secRight.setLeft(thrLeft);
 
         System.out.println("二叉树前序遍历结果如下:");
-        preOrderTraversal(root);
+        preOrderTraversal(root, null);
         System.out.println();
         System.out.println("二叉树中序遍历结果如下:");
-        inOrderTraversal(root);
+        inOrderTraversal(root, null);
         System.out.println();
         System.out.println("二叉树后序遍历结果如下:");
-        postOrderTraversal(root);
+        postOrderTraversal(root, null);
         System.out.println();
         System.out.println("二叉树自顶向下层序遍历结果如下:");
         topToBottomLevelOrder(root);
@@ -52,14 +52,41 @@ public class BinTreeTraversal {
      * 144.前序遍历
      *
      * @param treeNode treeNode
+     * @return 前序遍历序列
      */
-    public static void preOrderTraversal(BinaryTreeNode treeNode) {
+    public static List<Integer> preOrderTraversalWithResult(BinaryTreeNode treeNode) {
+        List<Integer> result = new ArrayList<>();
+        preOrderTraversal(treeNode, result);
+        return result;
+    }
+
+    /**
+     * 144.前序遍历
+     *
+     * @param treeNode treeNode
+     */
+    public static void preOrderTraversal(BinaryTreeNode treeNode, List<Integer> result) {
         if (treeNode == null) {
             return;
         }
         System.out.print(treeNode.getValue() + " ");
-        preOrderTraversal(treeNode.getLeft());
-        preOrderTraversal(treeNode.getRight());
+        if (result != null) {
+            result.add(treeNode.getValue());
+        }
+        preOrderTraversal(treeNode.getLeft(), result);
+        preOrderTraversal(treeNode.getRight(), result);
+    }
+
+    /**
+     * 94.中序遍历
+     *
+     * @param treeNode treeNode
+     * @return 中序遍历序列
+     */
+    public static List<Integer> inOrderTraversalWithResult(BinaryTreeNode treeNode) {
+        List<Integer> result = new ArrayList<>();
+        inOrderTraversal(treeNode, result);
+        return result;
     }
 
     /**
@@ -67,13 +94,28 @@ public class BinTreeTraversal {
      *
      * @param treeNode treeNode
      */
-    public static void inOrderTraversal(BinaryTreeNode treeNode) {
+    public static void inOrderTraversal(BinaryTreeNode treeNode, List<Integer> result) {
         if (treeNode == null) {
             return;
         }
-        inOrderTraversal(treeNode.getLeft());
+        inOrderTraversal(treeNode.getLeft(), result);
+        if (result != null) {
+            result.add(treeNode.getValue());
+        }
         System.out.print(treeNode.getValue() + " ");
-        inOrderTraversal(treeNode.getRight());
+        inOrderTraversal(treeNode.getRight(), result);
+    }
+
+    /**
+     * 145.后序遍历
+     *
+     * @param treeNode treeNode
+     * @return 后序遍历序列
+     */
+    public static List<Integer> postOrderTraversalWithResult(BinaryTreeNode treeNode) {
+        List<Integer> result = new ArrayList<>();
+        postOrderTraversal(treeNode, result);
+        return result;
     }
 
     /**
@@ -81,13 +123,16 @@ public class BinTreeTraversal {
      *
      * @param treeNode treeNode
      */
-    public static void postOrderTraversal(BinaryTreeNode treeNode) {
+    public static void postOrderTraversal(BinaryTreeNode treeNode, List<Integer> result) {
         if (treeNode == null) {
             return;
         }
-        postOrderTraversal(treeNode.getLeft());
-        postOrderTraversal(treeNode.getRight());
+        postOrderTraversal(treeNode.getLeft(), result);
+        postOrderTraversal(treeNode.getRight(), result);
         System.out.print(treeNode.getValue() + " ");
+        if (result != null) {
+            result.add(treeNode.getValue());
+        }
     }
 
     /**

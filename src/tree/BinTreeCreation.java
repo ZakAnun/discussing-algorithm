@@ -17,13 +17,13 @@ public class BinTreeCreation {
         BinaryTreeNode result105 = buildTreeWithPreOrderAndInOrder(preOrder, inOrder);
         System.out.println("根据前序遍历和中序遍历序列得出构造的结果树为: ");
         System.out.print("前序遍历: ");
-        BinTreeTraversal.preOrderTraversal(result105);
+        BinTreeTraversal.preOrderTraversal(result105, null);
         System.out.println();
         System.out.print("中序遍历: ");
-        BinTreeTraversal.inOrderTraversal(result105);
+        BinTreeTraversal.inOrderTraversal(result105, null);
         System.out.println();
         System.out.print("后序遍历: ");
-        BinTreeTraversal.postOrderTraversal(result105);
+        BinTreeTraversal.postOrderTraversal(result105, null);
         System.out.println();
         System.out.println("======== 105 ========");
         System.out.println();
@@ -31,13 +31,13 @@ public class BinTreeCreation {
         BinaryTreeNode result106 = buildTreeWithInOrderAndPostOrder(inOrder, postOrder);
         System.out.println("根据中序遍历和后序遍历序列得出构造的结果树为: ");
         System.out.print("前序遍历: ");
-        BinTreeTraversal.preOrderTraversal(result106);
+        BinTreeTraversal.preOrderTraversal(result106, null);
         System.out.println();
         System.out.print("中序遍历: ");
-        BinTreeTraversal.inOrderTraversal(result106);
+        BinTreeTraversal.inOrderTraversal(result106, null);
         System.out.println();
         System.out.print("后序遍历: ");
-        BinTreeTraversal.postOrderTraversal(result106);
+        BinTreeTraversal.postOrderTraversal(result106, null);
         System.out.println();
         System.out.println("======== 106 ========");
 
@@ -48,13 +48,13 @@ public class BinTreeCreation {
         BinaryTreeNode result889 = buildTreeWithPreOrderAndPostOrder(pre, post);
         System.out.println("根据前序遍历和后序遍历序列得出构造的结果树为: ");
         System.out.print("前序遍历: ");
-        BinTreeTraversal.preOrderTraversal(result889);
+        BinTreeTraversal.preOrderTraversal(result889, null);
         System.out.println();
         System.out.print("中序遍历: ");
-        BinTreeTraversal.inOrderTraversal(result889);
+        BinTreeTraversal.inOrderTraversal(result889, null);
         System.out.println();
         System.out.print("后序遍历: ");
-        BinTreeTraversal.postOrderTraversal(result889);
+        BinTreeTraversal.postOrderTraversal(result889, null);
         System.out.println();
         System.out.println("======== 889 ========");
     }
