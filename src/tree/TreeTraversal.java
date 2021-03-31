@@ -12,23 +12,22 @@ import java.util.Queue;
 public class TreeTraversal {
 
     public static void main(String[] args) {
-        Node demoTree559 = new Node(1, null);
+        Node demoTree = new Node(1, null);
         List<Node> childrenGroup2 = new ArrayList<>();
         Node demoTree559Second = new Node(3, null);
         childrenGroup2.add(demoTree559Second);
         childrenGroup2.add(new Node(2, null));
         childrenGroup2.add(new Node(4, null));
-        demoTree559.setChildren(childrenGroup2);
+        demoTree.setChildren(childrenGroup2);
         List<Node> childrenGroup3 = new ArrayList<>();
         childrenGroup3.add(new Node(5, null));
         childrenGroup3.add(new Node(6, null));
         demoTree559Second.setChildren(childrenGroup3);
-        System.out.print("559.N 叉树的最大深度: " + maxDepth(demoTree559));
+        System.out.print("559.N 叉树的最大深度: " + maxDepth(demoTree));
         System.out.println();
-        System.out.println("429.N 叉树的层序遍历如下: ");
-        Node demoTree429 = demoTree559;
-        List<List<Integer>> result = levelOrder(demoTree429);
-        for (List<Integer> group : result) {
+        System.out.println("429.N 叉树的层序遍历如下:");
+        List<List<Integer>> result429 = levelOrder(demoTree);
+        for (List<Integer> group : result429) {
             System.out.print("[");
             for (Integer item : group) {
                 System.out.print(item + " ");
@@ -37,6 +36,12 @@ public class TreeTraversal {
             System.out.println();
         }
         System.out.println("429.N 叉树的层序遍历结束");
+        System.out.print("589.N 叉树前序遍历: ");
+        List<Integer> result589 = preOrder(demoTree);
+        for (Integer item: result589) {
+            System.out.print(item + " ");
+        }
+        System.out.println();
     }
 
     /**
@@ -95,4 +100,33 @@ public class TreeTraversal {
         }
         return result;
     }
+
+    /**
+     * 589.N 叉树的前序遍历
+     * 给定一个 N 叉树，返回其节点的前序遍历
+     *
+     * @param root N 叉树根节点
+     *
+     * @return 前序遍历序列
+     */
+    public static List<Integer> preOrder(Node root) {
+        List<Integer> result = new ArrayList<>();
+        doPreOrder(root, result);
+        return result;
+    }
+
+    private static void doPreOrder(Node root, List<Integer> result) {
+        if (root == null) {
+            return;
+        }
+
+        result.add(root.getValue());
+        List<Node> children = root.getChildren();
+        if (children != null) {
+            for (Node node : children) {
+                doPreOrder(node, result);
+            }
+        }
+    }
+
 }
