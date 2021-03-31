@@ -42,6 +42,12 @@ public class TreeTraversal {
             System.out.print(item + " ");
         }
         System.out.println();
+        System.out.print("590. N 叉树后序遍历: ");
+        List<Integer> result590 = postOrder(demoTree);
+        for (Integer item : result590) {
+            System.out.print(item + " ");
+        }
+        System.out.println();
     }
 
     /**
@@ -129,4 +135,29 @@ public class TreeTraversal {
         }
     }
 
+    /**
+     * 590. N 叉树的后序遍历
+     *
+     * @param root N 叉树根节点
+     *
+     * @return 后序遍历序列
+     */
+    public static List<Integer> postOrder(Node root) {
+        List<Integer> result = new ArrayList<>();
+        doPostOrder(root, result);
+        return result;
+    }
+
+    private static void doPostOrder(Node root, List<Integer> result) {
+        if (root == null) {
+            return;
+        }
+        List<Node> children = root.getChildren();
+        if (children != null) {
+            for (Node node : children) {
+                doPostOrder(node, result);
+            }
+        }
+        result.add(root.getValue());
+    }
 }
