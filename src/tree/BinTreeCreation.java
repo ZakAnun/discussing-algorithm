@@ -75,45 +75,49 @@ public class BinTreeCreation {
         for (int i = 0; i < n; i++) {
             preAndInIndexMap.put(inOrder[i], i);
         }
-        return doBuildTreeWithPreOrderAndInOrder(preOrder, inOrder, 0, n - 1, 0, n - 1);
+        return doBuildTreeWithPreOrderAndInOrder(
+                preOrder, 0, n - 1,
+                inOrder, 0, n - 1);
     }
 
     /**
      * 执行构建
      *
      * @param preOrder      前序遍历结果集
+     * @param preOrderStart  前序遍历左子树
+     * @param preOrderEnd 前序遍历右子树
      * @param inOrder       终须遍历结果集
-     * @param preOrderLeft  前序遍历左子树
-     * @param preOrderRight 前序遍历右子树
-     * @param inOrderLeft   中序遍历左子树
-     * @param inOrderRight  中序遍历右子树
+     * @param inOrderStart   中序遍历左子树
+     * @param inOrderEnd  中序遍历右子树
      * @return  结果二叉树
      */
-    private static BinaryTreeNode doBuildTreeWithPreOrderAndInOrder(int[] preOrder, int[] inOrder,
-                                                                   int preOrderLeft, int preOrderRight,
-                                                                   int inOrderLeft, int inOrderRight) {
-        if (preOrderLeft > preOrderRight) {
+    private static BinaryTreeNode doBuildTreeWithPreOrderAndInOrder(int[] preOrder, int preOrderStart, int preOrderEnd,
+                                                                    int[] inOrder, int inOrderStart, int inOrderEnd) {
+        if (preOrderStart > preOrderEnd) {
             return null;
         }
 
+        int root = preOrder[preOrderStart];
         // 前序遍历中的第一个节点就是根节点，通过它在中序遍历中定位根节点
-        int inOrderRoot = preAndInIndexMap.get(preOrder[preOrderLeft]);
+        int rootIndex = preAndInIndexMap.get(root);
 
         // 先把根节点建立出来
-        BinaryTreeNode root = new BinaryTreeNode(preOrder[preOrderLeft], null, null);
+        BinaryTreeNode rooNode = new BinaryTreeNode(preOrder[preOrderStart], null, null);
         // 得到左子树中的节点数目
-        int sizeLeftSubtree = inOrderRoot - inOrderLeft;
+        int sizeLeftSubtree = rootIndex - inOrderStart;
         // 递归地构造左子树，并连接到根节点
         // 先序遍历中「从 左边界+1 开始的 size_left_subtree」个元素就对应了中序遍历中「从 左边界 开始到 根节点定位-1」的元素
-        root.setLeft(doBuildTreeWithPreOrderAndInOrder(preOrder, inOrder,
-                preOrderLeft + 1, preOrderLeft + sizeLeftSubtree,
-                inOrderLeft, inOrderRoot - 1));
+        rooNode.setLeft(
+                doBuildTreeWithPreOrderAndInOrder(
+                        preOrder, preOrderStart + 1, preOrderStart + sizeLeftSubtree,
+                        inOrder, inOrderStart, rootIndex - 1));
         // 递归地构造右子树，并连接到根节点
         // 先序遍历中「从 左边界+1+左子树节点数目 开始到 右边界」的元素就对应了中序遍历中「从 根节点定位+1 到 右边界」的元素
-        root.setRight(doBuildTreeWithPreOrderAndInOrder(preOrder, inOrder,
-                preOrderLeft + sizeLeftSubtree + 1,
-                preOrderRight, inOrderRoot + 1, inOrderRight));
-        return root;
+        rooNode.setRight(
+                doBuildTreeWithPreOrderAndInOrder(
+                        preOrder, preOrderStart + sizeLeftSubtree + 1, preOrderEnd,
+                        inOrder,rootIndex + 1, inOrderEnd));
+        return rooNode;
     }
 
     /**
