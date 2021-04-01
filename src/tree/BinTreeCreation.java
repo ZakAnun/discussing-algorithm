@@ -207,4 +207,16 @@ public class BinTreeCreation {
 
         return root;
     }
+
+    /**
+     * 1008. 前序遍历构造二叉搜索树
+     *
+     * @param preOrder 前序遍历序列
+     *
+     * @return 结果树
+     */
+    public static BinaryTreeNode bstFromPreOrder(int[] preOrder) {
+        int length = preOrder.length;
+        return null;
+    }
 }
