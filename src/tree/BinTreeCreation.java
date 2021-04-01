@@ -57,6 +57,22 @@ public class BinTreeCreation {
         BinTreeTraversal.postOrderTraversal(result889, null);
         System.out.println();
         System.out.println("======== 889 ========");
+        System.out.println();
+
+        System.out.println("======== 1008 ========");
+        int[] pre1008 = new int[] {8, 5, 1, 7, 10, 12};
+        BinaryTreeNode result1008 = bstFromPreOrder(pre1008);
+        System.out.println("根据前序遍历构造出二叉搜索树结果为: ");
+        System.out.print("前序遍历: ");
+        BinTreeTraversal.preOrderTraversalWithResult(result1008);
+        System.out.println();
+        System.out.print("中序遍历: ");
+        BinTreeTraversal.inOrderTraversalWithResult(result1008);
+        System.out.println();
+        System.out.print("后序遍历: ");
+        BinTreeTraversal.postOrderTraversalWithResult(result1008);
+        System.out.println();
+        System.out.println("======== 1008 ========");
     }
 
     /**
@@ -72,6 +88,7 @@ public class BinTreeCreation {
      */
     public static BinaryTreeNode buildTreeWithPreOrderAndInOrder(int[] preOrder, int[] inOrder) {
         int n = preOrder.length;
+        preAndInIndexMap.clear();
         for (int i = 0; i < n; i++) {
             preAndInIndexMap.put(inOrder[i], i);
         }
@@ -216,7 +233,19 @@ public class BinTreeCreation {
      * @return 结果树
      */
     public static BinaryTreeNode bstFromPreOrder(int[] preOrder) {
+        if (preOrder == null) {
+            return null;
+        }
         int length = preOrder.length;
-        return null;
+        if (length == 0) {
+            return null;
+        }
+        int[] preOrderCopy = Arrays.copyOf(preOrder, length);
+        Arrays.sort(preOrder);
+        preAndInIndexMap.clear();
+        for (int i = 0; i < length; i++) {
+            preAndInIndexMap.put(preOrder[i], i);
+        }
+        return doBuildTreeWithPreOrderAndInOrder(preOrderCopy, 0, length - 1, preOrder, 0, length - 1);
     }
 }
