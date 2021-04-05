@@ -246,6 +246,7 @@ public class BinTreeCreation {
         for (int i = 0; i < length; i++) {
             preAndInIndexMap.put(preOrder[i], i);
         }
-        return doBuildTreeWithPreOrderAndInOrder(preOrderCopy, 0, length - 1, preOrder, 0, length - 1);
+        return doBuildTreeWithPreOrderAndInOrder(preOrderCopy, 0, length - 1,
+                preOrder, 0, length - 1);
     }
 }
