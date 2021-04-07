@@ -46,6 +46,17 @@ public class BinTreeTraversal {
         System.out.println();
         System.out.println("二叉树垂序遍历结果如下：");
         verticalTraversal(root);
+        System.out.println();
+        System.out.println("971. 翻转二叉树以匹配先序遍历");
+        BinaryTreeNode root971 = new BinaryTreeNode(1,
+                new BinaryTreeNode(2, null, null),
+                null);
+        List<Integer> result971 = flipMatchVoyage(root971, new int[] {2, 1});
+        System.out.print("result: ");
+        for (Integer item : result971) {
+            System.out.print(item + " ");
+        }
+        System.out.println();
     }
 
     /**
@@ -324,7 +335,7 @@ public class BinTreeTraversal {
     private static int[] expectedArr;
 
     /**
-     * 971.翻转二叉树以匹配先序遍历
+     * 971. 翻转二叉树以匹配先序遍历
      * 给定一个二叉树的根节点（每个节点的值都不一样）和一个预期的二叉树先序遍历
      * 通过交换节点的左右子树，可以翻转二叉树的任意节点，请翻转最少的树中节点
      * 使二叉树的先序遍历与预期的先序遍历序列一致
