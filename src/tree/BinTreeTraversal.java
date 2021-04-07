@@ -350,7 +350,7 @@ public class BinTreeTraversal {
         List<Integer> result = new ArrayList<>();
         expectedArr = voyage;
 
-        doTraversal(root, result);
+        doTraversal971(root, result);
 
         if (!result.isEmpty() && result.get(0) == -1) {
             result.clear();
@@ -360,7 +360,13 @@ public class BinTreeTraversal {
         return result;
     }
 
-    private static void doTraversal(BinaryTreeNode root, List<Integer> result) {
+    /**
+     * 执行递归
+     *
+     * @param root   树的根节点
+     * @param result 结果集合
+     */
+    private static void doTraversal971(BinaryTreeNode root, List<Integer> result) {
         if (root != null &&
                 expectedArr != null &&
                 expectedArr.length > 0) {
@@ -373,11 +379,11 @@ public class BinTreeTraversal {
                     root.getLeft() != null &&
                     root.getLeft().getValue() != expectedArr[currentRootIndex]) {
                 result.add(root.getValue());
-                doTraversal(root.getRight(), result);
-                doTraversal(root.getLeft(), result);
+                doTraversal971(root.getRight(), result);
+                doTraversal971(root.getLeft(), result);
             } else {
-                doTraversal(root.getLeft(), result);
-                doTraversal(root.getRight(), result);
+                doTraversal971(root.getLeft(), result);
+                doTraversal971(root.getRight(), result);
             }
         }
     }
