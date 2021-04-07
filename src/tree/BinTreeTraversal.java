@@ -316,4 +316,58 @@ public class BinTreeTraversal {
             }
         }
     }
+
+    /**
+     * 用于记录遍历的头节点位置
+     */
+    private static int currentRootIndex = 0;
+    private static int[] expectedArr;
+
+    /**
+     * 971.翻转二叉树以匹配先序遍历
+     * 给定一个二叉树的根节点（每个节点的值都不一样）和一个预期的二叉树先序遍历
+     * 通过交换节点的左右子树，可以翻转二叉树的任意节点，请翻转最少的树中节点
+     * 使二叉树的先序遍历与预期的先序遍历序列一致
+     * 返回，如果可以则是翻转的所有节点值，不可以则返回列表 -1
+     *
+     * @param root      二叉树根节点
+     * @param voyage    预期先序遍历
+     *
+     * @return 翻转的节点值
+     */
+    public static List<Integer> flipMatchVoyage(BinaryTreeNode root, int[] voyage) {
+        List<Integer> result = new ArrayList<>();
+        expectedArr = voyage;
+
+        doTraversal(root, result);
+
+        if (!result.isEmpty() && result.get(0) == -1) {
+            result.clear();
+            result.add(-1);
+        }
+
+        return result;
+    }
+
+    private static void doTraversal(BinaryTreeNode root, List<Integer> result) {
+        if (root != null &&
+                expectedArr != null &&
+                expectedArr.length > 0) {
+            if (root.getValue() != expectedArr[currentRootIndex++]) {
+                result.clear();
+                result.add(-1);
+                return;
+            }
+            if (currentRootIndex < expectedArr.length &&
+                    root.getLeft() != null &&
+                    root.getLeft().getValue() != expectedArr[currentRootIndex]) {
+                result.add(root.getValue());
+                doTraversal(root.getRight(), result);
+                doTraversal(root.getLeft(), result);
+            } else {
+                doTraversal(root.getLeft(), result);
+                doTraversal(root.getRight(), result);
+            }
+        }
+    }
 }
