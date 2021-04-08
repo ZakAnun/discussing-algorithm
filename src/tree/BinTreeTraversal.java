@@ -57,6 +57,26 @@ public class BinTreeTraversal {
             System.out.print(item + " ");
         }
         System.out.println();
+        System.out.println("173. 二叉搜索树迭代器");
+        BinaryTreeNode demo173 = new BinaryTreeNode(7,
+                new BinaryTreeNode(3, null, null),
+                new BinaryTreeNode(15,
+                        new BinaryTreeNode(9, null, null),
+                        new BinaryTreeNode(20, null, null)));
+        System.out.print("demo173 中序遍历序列: ");
+        BSTIterator bSTIterator = new BSTIterator(demo173);
+        System.out.println();
+        System.out.print("结果: ");
+        System.out.print(bSTIterator.next() + ", ");    // 返回 3
+        System.out.print(bSTIterator.next() + ", ");    // 返回 7
+        System.out.print(bSTIterator.hasNext() + ", "); // 返回 True
+        System.out.print(bSTIterator.next() + ", ");    // 返回 9
+        System.out.print(bSTIterator.hasNext() + ", "); // 返回 True
+        System.out.print(bSTIterator.next() + ", ");    // 返回 15
+        System.out.print(bSTIterator.hasNext() + ", "); // 返回 True
+        System.out.print(bSTIterator.next() + ", ");    // 返回 20
+        System.out.print(bSTIterator.hasNext() + ", "); // 返回 False
+        System.out.println();
     }
 
     /**
