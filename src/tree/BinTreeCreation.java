@@ -73,6 +73,16 @@ public class BinTreeCreation {
         BinTreeTraversal.postOrderTraversalWithResult(result1008);
         System.out.println();
         System.out.println("======== 1008 ========");
+        System.out.println();
+
+        System.out.println("======== 面试题 04.02 ========");
+        int[] demo0402 = new int[] {-10, -3, 0, 5, 9};
+        BinaryTreeNode resultDemo0402 = sortedArrayToBST(demo0402);
+        System.out.print("最小高度二叉搜索树前序遍历为: ");
+        BinTreeTraversal.preOrderTraversal(resultDemo0402, null);
+        System.out.println();
+        System.out.println("======== 面试题 04.02 ========");
+        System.out.println();
     }
 
     /**
@@ -248,5 +258,38 @@ public class BinTreeCreation {
         }
         return doBuildTreeWithPreOrderAndInOrder(preOrderCopy, 0, length - 1,
                 preOrder, 0, length - 1);
+    }
+
+    /**
+     * 面试题 04.02. 最小高度树
+     * 给定一个有序整数数组，元素各不相同且按升序排列，编写一个算法，创建一棵高度最小的二叉搜索树。
+     *
+     * @param num 升序序列
+     *
+     * @return 高度最小二叉搜索树
+     */
+    public static BinaryTreeNode sortedArrayToBST(int[] num) {
+        int length = num.length;
+
+        if (length == 0) {
+            return null;
+        }
+
+        return doSortedArrayToBST(num, 0, length - 1);
+    }
+
+    private static BinaryTreeNode doSortedArrayToBST(int[] num, int start, int end) {
+
+        if (start > end) {
+            return null;
+        }
+
+        int mid = (start + end) / 2;
+
+        BinaryTreeNode root = new BinaryTreeNode(num[mid],
+                doSortedArrayToBST(num, start, mid - 1),
+                doSortedArrayToBST(num, mid + 1, end));
+
+        return root;
     }
 }
