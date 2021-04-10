@@ -29,24 +29,31 @@ public class BinTreeTraversal {
         System.out.println("二叉树前序遍历结果如下:");
         preOrderTraversal(root, null);
         System.out.println();
+
         System.out.println("二叉树中序遍历结果如下:");
         inOrderTraversal(root, null);
         System.out.println();
+
         System.out.println("二叉树后序遍历结果如下:");
         postOrderTraversal(root, null);
         System.out.println();
+
         System.out.println("二叉树自顶向下层序遍历结果如下:");
         topToBottomLevelOrder(root);
         System.out.println();
+
         System.out.println("二叉树自底向上层序遍历结果如下:");
         bottomToTopLevelOrder(root);
         System.out.println();
+
         System.out.println("二叉树锯齿形层序遍历结果如下：");
         jaggedOrder(root);
         System.out.println();
+
         System.out.println("二叉树垂序遍历结果如下：");
         verticalTraversal(root);
         System.out.println();
+
         System.out.println("971. 翻转二叉树以匹配先序遍历");
         BinaryTreeNode root971 = new BinaryTreeNode(1,
                 new BinaryTreeNode(2, null, null),
@@ -57,6 +64,7 @@ public class BinTreeTraversal {
             System.out.print(item + " ");
         }
         System.out.println();
+
         System.out.println("173. 二叉搜索树迭代器");
         BinaryTreeNode demo173 = new BinaryTreeNode(7,
                 new BinaryTreeNode(3, null, null),
@@ -76,6 +84,20 @@ public class BinTreeTraversal {
         System.out.print(bSTIterator.hasNext() + ", "); // 返回 True
         System.out.print(bSTIterator.next() + ", ");    // 返回 20
         System.out.print(bSTIterator.hasNext() + ", "); // 返回 False
+        System.out.println();
+
+        System.out.println("114. 二叉树展开为链表");
+        BinaryTreeNode demoTree114 = new BinaryTreeNode(1,
+                new BinaryTreeNode(2,
+                        new BinaryTreeNode(3, null, null),
+                        new BinaryTreeNode(4, null, null)),
+                new BinaryTreeNode(5,
+                        null,
+                        new BinaryTreeNode(6, null, null)));
+        flatten(demoTree114);
+        System.out.println();
+        System.out.print("结果前序遍历集合: ");
+        preOrderTraversal(demoTree114, null);
         System.out.println();
     }
 
@@ -404,6 +426,34 @@ public class BinTreeTraversal {
             } else {
                 doTraversal971(root.getLeft(), result);
                 doTraversal971(root.getRight(), result);
+            }
+        }
+    }
+
+    /**
+     * 114. 二叉树展开为链表
+     * 给你二叉树的根结点 root ，请你将它展开为一个单链表：
+     *  展开后的单链表应该同样使用 TreeNode ，其中 right 子指针指向链表中下一个结点，而左子指针始终为 null 。
+     *  展开后的单链表应该与二叉树 先序遍历 顺序相同。
+     *
+     * @param root 根节点
+     */
+    public static void flatten(BinaryTreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        System.out.print("前序遍历结果集合: ");
+        List<Integer> preOrder = preOrderTraversalWithResult(root);
+
+        BinaryTreeNode tempNode = root;
+        int length = preOrder.size();
+        for (int i = 0; i < length; i++) {
+            tempNode.setValue(preOrder.get(i));
+            tempNode.setLeft(null);
+            if (i != length - 1) {
+                tempNode.setRight(new BinaryTreeNode());
+                tempNode = tempNode.getRight();
             }
         }
     }
