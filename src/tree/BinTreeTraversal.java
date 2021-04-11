@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * 二叉树的遍历
@@ -26,35 +27,42 @@ public class BinTreeTraversal {
         thrLeft.setValue(3);
         secRight.setLeft(thrLeft);
 
-        System.out.println("二叉树前序遍历结果如下:");
+        System.out.print("二叉树前序遍历结果:");
         preOrderTraversal(root, null);
         System.out.println();
 
-        System.out.println("二叉树中序遍历结果如下:");
+        System.out.println();
+        System.out.print("二叉树中序遍历结果:");
         inOrderTraversal(root, null);
         System.out.println();
 
-        System.out.println("二叉树后序遍历结果如下:");
+        System.out.println();
+        System.out.print("二叉树后序遍历结果:");
         postOrderTraversal(root, null);
         System.out.println();
 
-        System.out.println("二叉树自顶向下层序遍历结果如下:");
+        System.out.println();
+        System.out.print("二叉树自顶向下层序遍历结果:");
         topToBottomLevelOrder(root);
         System.out.println();
 
-        System.out.println("二叉树自底向上层序遍历结果如下:");
+        System.out.println();
+        System.out.print("二叉树自底向上层序遍历结果:");
         bottomToTopLevelOrder(root);
         System.out.println();
 
-        System.out.println("二叉树锯齿形层序遍历结果如下：");
+        System.out.println();
+        System.out.print("二叉树锯齿形层序遍历结果：");
         jaggedOrder(root);
         System.out.println();
 
-        System.out.println("二叉树垂序遍历结果如下：");
+        System.out.println();
+        System.out.print("二叉树垂序遍历结果如下：");
         verticalTraversal(root);
         System.out.println();
 
-        System.out.println("971. 翻转二叉树以匹配先序遍历");
+        System.out.println();
+        System.out.print("971. 翻转二叉树以匹配先序遍历: ");
         BinaryTreeNode root971 = new BinaryTreeNode(1,
                 new BinaryTreeNode(2, null, null),
                 null);
@@ -65,7 +73,8 @@ public class BinTreeTraversal {
         }
         System.out.println();
 
-        System.out.println("173. 二叉搜索树迭代器");
+        System.out.println();
+        System.out.println("173. 二叉搜索树迭代器: ");
         BinaryTreeNode demo173 = new BinaryTreeNode(7,
                 new BinaryTreeNode(3, null, null),
                 new BinaryTreeNode(15,
@@ -74,7 +83,7 @@ public class BinTreeTraversal {
         System.out.print("demo173 中序遍历序列: ");
         BSTIterator bSTIterator = new BSTIterator(demo173);
         System.out.println();
-        System.out.print("结果: ");
+        System.out.print("demo173 结果: ");
         System.out.print(bSTIterator.next() + ", ");    // 返回 3
         System.out.print(bSTIterator.next() + ", ");    // 返回 7
         System.out.print(bSTIterator.hasNext() + ", "); // 返回 True
@@ -86,6 +95,7 @@ public class BinTreeTraversal {
         System.out.print(bSTIterator.hasNext() + ", "); // 返回 False
         System.out.println();
 
+        System.out.println();
         System.out.println("114. 二叉树展开为链表");
         BinaryTreeNode demoTree114 = new BinaryTreeNode(1,
                 new BinaryTreeNode(2,
@@ -98,6 +108,19 @@ public class BinTreeTraversal {
         System.out.println();
         System.out.print("结果前序遍历集合: ");
         preOrderTraversal(demoTree114, null);
+        System.out.println();
+
+        System.out.println();
+        System.out.println("剑指 Offer 55 - I. 二叉树的深度");
+        BinaryTreeNode demoOffer55 = new BinaryTreeNode(3,
+                new BinaryTreeNode(9, null, null),
+                new BinaryTreeNode(20,
+                        new BinaryTreeNode(15, null, null),
+                        new BinaryTreeNode(7, null, null)));
+        System.out.println("递归 demoOffer55 树的深度为: " + maxDepth(demoOffer55));
+        System.out.println("栈 demoOffer55 树的深度为: " + maxDepthByStack(demoOffer55));
+        System.out.println();
+
         System.out.println();
     }
 
@@ -456,5 +479,63 @@ public class BinTreeTraversal {
                 tempNode = tempNode.getRight();
             }
         }
+    }
+
+    /**
+     * 剑指 Offer 55 - I. 二叉树的深度
+     *
+     * 递归解法
+     *
+     * @param root 根节点
+     *
+     * @return 二叉树的深度
+     */
+    public static int maxDepth(BinaryTreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        return Math.max(maxDepth(root.getLeft()), maxDepth(root.getRight())) + 1;
+    }
+
+    /**
+     * 剑指 Offer 55 - I. 二叉树的深度
+     *
+     * 栈解法（垂序遍历代码也在这）
+     *
+     * @param root 根节点
+     *
+     * @return 二叉树的深度
+     */
+    public static int maxDepthByStack(BinaryTreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        Stack<BinaryTreeNode> nodeStack = new Stack<>();
+        Stack<Integer> levelStack = new Stack<>();
+
+        nodeStack.push(root);
+        levelStack.push(1);
+
+        int depth = 0;
+
+        while (!nodeStack.isEmpty()) {
+            BinaryTreeNode node = nodeStack.pop();
+            int temp = levelStack.pop();
+
+            depth = Math.max(temp, depth);
+
+            if (node.getLeft() != null) {
+                nodeStack.push(node.getLeft());
+                levelStack.push(temp + 1);
+            }
+            if (node.getRight() != null) {
+                nodeStack.push(node.getRight());
+                levelStack.push(temp + 1);
+            }
+        }
+
+        return depth;
     }
 }
