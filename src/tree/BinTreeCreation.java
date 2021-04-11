@@ -83,6 +83,24 @@ public class BinTreeCreation {
         System.out.println();
         System.out.println("======== 面试题 04.02 ========");
         System.out.println();
+
+        System.out.println("======== 剑指 Offer 27 ========");
+        BinaryTreeNode demoOffer27 = new BinaryTreeNode(4,
+                new BinaryTreeNode(2,
+                        new BinaryTreeNode(1, null, null),
+                        new BinaryTreeNode(3, null, null)),
+                new BinaryTreeNode(7,
+                        new BinaryTreeNode(6, null, null),
+                        new BinaryTreeNode(9, null, null)));
+        BinaryTreeNode resultOffer27 = mirrorTree(demoOffer27);
+        System.out.print("原前序遍历: ");
+        BinTreeTraversal.preOrderTraversal(demoOffer27, null);
+        System.out.println();
+        System.out.print("镜像前序遍历: ");
+        BinTreeTraversal.preOrderTraversal(resultOffer27, null);
+        System.out.println();
+        System.out.println("======== 剑指 Offer 27 ========");
+        System.out.println();
     }
 
     /**
@@ -291,5 +309,27 @@ public class BinTreeCreation {
                 doSortedArrayToBST(num, mid + 1, end));
 
         return root;
+    }
+
+    /**
+     * 剑指 Offer 27. 二叉树的镜像
+     *
+     * 请完成一个函数，输入一个二叉树，该函数输出它的镜像。
+     * 镜像指节点的左子树和右子树互换了
+     *
+     * @param root 二叉树根节点
+     *
+     * @return 镜像二叉树
+     */
+    public static BinaryTreeNode mirrorTree(BinaryTreeNode root) {
+        if (root == null) {
+            return null;
+        }
+
+        BinaryTreeNode newRoot = new BinaryTreeNode(root.getValue(),
+                mirrorTree(root.getRight()),
+                mirrorTree(root.getLeft()));
+
+        return newRoot;
     }
 }
