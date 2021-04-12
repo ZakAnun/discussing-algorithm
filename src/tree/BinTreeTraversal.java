@@ -121,7 +121,18 @@ public class BinTreeTraversal {
         System.out.println("栈 demoOffer55 树的深度为: " + maxDepthByStack(demoOffer55));
         System.out.println();
 
+        System.out.println("226. 翻转二叉树");
+        BinaryTreeNode demo226 = new BinaryTreeNode(4,
+                new BinaryTreeNode(2,
+                        new BinaryTreeNode(1, null, null),
+                        new BinaryTreeNode(3, null, null)),
+                new BinaryTreeNode(7,
+                        new BinaryTreeNode(6, null, null),
+                        new BinaryTreeNode(9, null, null)));
+        System.out.print("demo226 翻转后的树前序遍历序列为: ");
+        preOrderTraversal(demo226, null);
         System.out.println();
+
     }
 
     /**
@@ -537,5 +548,22 @@ public class BinTreeTraversal {
         }
 
         return depth;
+    }
+
+    /**
+     * 226. 翻转二叉树
+     *
+     * @param root 待翻转二叉树
+     *
+     * @return 翻转后的结果树
+     */
+    public static BinaryTreeNode invertTree(BinaryTreeNode root) {
+        if (root == null) {
+            return null;
+        }
+
+        return new BinaryTreeNode(root.getValue(),
+                invertTree(root.getLeft()),
+                invertTree(root.getRight()));
     }
 }
