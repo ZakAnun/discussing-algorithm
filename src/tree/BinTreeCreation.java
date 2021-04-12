@@ -14,7 +14,7 @@ public class BinTreeCreation {
         int[] inOrder = new int[] {9, 3, 15, 20, 7};
         int[] postOrder = new int[] {9, 15, 7, 20, 3};
 
-        System.out.println("======== 105 ========");
+        System.out.println("======== 105 / 剑指 Offer 07 ========");
         BinaryTreeNode result105 = buildTreeWithPreOrderAndInOrder(preOrder, inOrder);
         System.out.println("根据前序遍历和中序遍历序列得出构造的结果树为: ");
         System.out.print("前序遍历: ");
@@ -26,7 +26,7 @@ public class BinTreeCreation {
         System.out.print("后序遍历: ");
         BinTreeTraversal.postOrderTraversal(result105, null);
         System.out.println();
-        System.out.println("======== 105 ========");
+        System.out.println("======== 105 / 剑指 Offer 07 ========");
         System.out.println();
 
         System.out.println("======== 106 ========");
@@ -133,6 +133,7 @@ public class BinTreeCreation {
 
     /**
      * 105.从前序与中序遍历序列构造二叉树
+     * 剑指 Offer 07. 重建二叉树
      *
      * @return binaryTree
      */
