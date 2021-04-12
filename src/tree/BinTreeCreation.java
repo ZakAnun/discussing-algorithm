@@ -86,7 +86,7 @@ public class BinTreeCreation {
         System.out.println("======== 面试题 04.02 ========");
         System.out.println();
 
-        System.out.println("======== 剑指 Offer 27 ========");
+        System.out.println("======== 剑指 Offer 27 / 226. 翻转二叉树 ========");
         BinaryTreeNode demoOffer27 = new BinaryTreeNode(4,
                 new BinaryTreeNode(2,
                         new BinaryTreeNode(1, null, null),
@@ -101,7 +101,7 @@ public class BinTreeCreation {
         System.out.print("镜像前序遍历: ");
         BinTreeTraversal.preOrderTraversal(resultOffer27, null);
         System.out.println();
-        System.out.println("======== 剑指 Offer 27 ========");
+        System.out.println("======== 剑指 Offer 27 / 226. 翻转二叉树 ========");
         System.out.println();
 
         System.out.println("======== 617. 合并二叉树 ========");
@@ -335,6 +335,7 @@ public class BinTreeCreation {
 
     /**
      * 剑指 Offer 27. 二叉树的镜像
+     * 226. 翻转二叉树
      *
      * 请完成一个函数，输入一个二叉树，该函数输出它的镜像。
      * 镜像指节点的左子树和右子树互换了
@@ -348,11 +349,9 @@ public class BinTreeCreation {
             return null;
         }
 
-        BinaryTreeNode newRoot = new BinaryTreeNode(root.getValue(),
+        return new BinaryTreeNode(root.getValue(),
                 mirrorTree(root.getRight()),
                 mirrorTree(root.getLeft()));
-
-        return newRoot;
     }
 
     /**
