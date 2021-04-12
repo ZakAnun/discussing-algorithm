@@ -29,6 +29,7 @@ public class Day20210412 {
             numArr[i] = num[i];
         }
 
+        // 传入比较器
         Arrays.sort(numArr, (x, y) -> {
             long sx = 10;
             long sy = 10;
