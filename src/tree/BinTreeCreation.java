@@ -13,7 +13,8 @@ public class BinTreeCreation {
         int[] preOrder = new int[] {3, 9, 20, 15, 7};
         int[] inOrder = new int[] {9, 3, 15, 20, 7};
         int[] postOrder = new int[] {9, 15, 7, 20, 3};
-        System.out.println("======== 105 ========");
+
+        System.out.println("======== 105 / 剑指 Offer 07 ========");
         BinaryTreeNode result105 = buildTreeWithPreOrderAndInOrder(preOrder, inOrder);
         System.out.println("根据前序遍历和中序遍历序列得出构造的结果树为: ");
         System.out.print("前序遍历: ");
@@ -25,8 +26,9 @@ public class BinTreeCreation {
         System.out.print("后序遍历: ");
         BinTreeTraversal.postOrderTraversal(result105, null);
         System.out.println();
-        System.out.println("======== 105 ========");
+        System.out.println("======== 105 / 剑指 Offer 07 ========");
         System.out.println();
+
         System.out.println("======== 106 ========");
         BinaryTreeNode result106 = buildTreeWithInOrderAndPostOrder(inOrder, postOrder);
         System.out.println("根据中序遍历和后序遍历序列得出构造的结果树为: ");
@@ -84,7 +86,7 @@ public class BinTreeCreation {
         System.out.println("======== 面试题 04.02 ========");
         System.out.println();
 
-        System.out.println("======== 剑指 Offer 27 ========");
+        System.out.println("======== 剑指 Offer 27 / 226. 翻转二叉树 ========");
         BinaryTreeNode demoOffer27 = new BinaryTreeNode(4,
                 new BinaryTreeNode(2,
                         new BinaryTreeNode(1, null, null),
@@ -99,7 +101,27 @@ public class BinTreeCreation {
         System.out.print("镜像前序遍历: ");
         BinTreeTraversal.preOrderTraversal(resultOffer27, null);
         System.out.println();
-        System.out.println("======== 剑指 Offer 27 ========");
+        System.out.println("======== 剑指 Offer 27 / 226. 翻转二叉树 ========");
+        System.out.println();
+
+        System.out.println("======== 617. 合并二叉树 ========");
+        BinaryTreeNode demo617One = new BinaryTreeNode(1,
+                new BinaryTreeNode(3,
+                        new BinaryTreeNode(5, null, null),
+                        null),
+                new BinaryTreeNode(2, null, null));
+        BinaryTreeNode demo617Two = new BinaryTreeNode(2,
+                new BinaryTreeNode(1,
+                        null,
+                        new BinaryTreeNode(4, null, null)),
+                new BinaryTreeNode(3,
+                        null,
+                        new BinaryTreeNode(7, null, null)));
+        BinaryTreeNode result617 = mergeTrees(demo617One, demo617Two);
+        System.out.print("合并两个 demo 二叉树的结果树的前序遍历为: ");
+        BinTreeTraversal.preOrderTraversal(result617, null);
+        System.out.println();
+        System.out.println("======== 617. 合并二叉树 ========");
         System.out.println();
     }
 
@@ -111,6 +133,7 @@ public class BinTreeCreation {
 
     /**
      * 105.从前序与中序遍历序列构造二叉树
+     * 剑指 Offer 07. 重建二叉树
      *
      * @return binaryTree
      */
@@ -313,6 +336,7 @@ public class BinTreeCreation {
 
     /**
      * 剑指 Offer 27. 二叉树的镜像
+     * 226. 翻转二叉树
      *
      * 请完成一个函数，输入一个二叉树，该函数输出它的镜像。
      * 镜像指节点的左子树和右子树互换了
@@ -326,10 +350,33 @@ public class BinTreeCreation {
             return null;
         }
 
-        BinaryTreeNode newRoot = new BinaryTreeNode(root.getValue(),
+        return new BinaryTreeNode(root.getValue(),
                 mirrorTree(root.getRight()),
                 mirrorTree(root.getLeft()));
+    }
 
-        return newRoot;
+    /**
+     * 617. 合并二叉树
+     *
+     * 给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。
+     *
+     * 你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，
+     * 否则不为 NULL 的节点将直接作为新二叉树的节点。
+     *
+     * @param root1 树1
+     * @param root2 树2
+     * @return 合并两棵树后的结果树
+     */
+    public static BinaryTreeNode mergeTrees(BinaryTreeNode root1, BinaryTreeNode root2) {
+        if (root1 == null) {
+            return root2;
+        }
+        if (root2 == null) {
+            return root1;
+        }
+
+        return new BinaryTreeNode(root1.getValue() + root2.getValue(),
+                mergeTrees(root1.getLeft(), root2.getLeft()),
+                mergeTrees(root1.getRight(), root2.getRight()));
     }
 }

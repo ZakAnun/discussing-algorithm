@@ -121,7 +121,6 @@ public class BinTreeTraversal {
         System.out.println("栈 demoOffer55 树的深度为: " + maxDepthByStack(demoOffer55));
         System.out.println();
 
-        System.out.println();
     }
 
     /**
@@ -538,4 +537,5 @@ public class BinTreeTraversal {
 
         return depth;
     }
+
 }
