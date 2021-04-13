@@ -121,6 +121,16 @@ public class BinTreeTraversal {
         System.out.println("栈 demoOffer55 树的深度为: " + maxDepthByStack(demoOffer55));
         System.out.println();
 
+        System.out.println("938. 二叉搜索树的范围和");
+        BinaryTreeNode demo938 = new BinaryTreeNode(10,
+                new BinaryTreeNode(5,
+                        new BinaryTreeNode(3, null, null),
+                        new BinaryTreeNode(7, null, null)),
+                new BinaryTreeNode(15,
+                        null,
+                        new BinaryTreeNode(18, null, null)));
+        System.out.println("demo938 树节点值在 7 到 15 的总和 = " + rangeSumBST(demo938, 7, 15));
+        System.out.println();
     }
 
     /**
@@ -538,4 +548,33 @@ public class BinTreeTraversal {
         return depth;
     }
 
+    private static int rangSumBSTResult = 0;
+
+    /**
+     * 938. 二叉搜索树的范围和
+     *
+     * @param root  二叉搜索树
+     * @param low   低范围边界值
+     * @param high  高范围边界值
+     *
+     * @return  在指定范围的节点值总和
+     */
+    public static int rangeSumBST(BinaryTreeNode root, int low, int high) {
+        inOrder(root, low, high);
+        return rangSumBSTResult;
+    }
+
+    private static void inOrder(BinaryTreeNode root, int low, int high) {
+        if (root == null) {
+            return;
+        }
+
+        inOrder(root.getLeft(), low, high);
+
+        if (root.getValue() >= low && root.getValue() <= high) {
+            rangSumBSTResult += root.getValue();
+        }
+
+        inOrder(root.getRight(), low, high);
+    }
 }
