@@ -492,6 +492,7 @@ public class BinTreeTraversal {
 
     /**
      * 剑指 Offer 55 - I. 二叉树的深度
+     * 104. 二叉树的最大深度
      *
      * 递归解法
      *
