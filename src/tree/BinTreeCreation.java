@@ -135,6 +135,14 @@ public class BinTreeCreation {
         BinTreeTraversal.preOrderTraversal(result700, null);
         System.out.println();
         System.out.println("======== 700. 二叉搜索树中的搜索 ========");
+
+        System.out.println("======== 108. 将有序数组转换为二叉搜索树 ========");
+        int[] demo108 = new int[] {-10, -3, 0, 5, 9};
+        BinaryTreeNode result108 = sortedArrayToBST108(demo108);
+        System.out.print("demo108 所构造的结果树，前序遍历序列为: ");
+        BinTreeTraversal.preOrderTraversal(result108, null);
+        System.out.println();
+        System.out.println("======== 108. 将有序数组转换为二叉搜索树 ========");
     }
 
     /**
@@ -414,5 +422,33 @@ public class BinTreeCreation {
         } else {
             return searchBST(root.getRight(), val);
         }
+    }
+
+    /**
+     * 108. 将有序数组转换为二叉搜索树
+     *
+     * @param nums 有序数组
+     *
+     * @return 构造后的二叉搜索树
+     */
+    public static BinaryTreeNode sortedArrayToBST108(int[] nums) {
+        int length = nums.length;
+        if (length == 0) {
+            return null;
+        }
+        return doBuildTree108(nums, 0, length - 1);
+    }
+
+    private static BinaryTreeNode doBuildTree108(int[] nums, int start, int end) {
+        if (start > end) {
+            return null;
+        }
+
+        int mid = (start + end) / 2;
+        int rootVal = nums[mid];
+        return new BinaryTreeNode(rootVal,
+                doBuildTree108(nums, start, mid - 1),
+                doBuildTree108(nums, mid + 1, end));
+
     }
 }
