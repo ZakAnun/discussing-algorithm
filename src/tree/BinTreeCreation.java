@@ -123,6 +123,18 @@ public class BinTreeCreation {
         System.out.println();
         System.out.println("======== 617. 合并二叉树 ========");
         System.out.println();
+
+        System.out.println("======== 700. 二叉搜索树中的搜索 ========");
+        BinaryTreeNode demo700 = new BinaryTreeNode(4,
+                new BinaryTreeNode(2,
+                        new BinaryTreeNode(1, null, null),
+                        new BinaryTreeNode(3, null, null)),
+                new BinaryTreeNode(7, null, null));
+        BinaryTreeNode result700 = searchBST(demo700, 2);
+        System.out.print("demo700 树中节点为 2 的子树的前序遍历序列为: ");
+        BinTreeTraversal.preOrderTraversal(result700, null);
+        System.out.println();
+        System.out.println("======== 700. 二叉搜索树中的搜索 ========");
     }
 
     /**
@@ -378,5 +390,29 @@ public class BinTreeCreation {
         return new BinaryTreeNode(root1.getValue() + root2.getValue(),
                 mergeTrees(root1.getLeft(), root2.getLeft()),
                 mergeTrees(root1.getRight(), root2.getRight()));
+    }
+
+    /**
+     * 700. 二叉搜索树中的搜索
+     *
+     * 给定二叉搜索树（BST）的根节点和一个值。
+     * 你需要在BST中找到节点值等于给定值的节点。
+     * 返回以该节点为根的子树。
+     * 如果节点不存在，则返回 NULL。
+     *
+     * @param root  二叉搜索树根节点
+     * @param val   指定值
+     * @return  返回节点值与指定值的子树
+     */
+    public static BinaryTreeNode searchBST(BinaryTreeNode root, int val) {
+        if (root == null || root.getValue() == val) {
+            return root;
+        }
+
+        if (val < root.getValue()) {
+            return searchBST(root.getLeft(), val);
+        } else {
+            return searchBST(root.getRight(), val);
+        }
     }
 }
