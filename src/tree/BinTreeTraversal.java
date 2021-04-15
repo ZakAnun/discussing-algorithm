@@ -11,9 +11,7 @@ import java.util.Stack;
 /**
  * 二叉树的遍历
  *
- *  前序遍历
- *  中序遍历
- *  后序遍历
+ * 题目出处均来源与力扣("https://leetcode-cn.com/")
  */
 public class BinTreeTraversal {
 
@@ -130,6 +128,15 @@ public class BinTreeTraversal {
                         null,
                         new BinaryTreeNode(18, null, null)));
         System.out.println("demo938 树节点值在 7 到 15 的总和 = " + rangeSumBST(demo938, 7, 15));
+        System.out.println();
+
+        System.out.println("剑指 Offer 54. 二叉搜索树的第k大节点");
+        BinaryTreeNode demoOffer54 = new BinaryTreeNode(3,
+                new BinaryTreeNode(1, null,
+                        new BinaryTreeNode(2, null, null)),
+                new BinaryTreeNode(4, null, null));
+        int result54 = kthLargest(demoOffer54, 1);
+        System.out.println("demo54 树中第 1 大的节点值 = " + result54);
         System.out.println();
     }
 
@@ -577,5 +584,36 @@ public class BinTreeTraversal {
         }
 
         inOrder(root.getRight(), low, high);
+    }
+
+    private static int kVal = 0;
+    private static int res = 0;
+    /**
+     * 剑指 Offer 54. 二叉搜索树的第k大节点
+     *
+     * @param root  二叉搜索树
+     * @param k     数字
+     *
+     * @return 二叉搜索树中第 k 大的节点
+     */
+    public static int kthLargest(BinaryTreeNode root, int k) {
+        kVal = k;
+        inOrderKthLargest(root);
+        return res;
+    }
+
+    private static void inOrderKthLargest(BinaryTreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        inOrderKthLargest(root.getRight());
+        if (kVal == 0) {
+            return;
+        }
+        if (--kVal == 0) {
+            res = root.getValue();
+        }
+        inOrderKthLargest(root.getLeft());
     }
 }
