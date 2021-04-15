@@ -138,6 +138,19 @@ public class BinTreeTraversal {
         int result54 = kthLargest(demoOffer54, 1);
         System.out.println("demo54 树中第 1 大的节点值 = " + result54);
         System.out.println();
+
+        System.out.println("637. 二叉树的层平均值");
+        BinaryTreeNode demo637 = new BinaryTreeNode(3,
+                new BinaryTreeNode(9, null, null),
+                new BinaryTreeNode(20,
+                        new BinaryTreeNode(15, null, null),
+                        new BinaryTreeNode(7, null, null)));
+        List<Double> result637BFS = averageOfLevelsBFS(demo637);
+        System.out.print("demo637 树每层的节点值的平均值为: ");
+        for (double item : result637BFS) {
+            System.out.print(item + " ");
+        }
+        System.out.println();
     }
 
     /**
@@ -615,5 +628,44 @@ public class BinTreeTraversal {
             res = root.getValue();
         }
         inOrderKthLargest(root.getLeft());
+    }
+
+    /**
+     * 637. 二叉树的层平均值（BFS）TODO: 补充 DFS 解法
+     *
+     * @param root 二叉树
+     *
+     * @return 结果序列
+     */
+    public static List<Double> averageOfLevelsBFS(BinaryTreeNode root) {
+        List<Double> result = new ArrayList<>();
+
+        if (root == null) {
+            return result;
+        }
+
+        Queue<BinaryTreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            int levelSum = 0;
+            for (int i = 0; i < size; i++) {
+                BinaryTreeNode node = queue.poll();
+                if (node != null) {
+                    levelSum += node.getValue();
+
+                    if (node.getLeft() != null) {
+                        queue.offer(node.getLeft());
+                    }
+                    if (node.getRight() != null) {
+                        queue.offer(node.getRight());
+                    }
+                }
+            }
+            result.add((double) levelSum / size);
+        }
+
+        return result;
     }
 }
