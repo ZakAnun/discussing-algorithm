@@ -22,10 +22,30 @@ package daily;
 public class Day20210415 {
 
     public static void main(String[] args) {
-
+        System.out.println("213. 打家劫舍 II");
+        int[] demo213 = new int[] {2, 3, 2};
+        int result = rob(demo213);
+        System.out.println("最高能拿到: " + result);
     }
 
+    // TODO: 重温
     public static int rob(int[] num) {
-        return 0;
+        int length = num.length;
+        if (length == 1) {
+            return num[0];
+        } else if (length == 2) {
+            return Math.max(num[0], num[1]);
+        }
+        return Math.max(robRange(num, 0, length - 2), robRange(num, 1, length - 1));
+    }
+
+    public static int robRange(int[] num, int start, int end) {
+        int first = num[start], second = Math.max(num[start], num[start + 1]);
+        for (int i = start + 2; i <= end; i++) {
+            int temp = second;
+            second = Math.max(first + num[i], second);
+            first = temp;
+        }
+        return second;
     }
 }
