@@ -151,6 +151,28 @@ public class BinTreeTraversal {
             System.out.print(item + " ");
         }
         System.out.println();
+        System.out.println();
+
+        System.out.println("剑指 Offer 68 - II. 二叉树的最近公共祖先");
+        BinaryTreeNode demoOffer68 = new BinaryTreeNode(3,
+                new BinaryTreeNode(5,
+                        new BinaryTreeNode(6, null, null),
+                        new BinaryTreeNode(2,
+                                new BinaryTreeNode(7, null, null),
+                                new BinaryTreeNode(4, null, null))),
+                new BinaryTreeNode(1,
+                        new BinaryTreeNode(0, null, null),
+                        new BinaryTreeNode(8, null, null)));
+        BinaryTreeNode demoOffer68SubP = new BinaryTreeNode(5,
+                new BinaryTreeNode(6, null, null),
+                new BinaryTreeNode(2,
+                        new BinaryTreeNode(7, null, null),
+                        new BinaryTreeNode(4, null, null)));
+        BinaryTreeNode demoOffer68SubQ = new BinaryTreeNode(1,
+                new BinaryTreeNode(0, null, null),
+                new BinaryTreeNode(8, null, null));
+        BinaryTreeNode resultOffer68 = lowestCommonAncestor(demoOffer68, demoOffer68SubP, demoOffer68SubQ);
+        System.out.println("demoOffer68 的 P、Q 子树的最近公共祖先根节点为: " + resultOffer68.getValue());
     }
 
     /**
@@ -667,5 +689,38 @@ public class BinTreeTraversal {
         }
 
         return result;
+    }
+
+    /**
+     * 剑指 Offer 68 - II. 二叉树的最近公共祖先
+     * 最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，
+     * 最近公共祖先表示为一个结点 x
+     * 满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     *
+     * @param root  树的根节点
+     * @param p     树的节点
+     * @param q     树的节点
+     * @return  最近公共祖先
+     */
+    public static BinaryTreeNode lowestCommonAncestor(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q) {
+        if (root == null || root.getValue() == p.getValue() || root.getValue() == q.getValue()) {
+            return root;
+        }
+        BinaryTreeNode left = lowestCommonAncestor(root.getLeft(), p, q);
+        BinaryTreeNode right = lowestCommonAncestor(root.getRight(), p, q);
+        if (left == null && right == null) {
+            return null;
+        }
+        if (left == null) {
+            return right;
+        }
+        if (right == null) {
+            return left;
+        }
+        return root;
     }
 }
