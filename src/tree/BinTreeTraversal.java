@@ -166,6 +166,29 @@ public class BinTreeTraversal {
                 demoOffer68SubP, demoOffer68SubQ);
         BinaryTreeNode resultOffer68 = lowestCommonAncestor(demoOffer68, demoOffer68SubP, demoOffer68SubQ);
         System.out.println("demoOffer68 的 P、Q 子树的最近公共祖先根节点为: " + resultOffer68.getValue());
+
+        System.out.println();
+
+        System.out.println("1022. 从根到叶的二进制数之和");
+        BinaryTreeNode demo1022One = new BinaryTreeNode(1,
+                new BinaryTreeNode(0,
+                        new BinaryTreeNode(0, null, null),
+                        new BinaryTreeNode(1, null, null)),
+                new BinaryTreeNode(1,
+                        new BinaryTreeNode(0, null, null),
+                        new BinaryTreeNode(1, null, null)));
+        BinaryTreeNode demo1022Two = new BinaryTreeNode(0, null, null);
+        BinaryTreeNode demo1022Three = new BinaryTreeNode(1, null, null);
+        BinaryTreeNode demo1022Four = new BinaryTreeNode(1,
+                new BinaryTreeNode(1, null, null), null);
+        System.out.println("1022 示例 1 的结果为: " + sumRootToLeaf(demo1022One));
+        resultSumRootToLeaf = 0;
+        System.out.println("1022 示例 2 的结果为: " + sumRootToLeaf(demo1022Two));
+        resultSumRootToLeaf = 0;
+        System.out.println("1022 示例 3 的结果为: " + sumRootToLeaf(demo1022Three));
+        resultSumRootToLeaf = 0;
+        System.out.println("1022 示例 4 的结果为: " + sumRootToLeaf(demo1022Four));
+        resultSumRootToLeaf = 0;
     }
 
     /**
@@ -717,5 +740,59 @@ public class BinTreeTraversal {
             return left;
         }
         return root;
+    }
+
+    /**
+     * 1022. 从根到叶的二进制数之和
+     *
+     * 给出一棵二叉树，其上每个结点的值都是 0 或 1 。每一条从根到叶的路径都代表一个从最高有效位开始的二进制数。
+     * 例如，如果路径为 0 -> 1 -> 1 -> 0 -> 1，那么它表示二进制数 01101，也就是 13 。
+     *
+     * 对树上的每一片叶子，我们都要找出从根到该叶子的路径所表示的数字。
+     *
+     * 返回这些数字之和。题目数据保证答案是一个 32 位 整数。
+     *
+     * 示例1:
+     * 输入：root = [1,0,1,0,1,0,1]
+     * 输出：22
+     * 解释：(100) + (101) + (110) + (111) = 4 + 5 + 6 + 7 = 22
+     *
+     * 示例 2：
+     *
+     * 输入：root = [0]
+     * 输出：0
+     * 示例 3：
+     *
+     * 输入：root = [1]
+     * 输出：1
+     * 示例 4：
+     *
+     * 输入：root = [1,1]
+     * 输出：3
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/sum-of-root-to-leaf-binary-numbers
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     */
+    private static int resultSumRootToLeaf = 0;
+    public static int sumRootToLeaf(BinaryTreeNode root) {
+        doSumRootToLeaf(root, 0);
+        return resultSumRootToLeaf;
+    }
+
+    private static void doSumRootToLeaf(BinaryTreeNode root, int val) {
+        if (root == null) {
+            return;
+        }
+
+        val = val << 1;
+        if (root.getLeft() == null && root.getRight() == null) {
+            resultSumRootToLeaf += root.getValue() == 0 ? val : val + 1;
+            return;
+        }
+
+        val = root.getValue() == 0 ? val : val + 1;
+        doSumRootToLeaf(root.getLeft(), val);
+        doSumRootToLeaf(root.getRight(), val);
     }
 }
