@@ -154,15 +154,6 @@ public class BinTreeTraversal {
         System.out.println();
 
         System.out.println("剑指 Offer 68 - II. 二叉树的最近公共祖先");
-        BinaryTreeNode demoOffer68 = new BinaryTreeNode(3,
-                new BinaryTreeNode(5,
-                        new BinaryTreeNode(6, null, null),
-                        new BinaryTreeNode(2,
-                                new BinaryTreeNode(7, null, null),
-                                new BinaryTreeNode(4, null, null))),
-                new BinaryTreeNode(1,
-                        new BinaryTreeNode(0, null, null),
-                        new BinaryTreeNode(8, null, null)));
         BinaryTreeNode demoOffer68SubP = new BinaryTreeNode(5,
                 new BinaryTreeNode(6, null, null),
                 new BinaryTreeNode(2,
@@ -171,6 +162,8 @@ public class BinTreeTraversal {
         BinaryTreeNode demoOffer68SubQ = new BinaryTreeNode(1,
                 new BinaryTreeNode(0, null, null),
                 new BinaryTreeNode(8, null, null));
+        BinaryTreeNode demoOffer68 = new BinaryTreeNode(3,
+                demoOffer68SubP, demoOffer68SubQ);
         BinaryTreeNode resultOffer68 = lowestCommonAncestor(demoOffer68, demoOffer68SubP, demoOffer68SubQ);
         System.out.println("demoOffer68 的 P、Q 子树的最近公共祖先根节点为: " + resultOffer68.getValue());
     }
@@ -707,7 +700,9 @@ public class BinTreeTraversal {
      * @return  最近公共祖先
      */
     public static BinaryTreeNode lowestCommonAncestor(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q) {
-        if (root == null || root.getValue() == p.getValue() || root.getValue() == q.getValue()) {
+        if (root == null || root == p || root == q ||
+                root.getValue() == p.getValue() ||
+                root.getValue() == q.getValue()) {
             return root;
         }
         BinaryTreeNode left = lowestCommonAncestor(root.getLeft(), p, q);
