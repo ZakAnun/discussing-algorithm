@@ -189,6 +189,25 @@ public class BinTreeTraversal {
         resultSumRootToLeaf = 0;
         System.out.println("1022 示例 4 的结果为: " + sumRootToLeaf(demo1022Four));
         resultSumRootToLeaf = 0;
+
+        System.out.println();
+
+        System.out.println("965. 单值二叉树");
+        BinaryTreeNode demo965One = new BinaryTreeNode(1,
+                new BinaryTreeNode(1,
+                        new BinaryTreeNode(1, null, null),
+                        new BinaryTreeNode(1, null, null)),
+                new BinaryTreeNode(1,
+                        null,
+                        new BinaryTreeNode(1, null, null)));
+        BinaryTreeNode demo965Two = new BinaryTreeNode(2,
+                new BinaryTreeNode(2,
+                        new BinaryTreeNode(5, null, null),
+                        new BinaryTreeNode(2, null, null)),
+                new BinaryTreeNode(2,
+                        null, null));
+        System.out.println("965 示例 1: 结果 = " + isUniValTree(demo965One));
+        System.out.println("965 示例 2: 结果 = " + isUniValTree(demo965Two));
     }
 
     /**
@@ -794,5 +813,36 @@ public class BinTreeTraversal {
         val = root.getValue() == 0 ? val : val + 1;
         doSumRootToLeaf(root.getLeft(), val);
         doSumRootToLeaf(root.getRight(), val);
+    }
+
+    /**
+     * 965. 单值二叉树
+     * 如果二叉树每个节点都具有相同的值，那么该二叉树就是单值二叉树。
+     * 只有给定的树是单值二叉树时，才返回 true；否则返回 false。
+     *
+     * 示例 1:
+     * 输入：[1,1,1,1,1,null,1]
+     * 输出：true
+     *
+     * 示例 2:
+     * 输入：[2,2,2,5,2]
+     * 输出：false
+     *
+     * @param root 二叉树根节点
+     * @return  是否为单值二叉树
+     */
+    public static boolean isUniValTree(BinaryTreeNode root) {
+        return postOrder(root, root.getValue());
+    }
+
+    private static boolean postOrder(BinaryTreeNode root, int val) {
+        if (root == null) {
+            return true;
+        }
+
+        if (root.getValue() != val) {
+            return false;
+        }
+        return postOrder(root.getLeft(), val) && postOrder(root.getRight(), val);
     }
 }
