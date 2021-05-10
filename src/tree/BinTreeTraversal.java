@@ -169,6 +169,24 @@ public class BinTreeTraversal {
 
         System.out.println();
 
+        System.out.println("235. 二叉搜索树的最近公共祖先");
+        BinaryTreeNode demo235TwoQ = new BinaryTreeNode(4,
+                new BinaryTreeNode(3, null, null),
+                new BinaryTreeNode(5, null, null));
+        BinaryTreeNode demo235P = new BinaryTreeNode(2,
+                new BinaryTreeNode(0, null, null), demo235TwoQ);
+        BinaryTreeNode demo235Q = new BinaryTreeNode(8,
+                new BinaryTreeNode(7, null, null),
+                new BinaryTreeNode(9, null, null));
+        BinaryTreeNode demo235 = new BinaryTreeNode(6,
+                demo235P, demo235Q);
+        BinaryTreeNode result235One = lowestCommonAncestorBST(demo235, demo235P, demo235Q);
+        BinaryTreeNode result235Two = lowestCommonAncestorBST(demo235, demo235P, demo235TwoQ);
+        System.out.println("235 示例 1 结果节点值 = " + result235One.getValue());
+        System.out.println("235 示例 2 结果节点值 = " + result235Two.getValue());
+
+        System.out.println();
+
         System.out.println("1022. 从根到叶的二进制数之和");
         BinaryTreeNode demo1022One = new BinaryTreeNode(1,
                 new BinaryTreeNode(0,
@@ -772,6 +790,44 @@ public class BinTreeTraversal {
             return left;
         }
         return root;
+    }
+
+    /**
+     * 235. 二叉搜索树的最近公共祖先
+     * 给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。
+     *
+     * 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”
+     *
+     * 示例1:
+     * 输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
+     * 输出: 6
+     * 解释: 节点 2 和节点 8 的最近公共祖先是 6。
+     *
+     * 示例2:
+     * 输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
+     * 输出: 2
+     * 解释: 节点 2 和节点 4 的最近公共祖先是 2, 因为根据定义最近公共祖先节点可以为节点本身。
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * @param root
+     * @param p
+     * @param q
+     * @return
+     */
+    public static BinaryTreeNode lowestCommonAncestorBST(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q) {
+        BinaryTreeNode result = root;
+        while (true) {
+            if (p.getValue() < result.getValue() && q.getValue() < result.getValue()) {
+                result = result.getLeft();
+            } else if (p.getValue() > result.getValue() && q.getValue() > result.getValue()) {
+                result = result.getRight();
+            } else {
+                break;
+            }
+        }
+        return result;
     }
 
     /**
