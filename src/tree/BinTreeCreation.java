@@ -145,6 +145,19 @@ public class BinTreeCreation {
         BinTreeTraversal.preOrderTraversal(result108, null);
         System.out.println();
         System.out.println("======== 108. 将有序数组转换为二叉搜索树 ========");
+
+        System.out.println();
+
+        System.out.println("面试题 17.12. BiNode");
+        BinaryTreeNode demoF1712 = new BinaryTreeNode(4,
+                new BinaryTreeNode(2,
+                        new BinaryTreeNode(1,
+                                new BinaryTreeNode(0, null, null), null),
+                        new BinaryTreeNode(3, null, null)),
+                new BinaryTreeNode(5, null,
+                        new BinaryTreeNode(6, null, null)));
+        BinaryTreeNode resultF1712 = convertBiNode(demoF1712);
+        BinTreeTraversal.preOrderTraversal(resultF1712, null);
     }
 
     /**
@@ -452,5 +465,49 @@ public class BinTreeCreation {
                 doBuildTree108(nums, start, mid - 1),
                 doBuildTree108(nums, mid + 1, end));
 
+    }
+
+    /**
+     * 面试题 17.12. BiNode
+     * 二叉树数据结构TreeNode可用来表示单向链表（其中left置空，right为下一个链表节点）。
+     * 实现一个方法，把二叉搜索树转换为单向链表，要求依然符合二叉搜索树的性质，转换操作应是原址的，
+     * 也就是在原始的二叉搜索树上直接修改。
+     * 返回转换后的单向链表的头节点。
+     *
+     * 示例:
+     * 输入： [4,2,5,1,3,null,6,0]
+     * 输出： [0,null,1,null,2,null,3,null,4,null,5,null,6]
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/binode-lcci
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     *
+     */
+    private static BinaryTreeNode biNodeHead = new BinaryTreeNode(-1, null, null);
+    private static BinaryTreeNode biNodePre = null;
+
+    public static BinaryTreeNode convertBiNode(BinaryTreeNode root) {
+        doConvertBiNode(root);
+
+        return biNodeHead.getRight();
+    }
+
+    private static void doConvertBiNode(BinaryTreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        doConvertBiNode(root.getLeft());
+
+        if (biNodePre == null) {
+            biNodePre = root;
+            biNodeHead.setRight(biNodePre);
+        } else {
+            biNodePre.setRight(root);
+            biNodePre = root;
+        }
+        root.setLeft(null);
+
+        doConvertBiNode(root.getRight());
     }
 }
