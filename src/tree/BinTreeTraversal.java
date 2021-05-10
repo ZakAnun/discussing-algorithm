@@ -208,6 +208,19 @@ public class BinTreeTraversal {
                         null, null));
         System.out.println("965 示例 1: 结果 = " + isUniValTree(demo965One));
         System.out.println("965 示例 2: 结果 = " + isUniValTree(demo965Two));
+
+        System.out.println();
+
+        System.out.println("257. 二叉树的所有路径");
+        BinaryTreeNode demo257 = new BinaryTreeNode(1,
+                new BinaryTreeNode(2, null,
+                        new BinaryTreeNode(5, null, null)),
+                new BinaryTreeNode(3, null, null));
+        List<String> result257 = binaryTreePaths(demo257);
+        System.out.println("demo257 结果为: ");
+        for (String item : result257) {
+            System.out.println(item);
+        }
     }
 
     /**
@@ -844,5 +857,45 @@ public class BinTreeTraversal {
             return false;
         }
         return postOrder(root.getLeft(), val) && postOrder(root.getRight(), val);
+    }
+
+    /**
+     * 257. 二叉树的所有路径
+     * 给定一个二叉树，返回所有从根节点到叶子节点的路径。
+     * 说明: 叶子节点是指没有子节点的节点。
+     *
+     * 示例
+     * 输入: [1, 2, 5, 3]
+     * 输出: 1->2->5, 1->3
+     *
+     * @param root 树
+     * @return 从根节点到叶子节点的全部路径
+     */
+    public static List<String> binaryTreePaths(BinaryTreeNode root) {
+        if (root == null) {
+            return null;
+        }
+
+        List<String> result = new ArrayList<>();
+        binTreeTraversal257(root, "", result);
+        return result;
+    }
+
+    private static void binTreeTraversal257(BinaryTreeNode root, String path, List<String> result) {
+        if (root == null) {
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(path);
+        if (root.getLeft() == null && root.getRight() == null) {
+            sb.append(root.getValue());
+            result.add(sb.toString());
+        } else {
+            sb.append(root.getValue()).append("->");
+
+            binTreeTraversal257(root.getLeft(), sb.toString(), result);
+            binTreeTraversal257(root.getRight(), sb.toString(), result);
+        }
     }
 }
