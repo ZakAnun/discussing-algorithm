@@ -239,6 +239,32 @@ public class BinTreeTraversal {
         for (String item : result257) {
             System.out.println(item);
         }
+
+        System.out.println();
+
+        System.out.println("563. 二叉树的坡度: ");
+        BinaryTreeNode demo563One = new BinaryTreeNode(1,
+                new BinaryTreeNode(2, null, null),
+                new BinaryTreeNode(3, null, null));
+        BinaryTreeNode demo563Two = new BinaryTreeNode(4,
+                new BinaryTreeNode(2,
+                        new BinaryTreeNode(3, null, null),
+                        new BinaryTreeNode(5, null, null)),
+                new BinaryTreeNode(9,
+                        null,
+                        new BinaryTreeNode(7, null, null)));
+        BinaryTreeNode demo563Thr = new BinaryTreeNode(21,
+                new BinaryTreeNode(7,
+                        new BinaryTreeNode(1,
+                                new BinaryTreeNode(3, null, null),
+                                new BinaryTreeNode(3, null, null)),
+                        new BinaryTreeNode(1, null, null)),
+                new BinaryTreeNode(14,
+                        new BinaryTreeNode(2, null, null),
+                        new BinaryTreeNode(2, null, null)));
+        System.out.println("563 示例 1 坡度 = " + findTilt(demo563One));
+        System.out.println("563 示例 2 坡度 = " + findTilt(demo563Two));
+        System.out.println("563 示例 3 坡度 = " + findTilt(demo563Thr));
     }
 
     /**
@@ -953,5 +979,66 @@ public class BinTreeTraversal {
             binTreeTraversal257(root.getLeft(), sb.toString(), result);
             binTreeTraversal257(root.getRight(), sb.toString(), result);
         }
+    }
+
+    private static int result563 = 0;
+    /**
+     * 563. 二叉树的坡度
+     *
+     * 给定一个二叉树，计算 整个树 的坡度 。
+     *
+     * 一个树的 节点的坡度 定义即为，该节点左子树的节点之和和右子树节点之和的差的绝对值。
+     * 如果没有左子树的话，左子树的节点之和为 0 ；没有右子树的话也是一样。空结点的坡度是 0 。
+     *
+     * 整个树 的坡度就是其所有节点的坡度之和。
+     *
+     * 示例 1:
+     * 输入：root = [1,2,3]
+     * 输出：1
+     * 解释：
+     * 节点 2 的坡度：|0-0| = 0（没有子节点）
+     * 节点 3 的坡度：|0-0| = 0（没有子节点）
+     * 节点 1 的坡度：|2-3| = 1（左子树就是左子节点，所以和是 2 ；右子树就是右子节点，所以和是 3 ）
+     * 坡度总和：0 + 0 + 1 = 1
+     *
+     * 示例 2:
+     * 输入：root = [4,2,9,3,5,null,7]
+     * 输出：15
+     * 解释：
+     * 节点 3 的坡度：|0-0| = 0（没有子节点）
+     * 节点 5 的坡度：|0-0| = 0（没有子节点）
+     * 节点 7 的坡度：|0-0| = 0（没有子节点）
+     * 节点 2 的坡度：|3-5| = 2（左子树就是左子节点，所以和是 3 ；右子树就是右子节点，所以和是 5 ）
+     * 节点 9 的坡度：|0-7| = 7（没有左子树，所以和是 0 ；右子树正好是右子节点，所以和是 7 ）
+     * 节点 4 的坡度：|(3+5+2)-(9+7)| = |10-16| = 6（左子树值为 3、5 和 2 ，和是 10 ；右子树值为 9 和 7 ，和是 16 ）
+     * 坡度总和：0 + 0 + 0 + 2 + 7 + 6 = 15
+     *
+     * 示例 3:
+     * 输入：root = [21,7,14,1,1,2,2,3,3]
+     * 输出：9
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/binary-tree-tilt
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     *
+     * @param root root
+     * @return 二叉树坡度
+     */
+    public static int findTilt(BinaryTreeNode root) {
+        result563 = 0;
+        doFindTile(root);
+        return result563;
+    }
+
+    private static int doFindTile(BinaryTreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int left = doFindTile(root.getLeft());
+        int right = doFindTile(root.getRight());
+
+        result563 += Math.abs(left - right);
+        return  left + right + root.getValue();
     }
 }
