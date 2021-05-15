@@ -265,6 +265,16 @@ public class BinTreeTraversal {
         System.out.println("563 示例 1 坡度 = " + findTilt(demo563One));
         System.out.println("563 示例 2 坡度 = " + findTilt(demo563Two));
         System.out.println("563 示例 3 坡度 = " + findTilt(demo563Thr));
+
+        System.out.println();
+
+        System.out.println("530. 二叉搜索树的最小绝对差");
+        BinaryTreeNode demo530 = new BinaryTreeNode(1,
+                null,
+                new BinaryTreeNode(3, null,
+                        new BinaryTreeNode(2, null, null)));
+        System.out.println("530 示例结果 = " + getMinimumDifference(demo530));
+
     }
 
     /**
@@ -1040,5 +1050,42 @@ public class BinTreeTraversal {
 
         result563 += Math.abs(left - right);
         return  left + right + root.getValue();
+    }
+
+    private static BinaryTreeNode preNode530 = null;
+    private static int min530 = Integer.MAX_VALUE;
+    /**
+     * 530. 二叉搜索树的最小绝对差
+     *
+     * 给你一棵所有节点为非负值的二叉搜索树，请你计算树中任意两节点的差的绝对值的最小值。
+     *
+     * 示例:
+     * 输入 [1, null, 3, null, null, 2]
+     * 输出 1
+     *
+     * @param  root root
+     * @return 二叉搜索树的最小绝对差
+     */
+    public static int getMinimumDifference(BinaryTreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        doGetMinimumDifference(root);
+        return min530;
+    }
+
+    private static void doGetMinimumDifference(BinaryTreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        doGetMinimumDifference(root.getLeft());
+
+        if (preNode530 != null) {
+            min530 = Math.min(min530, Math.abs(root.getValue() - preNode530.getValue()));
+        }
+        preNode530 = root;
+
+        doGetMinimumDifference(root.getRight());
     }
 }
