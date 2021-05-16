@@ -305,6 +305,26 @@ public class BinTreeTraversal {
                         new BinaryTreeNode(7, null, null)));
         System.out.println("653 示例 1，结果 = " + findTarget(demo653, 9));
         System.out.println("653 示例 2，结果 = " + findTarget(demo653, 28));
+
+        System.out.println();
+
+        System.out.println("剑指 Offer 28. 对称的二叉树");
+        BinaryTreeNode demoOffer28One = new BinaryTreeNode(1,
+                new BinaryTreeNode(2,
+                        new BinaryTreeNode(3, null, null),
+                        new BinaryTreeNode(4, null, null)),
+                new BinaryTreeNode(2,
+                        new BinaryTreeNode(4, null, null),
+                        new BinaryTreeNode(3, null, null)));
+        BinaryTreeNode demoOffer28Two = new BinaryTreeNode(1,
+                new BinaryTreeNode(2,
+                        null,
+                        new BinaryTreeNode(3, null, null)),
+                new BinaryTreeNode(2,
+                        null,
+                        new BinaryTreeNode(3, null, null)));
+        System.out.println("剑指 Offer 28. 对称的二叉树示例 1 是否为对称二叉树 = " + isSymmetric(demoOffer28One));
+        System.out.println("剑指 Offer 28. 对称的二叉树示例 2 是否为对称二叉树 = " + isSymmetric(demoOffer28Two));
     }
 
     /**
@@ -1207,5 +1227,43 @@ public class BinTreeTraversal {
         result.add(root.getValue());
 
         doFindTarget(root.getRight(), result);
+    }
+
+    /**
+     * 剑指 Offer 28. 对称的二叉树
+     * 请实现一个函数，用来判断一棵二叉树是不是对称的。
+     * 如果一棵二叉树和它的镜像一样，那么它是对称的。
+     *
+     * 示例 1：
+     * 输入：root = [1,2,2,3,4,4,3]
+     * 输出：true
+     *
+     * 示例 2：
+     * 输入：root = [1,2,2,null,3,null,3]
+     * 输出：false
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/dui-cheng-de-er-cha-shu-lcof
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     *
+     * @param root root
+     * @return 是否为对称的二叉树
+     */
+    public static boolean isSymmetric(BinaryTreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        return doIsSymmetric(root.getLeft(), root.getRight());
+    }
+
+    private static boolean doIsSymmetric(BinaryTreeNode leftNode, BinaryTreeNode rightNode) {
+        if (leftNode == null && rightNode == null) {
+            return true;
+        }
+        if (leftNode == null || rightNode == null || leftNode.getValue() != rightNode.getValue()) {
+            return false;
+        }
+        return doIsSymmetric(leftNode.getLeft(), rightNode.getRight()) &&
+                doIsSymmetric(leftNode.getRight(), rightNode.getLeft());
     }
 }
