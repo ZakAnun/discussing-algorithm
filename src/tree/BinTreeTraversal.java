@@ -275,6 +275,17 @@ public class BinTreeTraversal {
                         new BinaryTreeNode(2, null, null)));
         System.out.println("530 示例结果 = " + getMinimumDifference(demo530));
 
+        System.out.println();
+
+        System.out.println("653. 两数之和 IV - 输入 BST");
+        BinaryTreeNode demo653 = new BinaryTreeNode(5,
+                new BinaryTreeNode(3,
+                        new BinaryTreeNode(2, null, null),
+                        new BinaryTreeNode(4, null, null)),
+                new BinaryTreeNode(6, null,
+                        new BinaryTreeNode(7, null, null)));
+        System.out.println("653 示例 1，结果 = " + findTarget(demo653, 9));
+        System.out.println("653 示例 2，结果 = " + findTarget(demo653, 28));
     }
 
     /**
@@ -1087,5 +1098,60 @@ public class BinTreeTraversal {
         preNode530 = root;
 
         doGetMinimumDifference(root.getRight());
+    }
+
+    /**
+     * 653. 两数之和 IV - 输入 BST
+     *
+     * 给定一个二叉搜索树和一个目标结果，
+     * 如果 BST 中存在两个元素且它们的和等于给定的目标结果，则返回 true。
+     *
+     * 示例 1:
+     * 输入: [5, 3, 6, 2, 4, null, 7]，9
+     * 输出: true
+     *
+     * 示例 2:
+     * 输入: [5, 3, 6, 2, 4, null, 7]，28
+     * 输出: false
+     *
+     * @param root root
+     * @param k k
+     * @return 是否存在两元素的和 == k
+     */
+    public static boolean findTarget(BinaryTreeNode root, int k) {
+
+        if (root == null) {
+            return false;
+        }
+
+        List<Integer> result = new ArrayList<>();
+        doFindTarget(root, result);
+
+        int start = 0;
+        int end = result.size() - 1;
+
+        while (start < end) {
+            int sum = result.get(start) + result.get(end);
+            if (sum == k)
+                return true;
+            if (sum < k)
+                start++;
+            else
+                end--;
+        }
+
+        return false;
+    }
+
+    private static void doFindTarget(BinaryTreeNode root, List<Integer> result) {
+        if (root == null) {
+            return;
+        }
+
+        doFindTarget(root.getLeft(), result);
+
+        result.add(root.getValue());
+
+        doFindTarget(root.getRight(), result);
     }
 }
