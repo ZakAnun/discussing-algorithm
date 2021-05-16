@@ -119,6 +119,25 @@ public class BinTreeTraversal {
         System.out.println("栈 demoOffer55 树的深度为: " + maxDepthByStack(demoOffer55));
         System.out.println();
 
+
+        System.out.println("剑指 Offer 55 - II. 平衡二叉树");
+        BinaryTreeNode demoOffer55One = new BinaryTreeNode(3,
+                new BinaryTreeNode(9, null, null),
+                new BinaryTreeNode(20,
+                        new BinaryTreeNode(15, null, null),
+                        new BinaryTreeNode(7, null, null)));
+        BinaryTreeNode demoOffer55Two = new BinaryTreeNode(1,
+                new BinaryTreeNode(2,
+                        new BinaryTreeNode(3,
+                                new BinaryTreeNode(4, null, null),
+                                new BinaryTreeNode(4, null, null)),
+                        new BinaryTreeNode(3, null, null)),
+                new BinaryTreeNode(2, null, null));
+        System.out.println("剑指 Offer 55 - II demo-01 是否为平衡二叉树 = " + isBalanced(demoOffer55One));
+        System.out.println("剑指 Offer 55 - II demo-02 是否为平衡二叉树 = " + isBalanced(demoOffer55Two));
+
+        System.out.println();
+
         System.out.println("938. 二叉搜索树的范围和");
         BinaryTreeNode demo938 = new BinaryTreeNode(10,
                 new BinaryTreeNode(5,
@@ -702,6 +721,41 @@ public class BinTreeTraversal {
         }
 
         return depth;
+    }
+
+    /**
+     * 剑指 Offer 55 - II. 平衡二叉树
+     * 输入一棵二叉树的根节点，判断该树是不是平衡二叉树。
+     * 如果某二叉树中任意节点的左右子树的深度相差不超过1，那么它就是一棵平衡二叉树。
+     *
+     * 示例 1:
+     * 输入: [3, 9, 20, null, null, 15, 7]
+     * 输出: true
+     *
+     * 示例 2:
+     * 输入: [1, 2, 2, 3, 3, null, null, 4, 4]
+     * 输出: false
+     *
+     * @param root root
+     * @return 是否为平衡二叉树
+     */
+    public static boolean isBalanced(BinaryTreeNode root) {
+        return doJudgeIsBalanced(root) != -1;
+    }
+
+    private static int doJudgeIsBalanced(BinaryTreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int left = doJudgeIsBalanced(root.getLeft());
+        if (left == -1) {
+            return -1;
+        }
+        int right = doJudgeIsBalanced(root.getRight());
+        if (right == -1) {
+            return -1;
+        }
+        return Math.abs(left - right) < 2 ? Math.max(left, right) + 1 : -1;
     }
 
     private static int rangSumBSTResult = 0;
