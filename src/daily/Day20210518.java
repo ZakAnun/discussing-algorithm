@@ -42,10 +42,35 @@ package daily;
 public class Day20210518 {
 
     public static void main(String[] args) {
-
+        System.out.println("1442. 形成两个异或相等数组的三元组数目");
+        int[] demoOne = new int[] {2, 3, 1, 6, 7};
+        int[] demoTwo = new int[] {1, 1, 1, 1, 1};
+        int[] demoThr = new int[] {2, 3};
+        int[] demoFou = new int[] {1, 3, 5, 7, 9};
+        int[] demoFiv = new int[] {7, 11, 12, 9, 5, 2, 7, 17, 22};
+        System.out.println("示例 1 结果: " + countTriplets(demoOne));
+        System.out.println("示例 2 结果: " + countTriplets(demoTwo));
+        System.out.println("示例 3 结果: " + countTriplets(demoThr));
+        System.out.println("示例 4 结果: " + countTriplets(demoFou));
+        System.out.println("示例 5 结果: " + countTriplets(demoFiv));
     }
 
     public static int countTriplets(int[] arr) {
-        return 0;
+        int length = arr.length;
+        int[] xorSum = new int[length + 1];
+        for (int i = 0; i < length; i++) {
+            xorSum[i + 1] = xorSum[i] ^ arr[i];
+        }
+        int result = 0;
+        for (int i = 0 ; i < length; i++) {
+            for (int j = i + 1; j < length; j++) {
+                for (int k = j; k < length; k++) {
+                    if (xorSum[i] == xorSum[k + 1]) {
+                        result++;
+                    }
+                }
+            }
+        }
+        return result;
     }
 }
