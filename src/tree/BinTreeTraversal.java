@@ -325,6 +325,20 @@ public class BinTreeTraversal {
                         new BinaryTreeNode(3, null, null)));
         System.out.println("剑指 Offer 28. 对称的二叉树示例 1 是否为对称二叉树 = " + isSymmetric(demoOffer28One));
         System.out.println("剑指 Offer 28. 对称的二叉树示例 2 是否为对称二叉树 = " + isSymmetric(demoOffer28Two));
+
+        System.out.println();
+
+        System.out.println("543. 二叉树的直径: ");
+        BinaryTreeNode demo543One = new BinaryTreeNode(1,
+                new BinaryTreeNode(2,
+                        new BinaryTreeNode(4, null, null),
+                        new BinaryTreeNode(5, null, null)),
+                new BinaryTreeNode(3, null, null));
+        BinaryTreeNode demo543Two = new BinaryTreeNode(1,
+                new BinaryTreeNode(2, null, null), null);
+        System.out.println("demo543One 结果 = " + diameterOfBinaryTree(demo543One));
+        System.out.println("demo543Two 结果 = " + diameterOfBinaryTree(demo543Two));
+
     }
 
     /**
@@ -1266,5 +1280,43 @@ public class BinTreeTraversal {
         }
         return doIsSymmetric(leftNode.getLeft(), rightNode.getRight()) &&
                 doIsSymmetric(leftNode.getRight(), rightNode.getLeft());
+    }
+
+    private static int result543 = 0;
+    /**
+     * 543. 二叉树的直径
+     *
+     * 给定一棵二叉树，你需要计算它的直径长度。
+     * 一棵二叉树的直径长度是任意两个结点路径长度中的最大值。
+     * 这条路径可能穿过也可能不穿过根结点。
+     *
+     * 示例1:
+     * 输入: [1, 2, 3, 4, 5]
+     * 输出: 3
+     *
+     * 示例2:
+     * 输入: [1, 2]
+     * 输出: 1
+     *
+     * @param root
+     * @return
+     */
+    public static int diameterOfBinaryTree(BinaryTreeNode root) {
+        result543 = 1;
+        dfs543(root);
+        return result543 - 1;
+    }
+
+    private static int dfs543(BinaryTreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int left = dfs543(root.getLeft());
+        int right = dfs543(root.getRight());
+
+        result543 = Math.max(result543, left + right + 1);
+
+        return Math.max(left, right) + 1;
     }
 }
