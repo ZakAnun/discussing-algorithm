@@ -72,11 +72,11 @@ public class DeleteNodeInABst{
         System.out.print("删除前，中序遍历结果为: ");
         BinTreeTraversal.inOrderTraversal(demoTree, null);
 
-        BinaryTreeNode result = solution.deleteNode(demoTree, 3);
+        solution.deleteNode(demoTree, 3);
 
         System.out.println();
         System.out.print("删除后，中序遍历结果为: ");
-        BinTreeTraversal.inOrderTraversal(result, null);
+        BinTreeTraversal.inOrderTraversal(demoTree, null);
     }
 
 //leetcode submit region begin(Prohibit modification and deletion)
