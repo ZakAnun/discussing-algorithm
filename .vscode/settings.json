@@ -1,0 +1,29 @@
+{
+  "java.import.gradle.enabled": false,
+  "java.import.maven.enabled": false,
+  "java.project.sourcePaths": [
+    "app/src/main/java",
+    "app/src/main/kotlin"
+  ],
+  "java.project.outputPath": "app/build/intermediates/javac/debug/classes",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-11",
+      "path": "/Users/liminglin/Library/Java/JavaVirtualMachines/corretto-11.0.27/Contents/Home",
+      "default": true
+    },
+    {
+      "name": "JavaSE-1.8",
+      "path": "/Users/liminglin/Library/Java/JavaVirtualMachines/corretto-1.8.0_452/Contents/Home"
+    }
+  ],
+  "java.jdt.ls.java.home": "/Users/liminglin/Library/Java/JavaVirtualMachines/corretto-11.0.27/Contents/Home",
+  "java.debug.settings.forceBuildBeforeLaunch": true,
+  "java.debug.settings.onBuildFailureProceed": true,
+  "code-runner.executorMap": {
+    "java": "cd $workspaceRoot && bash scripts/run-demo.sh $relativeFile"
+  },
+  "code-runner.runInTerminal": true,
+  "code-runner.clearPreviousOutput": true,
+  "xml.server.preferBinary": true
+}
