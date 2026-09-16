@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""从 GitHub Issues 生成 docs/index.md（GitHub Pages 首页）。"""
+"""从 GitHub Issues 生成 docs/index.md（GitHub Pages 完整内容页）。"""
 
 import json
 import re
@@ -32,44 +32,116 @@ def gh_api(path: str):
     return items
 
 
-def clean_snippet(text: str, limit: int = 100) -> str:
-    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
-    text = re.sub(r"!\[[^\]]*\]\([^)]+\)", "", text)
-    text = re.sub(r"[`#>*_\r\n]+", " ", text).strip()
-    text = re.sub(r"\s+", " ", text)
-    return text[:limit]
+def normalize_markdown(text: str) -> str:
+    if not text:
+        return ""
+    return text.replace("\r\n", "\n").strip()
 
 
-def extract_entries(text: str):
-    entries = []
-    parts = DATE_RE.split(text or "")
-    if len(parts) == 1:
-        problems = PROBLEM_RE.findall(text or "")
-        if problems:
-            entries.append(
-                {
-                    "date": None,
-                    "problems": problems,
-                    "snippet": clean_snippet(text or ""),
-                }
-            )
-        return entries
+def split_sections(text: str):
+    """按 **YYYY.MM.DD** 切分，保留完整 Markdown 正文。"""
+    text = normalize_markdown(text)
+    if not text:
+        return []
+
+    parts = DATE_RE.split(text)
+    sections = []
+
+    preamble = parts[0].strip()
+    if preamble:
+        sections.append((None, preamble))
 
     for i in range(1, len(parts), 2):
         date = parts[i]
-        content = parts[i + 1] if i + 1 < len(parts) else ""
-        entries.append(
-            {
-                "date": date,
-                "problems": PROBLEM_RE.findall(content),
-                "snippet": clean_snippet(content),
-            }
-        )
-    return entries
+        content = parts[i + 1].strip() if i + 1 < len(parts) else ""
+        sections.append((date, content))
+
+    return sections
 
 
-def sort_key(entry):
-    return entry["date"] or "0000.00.00"
+def anchor_id(issue_num: int, label: str) -> str:
+    slug = re.sub(r"[^a-zA-Z0-9\u4e00-\u9fff]+", "-", label).strip("-").lower()
+    return f"issue-{issue_num}-{slug}"
+
+
+def count_problems(text: str) -> int:
+    return len(PROBLEM_RE.findall(text or ""))
+
+
+def render_section(title: str, anchor: str, content: str, lines: list):
+    lines.extend([f"#### {title}", "", f"<a id=\"{anchor}\"></a>", ""])
+    if content:
+        lines.append(content)
+    else:
+        lines.append("_（无正文）_")
+    lines.append("")
+
+
+def build_issue_block(issue: dict) -> tuple[str, int, int]:
+    num = issue["number"]
+    title = issue["title"]
+    url = issue["html_url"]
+    body = issue.get("body") or ""
+    comments = gh_api(f"repos/{REPO}/issues/{num}/comments")
+
+    lines = [f"## [#{num} {title}]({url})", ""]
+    issue_anchor = anchor_id(num, "overview")
+    lines.extend([f"<a id=\"{issue_anchor}\"></a>", ""])
+    lines.append(f"[在 GitHub 查看原 Issue →]({url})")
+    lines.append("")
+
+    sub_toc = []
+    section_count = 0
+    problem_count = count_problems(body)
+
+    # Issue 正文
+    body_sections = split_sections(body)
+    if not body_sections and body.strip():
+        body_sections = [(None, normalize_markdown(body))]
+
+    for idx, (date, content) in enumerate(body_sections):
+        section_count += 1
+        problem_count += count_problems(content)
+        if date:
+            label = date
+            section_title = f"正文 · {date}"
+        else:
+            label = "intro" if idx == 0 else f"body-{idx}"
+            section_title = "正文" if idx == 0 else f"正文 · 补充 {idx}"
+        anchor = anchor_id(num, label)
+        sub_toc.append((section_title, anchor))
+        render_section(section_title, anchor, content, lines)
+
+    # 评论（按时间顺序）
+    for comment_idx, comment in enumerate(comments, start=1):
+        comment_body = comment.get("body") or ""
+        created = (comment.get("created_at") or "")[:10]
+        problem_count += count_problems(comment_body)
+
+        comment_sections = split_sections(comment_body)
+        if not comment_sections and comment_body.strip():
+            comment_sections = [(None, normalize_markdown(comment_body))]
+
+        for sec_idx, (date, content) in enumerate(comment_sections):
+            section_count += 1
+            if date:
+                section_title = f"评论 · {date}"
+                label = f"comment-{comment_idx}-{date}"
+            else:
+                section_title = f"评论 #{comment_idx}（{created}）"
+                label = f"comment-{comment_idx}-{sec_idx}"
+            anchor = anchor_id(num, label)
+            sub_toc.append((section_title, anchor))
+            render_section(section_title, anchor, content, lines)
+
+    lines.extend(["---", ""])
+
+    toc_lines = [f"- [#{num} {title}](#{issue_anchor})"]
+    for section_title, anchor in sub_toc:
+        toc_lines.append(f"  - [{section_title}](#{anchor})")
+
+    block = "\n".join(lines)
+    return block, section_count, problem_count, toc_lines
 
 
 def build_page(issues):
@@ -84,77 +156,31 @@ def build_page(issues):
         "算法刷题记录与讨论总结，题目主要来自 [LeetCode 中国站](https://leetcode-cn.com/)，"
         "按 [labuladong 的刷题思路](https://github.com/labuladong/fucking-algorithm) 进行练习。",
         "",
-        "完整讨论见 GitHub Issues，本页为 Issue 内容索引与题目汇总。",
+        "本页完整归档 GitHub Issues 中的刷题笔记（含正文与全部评论）。",
         "",
         "---",
         "",
-        "## Issue 目录",
+        "## 目录",
         "",
     ]
 
-    all_entry_count = 0
-    all_problem_count = 0
+    all_sections = 0
+    all_problems = 0
     issue_blocks = []
+    toc_entries = []
 
     for issue in issues:
-        num = issue["number"]
-        title = issue["title"]
-        state = issue["state"].lower()
-        url = issue["html_url"]
-        body = issue.get("body") or ""
+        block, section_count, problem_count, toc_lines = build_issue_block(issue)
+        all_sections += section_count
+        all_problems += problem_count
+        issue_blocks.append(block)
+        toc_entries.extend(toc_lines)
+        toc_entries.append("")
 
-        comments = gh_api(f"repos/{REPO}/issues/{num}/comments")
-        entries = extract_entries(body)
-        for comment in comments:
-            entries.extend(extract_entries(comment.get("body") or ""))
-
-        entries = [e for e in entries if e["problems"] or e["snippet"]]
-        entries.sort(key=sort_key)
-
-        problem_count = sum(len(e["problems"]) for e in entries)
-        all_entry_count += len(entries)
-        all_problem_count += problem_count
-
-        lines.append(
-            f"- [#{num} {title}]({url}) — {len(entries)} 条记录，"
-            f"{problem_count} 道题 ({state})"
-        )
-
-        block = [f"## [#{num} {title}]({url})", ""]
-        intro = clean_snippet(body, 200)
-        if intro and not DATE_RE.search(body):
-            block.extend([f"> {intro}", ""])
-
-        if not entries:
-            block.extend(["_暂无记录_", ""])
-        else:
-            block.extend(
-                [
-                    "| 日期 | 题目 | 备注 |",
-                    "| --- | --- | --- |",
-                ]
-            )
-            for entry in entries:
-                date = entry["date"] or "—"
-                if entry["problems"]:
-                    links = "<br>".join(
-                        f"[{name}]({link})" for name, link in entry["problems"]
-                    )
-                else:
-                    links = "—"
-                snippet = (entry["snippet"] or "—").replace("|", "\\|")
-                if len(snippet) > 80:
-                    snippet = snippet[:77] + "..."
-                block.append(f"| {date} | {links} | {snippet} |")
-
-        block.extend(["", f"[查看完整讨论 →]({url})", "", "---", ""])
-        issue_blocks.append("\n".join(block))
-
+    lines.extend(toc_entries)
     lines.extend(
         [
-            "",
-            f"**合计：** {len(issues)} 个 Issue，{all_entry_count} 条刷题记录，"
-            f"约 {all_problem_count} 道题。",
+            f"**合计：** {len(issues)} 个 Issue，{all_sections} 个章节，约 {all_problems} 道题。",
             "",
             "---",
             "",
@@ -163,7 +189,6 @@ def build_page(issues):
     lines.extend(issue_blocks)
     lines.extend(
         [
-            "",
             "## 相关链接",
             "",
             f"- [GitHub 仓库]({BASE})",
@@ -181,8 +206,9 @@ def main():
     issues = [i for i in issues if "pull_request" not in i]
     issues.sort(key=lambda x: x["number"])
 
-    OUTPUT.write_text(build_page(issues), encoding="utf-8")
-    print(f"Generated {OUTPUT}", file=sys.stderr)
+    content = build_page(issues)
+    OUTPUT.write_text(content, encoding="utf-8")
+    print(f"Generated {OUTPUT} ({len(content)} chars)", file=sys.stderr)
 
 
 if __name__ == "__main__":

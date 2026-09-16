@@ -1,4 +1,8 @@
 title: discussing-algorithm
-description: 算法刷题 Issue 讨论总结与题目索引
+description: 算法刷题 Issue 讨论完整归档
 theme: jekyll-theme-architect
 show_downloads: false
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
