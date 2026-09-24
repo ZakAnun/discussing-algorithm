@@ -93,30 +93,33 @@ public class CopyListWithRandomPointer{
         oneNNN.random = oneNN;
         oneNNNN.random = one;
 
-        System.out.println("时间复杂度 O(n)，空间复杂度 O(n)");
-        Node newNode = solution.copyRandomListSpaceN(one);
-        while (newNode != null) {
-            System.out.print("val = " + newNode.val + ", ");
-            if (newNode.random != null) {
-                System.out.println("random val = " + newNode.random.val);
-            } else {
-                System.out.println("random == null");
-            }
-            newNode = newNode.next;
-        }
+        System.out.println("标准解法（HashMap 两遍扫描，O(n) 时间 / O(n) 空间）");
+        Node standardCopy = solution.copyRandomList(one);
+        printCopyList(standardCopy);
 
         System.out.println("---");
 
-        System.out.println("时间复杂度 O(n)，空间复杂度 O(1)");
+        System.out.println("时间复杂度 O(n)，空间复杂度 O(n) — 递归 + HashMap");
+        solution.cacheMap.clear();
+        Node newNode = solution.copyRandomListSpaceN(one);
+        printCopyList(newNode);
+
+        System.out.println("---");
+
+        System.out.println("时间复杂度 O(n)，空间复杂度 O(1) — 穿插节点");
         Node newNode1 = solution.copyRandomListSpaceOne(one);
-        while (newNode1 != null) {
-            System.out.print("val = " + newNode1.val + ", ");
-            if (newNode1.random != null) {
-                System.out.println("random val = " + newNode1.random.val);
+        printCopyList(newNode1);
+    }
+
+    private static void printCopyList(Node head) {
+        while (head != null) {
+            System.out.print("val = " + head.val + ", ");
+            if (head.random != null) {
+                System.out.println("random val = " + head.random.val);
             } else {
                 System.out.println("random == null");
             }
-            newNode1 = newNode1.next;
+            head = head.next;
         }
     }
 
@@ -142,7 +145,34 @@ class Solution {
     Map<Node, Node> cacheMap = new HashMap<>();
 
     /**
-     * 空间复杂度为 O(n) 的解法
+     * LeetCode 标准入口：HashMap 两遍扫描。
+     * 第一遍建立原节点 → 新节点映射；第二遍连接 next 与 random。
+     */
+    public Node copyRandomList(Node head) {
+        if (head == null) {
+            return null;
+        }
+
+        Map<Node, Node> map = new HashMap<>();
+        Node cur = head;
+        while (cur != null) {
+            map.put(cur, new Node(cur.val));
+            cur = cur.next;
+        }
+
+        cur = head;
+        while (cur != null) {
+            Node copy = map.get(cur);
+            copy.next = cur.next != null ? map.get(cur.next) : null;
+            copy.random = cur.random != null ? map.get(cur.random) : null;
+            cur = cur.next;
+        }
+
+        return map.get(head);
+    }
+
+    /**
+     * 空间复杂度为 O(n) 的解法（递归 + 备忘录）
      * @param head head
      * @return 拷贝后的链表
      */
@@ -178,10 +208,10 @@ class Solution {
             node.next = newNode;
         }
 
-        // 拷贝 random 节点
+        // 拷贝 random：原节点 A 的拷贝是 A.next，A.random 的拷贝是 A.random.next
         for (Node node = head; node != null; node = node.next.next) {
             Node newNode = node.next;
-            newNode.random = (node.random != null) ? node.random : null;
+            newNode.random = node.random != null ? node.random.next : null;
         }
 
         Node newHead = head.next;
