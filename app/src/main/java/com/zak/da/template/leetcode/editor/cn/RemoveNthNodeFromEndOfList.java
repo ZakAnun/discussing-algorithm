@@ -4,8 +4,6 @@ package com.zak.da.template.leetcode.editor.cn;
 // LeetCode: https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/
 // Related Topics 面试刷题提纲
 
-
-
 public class RemoveNthNodeFromEndOfList {
 
     public static void main(String[] args) {
@@ -22,8 +20,25 @@ public class RemoveNthNodeFromEndOfList {
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        // TODO: 快慢指针
-        return null;
+        // dummy 保证删头节点时也有前驱
+        ListNode dummy = new ListNode(0, head);
+        ListNode slow = dummy;
+        ListNode fast = dummy;
+
+        // 快指针先走 n+1 步，最终 slow 停在待删节点的前一个
+        for (int i = 0; i < n + 1; i++) {
+            fast = fast.next;
+        }
+
+        // 一起走，直到 fast 到 null
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        // 删除倒数第 n 个
+        slow.next = slow.next.next;
+        return dummy.next;
     }
 }
 
