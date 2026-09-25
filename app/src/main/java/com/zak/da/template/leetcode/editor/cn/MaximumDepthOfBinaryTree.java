@@ -21,8 +21,14 @@ public class MaximumDepthOfBinaryTree {
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int maxDepth(BinaryTreeNode root) {
-        // TODO
-        return 0;
+        // 空节点深度为 0
+        if (root == null) {
+            return 0;
+        }
+        // 根的深度 = 左右子树较大深度 + 1（算上自己这一层）
+        int left = maxDepth(root.getLeft());
+        int right = maxDepth(root.getRight());
+        return Math.max(left, right) + 1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
