@@ -6,6 +6,11 @@ package com.zak.da.template.leetcode.editor.cn;
 
 import com.zak.da.tree.BinaryTreeNode;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class BinaryTreeLevelOrderTraversal {
 
     public static void main(String[] args) {
@@ -20,9 +25,32 @@ public class BinaryTreeLevelOrderTraversal {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public java.util.List<java.util.List<Integer>> levelOrder(BinaryTreeNode root) {
-        // TODO: BFS 层序遍历
-        return new java.util.ArrayList<>();
+    public List<List<Integer>> levelOrder(BinaryTreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+
+        Queue<BinaryTreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            // 本轮开始时队列里的个数 = 当前层节点数
+            int size = queue.size();
+            List<Integer> level = new ArrayList<>(size);
+            for (int i = 0; i < size; i++) {
+                BinaryTreeNode node = queue.poll();
+                level.add(node.getValue());
+                if (node.getLeft() != null) {
+                    queue.offer(node.getLeft());
+                }
+                if (node.getRight() != null) {
+                    queue.offer(node.getRight());
+                }
+            }
+            result.add(level);
+        }
+        return result;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
