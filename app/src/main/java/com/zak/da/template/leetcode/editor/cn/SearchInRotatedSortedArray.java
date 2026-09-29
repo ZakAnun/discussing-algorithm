@@ -9,8 +9,11 @@ public class SearchInRotatedSortedArray {
     public static void main(String[] args) {
         Solution solution = new SearchInRotatedSortedArray().new Solution();
         int[] nums = new int[]{4, 5, 6, 7, 0, 1, 2};
-        System.out.println(solution.search(nums, 0));
-        System.out.println(solution.search(nums, 3));
+        System.out.println(solution.search(nums, 0)); // 4
+        System.out.println(solution.search(nums, 3)); // -1
+        // 短旋转数组：左半无序时需走右半有序分支
+        int[] nums1 = new int[]{3, 1};
+        System.out.println(solution.search(nums1, 1)); // 1
     }
 
 //leetcode submit region begin(Prohibit modification and deletion)
