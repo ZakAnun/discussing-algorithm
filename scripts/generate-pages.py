@@ -169,6 +169,7 @@ def collect_notes_from_issue(issue: dict, notes_index: dict[str, list[dict]]):
 def index_note_for_slug(
     slug: str,
     notes_index: dict[str, list[dict]],
+    multiline: bool = False,
 ) -> str:
     entries = notes_index.get(slug, [])
     topic_range = range(
@@ -185,11 +186,9 @@ def index_note_for_slug(
         if e["anchor"] in seen:
             continue
         seen.add(e["anchor"])
-        parts.append(
-            f"[{e['label']}](#{e['anchor']})"
-            f" ([GitHub]({e['gh']}))"
-        )
-    return " · ".join(parts)
+        parts.append(f"[{e['label']}](#{e['anchor']})")
+    sep = "<br>" if multiline else " · "
+    return sep.join(parts)
 
 
 def build_interview_hub(
@@ -208,8 +207,12 @@ def build_interview_hub(
         f"总目录 Issue：[#{INDEX_ISSUE_NUM}]({BASE}/issues/{INDEX_ISSUE_NUM}) · "
         f"[本页归档](#{anchor_id(INDEX_ISSUE_NUM, 'overview')})",
         "",
-        "| 模块 | 题目 | 难度 | LeetCode | 题解代码 | Issue | 评论笔记 |",
-        "| --- | --- | --- | --- | --- | --- | --- |",
+        "（表格较宽时可 **左右滑动** 查看；「笔记」为页内锚点，完整讨论见对应 Issue。）",
+        "",
+        '<div class="table-scroll" markdown="1">',
+        "",
+        "| 模块 | 题目 | 难度 | 题解 | Issue · 笔记 |",
+        "| --- | --- | --- | --- | --- |",
     ]
 
     topic_toc = [f"- [{ISSUE_PREFIX} 面试刷题提纲速查](#{hub_anchor})"]
@@ -233,14 +236,17 @@ def build_interview_hub(
             if not code_path.is_file():
                 code_cell = f"~~{code_cell}~~ _缺失_"
 
-            notes_cell = index_note_for_slug(slug, notes_index)
+            notes_cell = index_note_for_slug(slug, notes_index, multiline=True)
+            issue_notes = f"[#{issue_num}]({issue_page}) · [GitHub]({issue_gh})"
+            if notes_cell != "—":
+                issue_notes += f"<br>{notes_cell}"
+            title_cell = f"[{cn}]({lc}) · LC #{num}"
+            module_cell = f"{section['title'].split('.')[0].strip()}<br>{section['topic']}"
             lines.append(
-                f"| {section['title'].split('.')[0].strip()} {section['topic']} "
-                f"| [{cn}]({lc}) | {diff} | [#{num}]({lc}) | {code_cell} "
-                f"| [#{issue_num}]({issue_page}) | {notes_cell} |"
+                f"| {module_cell} | {title_cell} | {diff} | {code_cell} | {issue_notes} |"
             )
 
-    lines.extend(["", "---", ""])
+    lines.extend(["", "</div>", "", "---", ""])
     return lines, topic_toc
 
 
