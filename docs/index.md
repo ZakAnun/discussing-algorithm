@@ -7,11 +7,66 @@ title: discussing-algorithm
 
 算法刷题记录与讨论总结，题目主要来自 [LeetCode 中国站](https://leetcode-cn.com/)，按 [labuladong 的刷题思路](https://github.com/labuladong/fucking-algorithm) 进行练习。
 
-本页完整归档 GitHub Issues 中的刷题笔记（含正文与全部评论）。
+本页完整归档 GitHub Issues 中的刷题笔记（含正文与全部评论）。 **2026-09 面试提纲** 见下方速查表，可跳转题解源码与评论笔记。
+
+---
+
+## 2026-09 面试刷题提纲速查
+
+<a id="interview-outline-2026-09"></a>
+
+下表可直达 **题解 Java 源码**、对应 **Topic Issue 归档**，以及 Issue **评论笔记**在本页的锚点。
+
+总目录 Issue：[#5](https://github.com/ZakAnun/discussing-algorithm/issues/5) · [本页归档](#issue-5-overview)
+
+| 模块 | 题目 | 难度 | LeetCode | 题解代码 | Issue | 评论笔记 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 哈希/数组 | [两数之和](https://leetcode-cn.com/problems/two-sum/) | 简单 | [#1](https://leetcode-cn.com/problems/two-sum/) | [TwoSum.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/TwoSum.java) | [#6](#issue-6-overview) | [正文](#issue-6-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/6)) · [2026.09.21](#issue-6-comment-1-2026-09-21) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/6#issuecomment-5763171988)) |
+| 1 哈希/数组 | [最长连续序列](https://leetcode-cn.com/problems/longest-consecutive-sequence/) | 中等 | [#128](https://leetcode-cn.com/problems/longest-consecutive-sequence/) | [LongestConsecutiveSequence.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LongestConsecutiveSequence.java) | [#6](#issue-6-overview) | [正文](#issue-6-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/6)) · [2026.09.21](#issue-6-comment-1-2026-09-21) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/6#issuecomment-5763171988)) |
+| 1 哈希/数组 | [三数之和](https://leetcode-cn.com/problems/3sum/) | 中等 | [#15](https://leetcode-cn.com/problems/3sum/) | [ThreeSum.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ThreeSum.java) | [#6](#issue-6-overview) | [正文](#issue-6-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/6)) · [2026.09.23](#issue-6-comment-2-2026-09-23) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/6#issuecomment-5794419450)) |
+| 1 哈希/数组 | [合并区间](https://leetcode-cn.com/problems/merge-intervals/) | 中等 | [#56](https://leetcode-cn.com/problems/merge-intervals/) | [MergeIntervals.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/MergeIntervals.java) | [#6](#issue-6-overview) | [正文](#issue-6-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/6)) · [2026.09.23](#issue-6-comment-2-2026-09-23) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/6#issuecomment-5794419450)) |
+| 2 链表 | [反转链表](https://leetcode-cn.com/problems/reverse-linked-list/) | 简单 | [#206](https://leetcode-cn.com/problems/reverse-linked-list/) | [ReverseLinkedList.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ReverseLinkedList.java) | [#7](#issue-7-overview) | [正文](#issue-7-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/7)) · [2026.09.25](#issue-7-comment-1-2026-09-25) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/7#issuecomment-5830235590)) |
+| 2 链表 | [环形链表 II](https://leetcode-cn.com/problems/linked-list-cycle-ii/) | 中等 | [#142](https://leetcode-cn.com/problems/linked-list-cycle-ii/) | [LinkedListCycleIi.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LinkedListCycleIi.java) | [#7](#issue-7-overview) | [正文](#issue-7-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/7)) · [2026.09.25](#issue-7-comment-1-2026-09-25) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/7#issuecomment-5830235590)) |
+| 2 链表 | [删除链表倒数第 N 个节点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/) | 中等 | [#19](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/) | [RemoveNthNodeFromEndOfList.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/RemoveNthNodeFromEndOfList.java) | [#7](#issue-7-overview) | [正文](#issue-7-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/7)) · [2026.09.25](#issue-7-comment-1-2026-09-25) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/7#issuecomment-5830235590)) |
+| 2 链表 | [回文链表](https://leetcode-cn.com/problems/palindrome-linked-list/) | 简单 | [#234](https://leetcode-cn.com/problems/palindrome-linked-list/) | [PalindromeLinkedList.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/PalindromeLinkedList.java) | [#7](#issue-7-overview) | [正文](#issue-7-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/7)) · [2026.09.25](#issue-7-comment-1-2026-09-25) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/7#issuecomment-5830235590)) |
+| 2 链表 | [复制带随机指针的链表](https://leetcode-cn.com/problems/copy-list-with-random-pointer/) | 中等 | [#138](https://leetcode-cn.com/problems/copy-list-with-random-pointer/) | [CopyListWithRandomPointer.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/CopyListWithRandomPointer.java) | [#7](#issue-7-overview) | [正文](#issue-7-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/7)) · [2026.09.25](#issue-7-comment-1-2026-09-25) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/7#issuecomment-5830235590)) |
+| 3 二叉树 | [层序遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/) | 中等 | [#102](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/) | [BinaryTreeLevelOrderTraversal.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/BinaryTreeLevelOrderTraversal.java) | [#8](#issue-8-overview) | [正文](#issue-8-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/8)) · [2026.09.27](#issue-8-comment-1-2026-09-27) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/8#issuecomment-5851231142)) |
+| 3 二叉树 | [最大深度](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/) | 简单 | [#104](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/) | [MaximumDepthOfBinaryTree.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/MaximumDepthOfBinaryTree.java) | [#8](#issue-8-overview) | [正文](#issue-8-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/8)) · [2026.09.27](#issue-8-comment-1-2026-09-27) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/8#issuecomment-5851231142)) |
+| 3 二叉树 | [验证二叉搜索树](https://leetcode-cn.com/problems/validate-binary-search-tree/) | 中等 | [#98](https://leetcode-cn.com/problems/validate-binary-search-tree/) | [ValidateBinarySearchTree.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ValidateBinarySearchTree.java) | [#8](#issue-8-overview) | [正文](#issue-8-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/8)) · [2026.09.27](#issue-8-comment-1-2026-09-27) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/8#issuecomment-5851231142)) |
+| 3 二叉树 | [最近公共祖先](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/) | 中等 | [#236](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/) | [LowestCommonAncestorOfABinaryTree.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LowestCommonAncestorOfABinaryTree.java) | [#8](#issue-8-overview) | [正文](#issue-8-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/8)) · [2026.09.27](#issue-8-comment-1-2026-09-27) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/8#issuecomment-5851231142)) |
+| 3 二叉树 | [从前序与中序构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | 中等 | [#105](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | [ConstructBinaryTreeFromPreorderAndInorderTraversal.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ConstructBinaryTreeFromPreorderAndInorderTraversal.java) | [#8](#issue-8-overview) | [正文](#issue-8-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/8)) · [2026.09.27](#issue-8-comment-1-2026-09-27) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/8#issuecomment-5851231142)) |
+| 4 栈/队列 | [最小栈](https://leetcode-cn.com/problems/min-stack/) | 中等 | [#155](https://leetcode-cn.com/problems/min-stack/) | [MinStack.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/MinStack.java) | [#9](#issue-9-overview) | [正文](#issue-9-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/9)) · [2026.09.28](#issue-9-comment-1-2026-09-28) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/9#issuecomment-5869992047)) |
+| 4 栈/队列 | [每日温度](https://leetcode-cn.com/problems/daily-temperatures/) | 中等 | [#739](https://leetcode-cn.com/problems/daily-temperatures/) | [DailyTemperatures.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/DailyTemperatures.java) | [#9](#issue-9-overview) | [正文](#issue-9-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/9)) · [2026.09.28](#issue-9-comment-1-2026-09-28) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/9#issuecomment-5869992047)) |
+| 5 二分查找 | [搜索插入位置](https://leetcode-cn.com/problems/search-insert-position/) | 简单 | [#35](https://leetcode-cn.com/problems/search-insert-position/) | [SearchInsertPosition.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/SearchInsertPosition.java) | [#10](#issue-10-overview) | [正文](#issue-10-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/10)) · [2026.09.29](#issue-10-comment-1-2026-09-29) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/10#issuecomment-5890909137)) |
+| 5 二分查找 | [搜索旋转排序数组](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/) | 中等 | [#33](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/) | [SearchInRotatedSortedArray.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/SearchInRotatedSortedArray.java) | [#10](#issue-10-overview) | [正文](#issue-10-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/10)) · [2026.09.29](#issue-10-comment-1-2026-09-29) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/10#issuecomment-5890909137)) |
+| 6 双指针/滑动窗口 | [无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/) | 中等 | [#3](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/) | [LongestSubstringWithoutRepeatingCharacters.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LongestSubstringWithoutRepeatingCharacters.java) | [#11](#issue-11-overview) | [正文](#issue-11-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/11)) · [2026.09.30](#issue-11-comment-1-2026-09-30) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/11#issuecomment-5914346246)) |
+| 6 双指针/滑动窗口 | [长度最小的子数组](https://leetcode-cn.com/problems/minimum-size-subarray-sum/) | 中等 | [#209](https://leetcode-cn.com/problems/minimum-size-subarray-sum/) | [MinimumSizeSubarraySum.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/MinimumSizeSubarraySum.java) | [#11](#issue-11-overview) | [正文](#issue-11-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/11)) · [2026.09.31](#issue-11-comment-2-2026-09-31) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/11#issuecomment-5924510434)) |
+| 6 双指针/滑动窗口 | [盛最多水的容器](https://leetcode-cn.com/problems/container-with-most-water/) | 中等 | [#11](https://leetcode-cn.com/problems/container-with-most-water/) | [ContainerWithMostWater.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ContainerWithMostWater.java) | [#11](#issue-11-overview) | [正文](#issue-11-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/11)) · [2026.09.31](#issue-11-comment-2-2026-09-31) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/11#issuecomment-5924510434)) |
+| 7 动态规划 | [爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/) | 简单 | [#70](https://leetcode-cn.com/problems/climbing-stairs/) | [ClimbingStairs.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ClimbingStairs.java) | [#12](#issue-12-overview) | [正文](#issue-12-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/12)) · [2026.10.03](#issue-12-comment-1-2026-10-03) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/12#issuecomment-5970573259)) |
+| 7 动态规划 | [最大子数组和](https://leetcode-cn.com/problems/maximum-subarray/) | 中等 | [#53](https://leetcode-cn.com/problems/maximum-subarray/) | [MaximumSubarray.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/MaximumSubarray.java) | [#12](#issue-12-overview) | [正文](#issue-12-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/12)) · [2026.10.03](#issue-12-comment-1-2026-10-03) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/12#issuecomment-5970573259)) |
+| 7 动态规划 | [打家劫舍](https://leetcode-cn.com/problems/house-robber/) | 中等 | [#198](https://leetcode-cn.com/problems/house-robber/) | [HouseRobber.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/HouseRobber.java) | [#12](#issue-12-overview) | [正文](#issue-12-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/12)) · [2026.10.03](#issue-12-comment-1-2026-10-03) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/12#issuecomment-5970573259)) |
+| 7 动态规划 | [最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/) | 中等 | [#300](https://leetcode-cn.com/problems/longest-increasing-subsequence/) | [LongestIncreasingSubsequence.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LongestIncreasingSubsequence.java) | [#12](#issue-12-overview) | [正文](#issue-12-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/12)) · [2026.10.03](#issue-12-comment-1-2026-10-03) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/12#issuecomment-5970573259)) |
+| 8 设计题 | [LRU 缓存](https://leetcode-cn.com/problems/lru-cache/) | 中等 | [#146](https://leetcode-cn.com/problems/lru-cache/) | [LruCache.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LruCache.java) | [#13](#issue-13-overview) | [正文](#issue-13-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/13)) · [2026.10.04](#issue-13-comment-1-2026-10-04) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/13#issuecomment-5975966188)) |
+| 9 BFS/DFS/回溯 | [岛屿数量](https://leetcode-cn.com/problems/number-of-islands/) | 中等 | [#200](https://leetcode-cn.com/problems/number-of-islands/) | [NumberOfIslands.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/NumberOfIslands.java) | [#14](#issue-14-overview) | [正文](#issue-14-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/14)) · [2026.10.04](#issue-14-comment-1-2026-10-04) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/14#issuecomment-5978662006)) |
+| 9 BFS/DFS/回溯 | [全排列](https://leetcode-cn.com/problems/permutations/) | 中等 | [#46](https://leetcode-cn.com/problems/permutations/) | [Permutations.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/Permutations.java) | [#14](#issue-14-overview) | [正文](#issue-14-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/14)) · [2026.10.04](#issue-14-comment-1-2026-10-04) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/14#issuecomment-5978662006)) |
+| 9 BFS/DFS/回溯 | [子集](https://leetcode-cn.com/problems/subsets/) | 中等 | [#78](https://leetcode-cn.com/problems/subsets/) | [Subsets.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/Subsets.java) | [#14](#issue-14-overview) | [正文](#issue-14-intro) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/14)) · [2026.10.04](#issue-14-comment-1-2026-10-04) ([GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/14#issuecomment-5978662006)) |
 
 ---
 
 ## 目录
+
+- [2026-09 面试刷题提纲速查](#interview-outline-2026-09)
+  - [Topic 01 哈希/数组 (#6)](#issue-6-overview) · [GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/6)
+  - [Topic 02 链表 (#7)](#issue-7-overview) · [GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/7)
+  - [Topic 03 二叉树 (#8)](#issue-8-overview) · [GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/8)
+  - [Topic 04 栈/队列 (#9)](#issue-9-overview) · [GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/9)
+  - [Topic 05 二分查找 (#10)](#issue-10-overview) · [GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/10)
+  - [Topic 06 双指针/滑动窗口 (#11)](#issue-11-overview) · [GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/11)
+  - [Topic 07 动态规划 (#12)](#issue-12-overview) · [GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/12)
+  - [Topic 08 设计题 (#13)](#issue-13-overview) · [GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/13)
+  - [Topic 09 BFS/DFS/回溯 (#14)](#issue-14-overview) · [GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/14)
+
+### 全部 Issue 归档
 
 - [#1 树](#issue-1-overview)
   - [正文](#issue-1-intro)
@@ -24,6 +79,7 @@ title: discussing-algorithm
   - [评论 · 2021.03.31](#issue-1-comment-5-2021-03-31)
   - [评论 · 2021.04.08](#issue-1-comment-6-2021-04-08)
   - [评论 · 2021.04.09](#issue-1-comment-7-2021-04-09)
+  - [评论 · 2021.04.10](#issue-1-comment-7-2021-04-10)
   - [评论 · 2021.04.11](#issue-1-comment-8-2021-04-11)
   - [评论 · 2021.04.12](#issue-1-comment-9-2021-04-12)
   - [评论 · 2021.04.13](#issue-1-comment-10-2021-04-13)
@@ -106,7 +162,58 @@ title: discussing-algorithm
   - [评论 · 2021.09.08](#issue-3-comment-2-2021-09-08)
   - [评论 · 2021.09.10](#issue-3-comment-3-2021-09-10)
 
-**合计：** 3 个 Issue，87 个章节，约 122 道题。
+- [#5 2026-09 面试刷题提纲（总目录）](#issue-5-overview)
+  - [正文](#issue-5-intro)
+
+- [#6 2026-09 · 01 哈希/数组](#issue-6-overview)
+  - [正文](#issue-6-intro)
+  - [正文 · 2026.09.17](#issue-6-2026-09-17)
+  - [评论 · 2026.09.21](#issue-6-comment-1-2026-09-21)
+  - [评论 · 2026.09.23](#issue-6-comment-2-2026-09-23)
+  - [评论 #3（2026-09-23）](#issue-6-comment-3-0)
+
+- [#7 2026-09 · 02 链表](#issue-7-overview)
+  - [正文](#issue-7-intro)
+  - [正文 · 2026.09.17](#issue-7-2026-09-17)
+  - [评论 · 2026.09.25](#issue-7-comment-1-2026-09-25)
+
+- [#8 2026-09 · 03 二叉树](#issue-8-overview)
+  - [正文](#issue-8-intro)
+  - [正文 · 2026.09.17](#issue-8-2026-09-17)
+  - [评论 · 2026.09.27](#issue-8-comment-1-2026-09-27)
+
+- [#9 2026-09 · 04 栈/队列](#issue-9-overview)
+  - [正文](#issue-9-intro)
+  - [正文 · 2026.09.17](#issue-9-2026-09-17)
+  - [评论 · 2026.09.28](#issue-9-comment-1-2026-09-28)
+
+- [#10 2026-09 · 05 二分查找](#issue-10-overview)
+  - [正文](#issue-10-intro)
+  - [正文 · 2026.09.17](#issue-10-2026-09-17)
+  - [评论 · 2026.09.29](#issue-10-comment-1-2026-09-29)
+
+- [#11 2026-09 · 06 双指针/滑动窗口](#issue-11-overview)
+  - [正文](#issue-11-intro)
+  - [正文 · 2026.09.17](#issue-11-2026-09-17)
+  - [评论 · 2026.09.30](#issue-11-comment-1-2026-09-30)
+  - [评论 · 2026.09.31](#issue-11-comment-2-2026-09-31)
+
+- [#12 2026-09 · 07 动态规划](#issue-12-overview)
+  - [正文](#issue-12-intro)
+  - [正文 · 2026.09.17](#issue-12-2026-09-17)
+  - [评论 · 2026.10.03](#issue-12-comment-1-2026-10-03)
+
+- [#13 2026-09 · 08 设计题](#issue-13-overview)
+  - [正文](#issue-13-intro)
+  - [正文 · 2026.09.17](#issue-13-2026-09-17)
+  - [评论 · 2026.10.04](#issue-13-comment-1-2026-10-04)
+
+- [#14 2026-09 · 09 BFS/DFS/回溯](#issue-14-overview)
+  - [正文](#issue-14-intro)
+  - [正文 · 2026.09.17](#issue-14-2026-09-17)
+  - [评论 · 2026.10.04](#issue-14-comment-1-2026-10-04)
+
+**合计：** 13 个 Issue，119 个章节，约 267 道题。
 
 ---
 
@@ -150,6 +257,8 @@ public void binTreeTraversal(TreeNode treeNode) {
 
 <a id="issue-1-comment-1-2021-03-19"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-802016377)
+
 今天做了一下二叉树的层序遍历，看题目还是直接去题解看答案然后懂了 =-=
 
 [102.二叉树的层序遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)要求从二叉树的根节点看是，逐层遍历出数据，看一眼觉得跟前面三种遍历关系不大，一点头绪没有。
@@ -168,12 +277,16 @@ public void binTreeTraversal(TreeNode treeNode) {
 
 <a id="issue-1-comment-1-2021-03-20"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-802016377)
+
 今天看到层序遍历还有个变形就是[103.二叉树的锯齿形层序遍历](https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/)，首先当然是看一下什么是锯齿形层序遍历，题意为第一层从左往右输出，第二层从右往左输出，在层序遍历的基础上我们只需要确定每层所对应的输出顺序即可，我是定义了一个 int 值（奇数层为从左往右，偶数层从右往左）再在层序遍历的基础上添加这个逻辑就能得到答案。代码链接还是上面那个 ……^_^（果然记住了，基础就可以不用看题解就能应对变种题目）
 类似的锯齿形（之字形）的题目: [剑指 Offer 32 - III. 从上到下打印二叉树 III](https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/)
 
 #### 评论 · 2021.03.23
 
 <a id="issue-1-comment-2-2021-03-23"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-803765698)
 
 [987.二叉树的垂序遍历](https://leetcode-cn.com/problems/vertical-order-traversal-of-a-binary-tree/)题目中垂序遍历的定义是从最左边的列到最右边的列，看到题目第一个思路是首先肯定是需要遍历一边二叉树，但是后面的思路空白...
 
@@ -189,6 +302,8 @@ public void binTreeTraversal(TreeNode treeNode) {
 #### 评论 · 2021.03.26
 
 <a id="issue-1-comment-3-2021-03-26"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-806944114)
 
 前天开始做一些根据遍历结果还原二叉树的题目，此类问题之前也有做过但是硬背了几遍再回看还是毫无头绪。缺乏思考推导的能力。一棵树遍历后能构造成一个集合，那么根据这个集合还原树，自然是没有问题的。
 
@@ -215,6 +330,8 @@ public void binTreeTraversal(TreeNode treeNode) {
 
 <a id="issue-1-comment-4-2021-03-30"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-809479625)
+
 刷了大概一周多的二叉树，感觉上算是熟悉了基本思路，所以先尝试挑树的遍历中简单难度的题 [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/tree/BinTreePractice.java)
 
 [606.根据二叉树创建字符串](https://leetcode-cn.com/problems/construct-string-from-binary-tree/) 题中有提示说以前序遍历进行构建，花了大概 15 分钟想... 但事实证明想没用，直接跑一下代码就知道问题出在哪里，区分清楚左子树为空，但右子树不为空的情况即可（因为这种情况需要加上一对 "()" )，leet-code 上的官方题解比较简洁(对比于我手打的)，开始还想着直接把官方题解拷一份，后来想了想，还是用手打版本，虽然看着多一些，但可能会稍微好理解一点..
@@ -229,6 +346,8 @@ public void binTreeTraversal(TreeNode treeNode) {
 #### 评论 · 2021.03.31
 
 <a id="issue-1-comment-5-2021-03-31"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-810395711)
 
 树 + 遍历，这个筛选条件，简单题里有涉及到 N 叉树的题，之前直接被他的名字劝退了，但是仔细看看题目，直接按层序遍历的思路，可以得出答案。但是先记录一下 N 叉树的定义吧。
 
@@ -246,6 +365,8 @@ N 叉树定义为一个节点可以对应多个子节点，可能文字说明不
 
 <a id="issue-1-comment-6-2021-04-08"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-815765009)
+
 最近几天就刷了几道题，都属于中等难度的，发现中等难度的题目都跟一些基础解法强相关，做的这几道题的核心解法几乎都可以从之前做过的题目中得到答案
 
 [1008. 前序遍历构造二叉搜索树](https://leetcode-cn.com/problems/construct-binary-search-tree-from-preorder-traversal/) 这道题的关键点在于二叉搜索树的中序遍历序列，是一个升序序列，我们可以将前序遍历序列排序后就能得出中序遍历序列，那这道题就可以看作是根据前序遍历和中序遍历构造二叉树，解法是一样的。[代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/tree/BinTreeCreation.java)
@@ -256,9 +377,15 @@ N 叉树定义为一个节点可以对应多个子节点，可能文字说明不
 
 <a id="issue-1-comment-7-2021-04-09"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-815978847)
+
 [173. 二叉搜索树迭代器](https://leetcode-cn.com/problems/binary-search-tree-iterator/) 属于二叉搜索树基本概念的考察，根据题意，需要设立哨兵，在构造迭代器的时候拿到二叉搜索树的中序遍历序列，其他方法只需要按要求实现即可（需要注意边界值的情况） [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/tree/BSTIterator.java)
 
-2021.04.10
+#### 评论 · 2021.04.10
+
+<a id="issue-1-comment-7-2021-04-10"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-815978847)
 
 [114. 二叉树展开为链表](https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/) 解题思路相对简单，就是通过前序遍历拿到结果序列，然后对这个结果序列进行二叉树的构建即可
 
@@ -280,6 +407,8 @@ N 叉树定义为一个节点可以对应多个子节点，可能文字说明不
 #### 评论 · 2021.04.11
 
 <a id="issue-1-comment-8-2021-04-11"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-817166790)
 
 开始以 树 为筛选条件进行刷题，难度从简单到困难
 
@@ -305,11 +434,15 @@ N 叉树定义为一个节点可以对应多个子节点，可能文字说明不
 
 <a id="issue-1-comment-9-2021-04-12"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-817911230)
+
 [617. 合并二叉树](https://leetcode-cn.com/problems/merge-two-binary-trees/) 按照题意，是希望将相同位置的节点值叠加后形成新的节点，如果节点只在某一个树上存在，则直接取该树的节点值作为结果树该节点的值，使用递归的方式可以很轻松完成 [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/tree/BinTreeCreation.java)
 
 #### 评论 · 2021.04.13
 
 <a id="issue-1-comment-10-2021-04-13"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-818839458)
 
 [938. 二叉搜索树的范围和](https://leetcode-cn.com/problems/range-sum-of-bst/)
 因为做了今天的每日一题，也是二叉搜索树类型，在中序遍历的过程中，取到节点值然后判断节点你是否处于给定的范围内，如果是则累加结果，思路比较简单 [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/tree/BinTreeTraversal.java)
@@ -317,6 +450,8 @@ N 叉树定义为一个节点可以对应多个子节点，可能文字说明不
 #### 评论 · 2021.04.14
 
 <a id="issue-1-comment-11-2021-04-14"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-819654685)
 
 还是简单题节奏，都能自己做出来 [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/tree/BinTreeCreation.java)
 
@@ -330,6 +465,8 @@ N 叉树定义为一个节点可以对应多个子节点，可能文字说明不
 
 <a id="issue-1-comment-12-2021-04-15"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-820524729)
+
 [剑指 Offer 54. 二叉搜索树的第k大节点](https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof/)
 根据题意可以转化为求升序序列中，第 k 大个元素，做题的时候，我先拿到了中序遍历序列，然后遍历该序列，得到第 k 大的数值，可以通过测试用例（依然性能不高）
 
@@ -342,6 +479,8 @@ N 叉树定义为一个节点可以对应多个子节点，可能文字说明不
 #### 评论 · 2021.04.29
 
 <a id="issue-1-comment-13-2021-04-29"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-829322441)
 
 半个月没好好刷算法了，今天看了这个简单的题目都想半天，没思路，在这种情况下也没有想将满足题目要求的条件分类尝试解决，还是没能形成解决问题的思路
 
@@ -357,6 +496,8 @@ root 要想是 p、q 的公共祖先，需要满足以下条件
 
 <a id="issue-1-comment-13-2021-05-10"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-829322441)
+
 [235. 二叉搜索树的最近公共祖先](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)
 本题中的树是二叉搜索树，因此可以利用其特性，节点的左子树的值都会小于节点值，右子树的值都会大于节点值，然后切换节点进行遍历
 
@@ -365,6 +506,8 @@ root 要想是 p、q 的公共祖先，需要满足以下条件
 #### 评论 · 2021.05.06
 
 <a id="issue-1-comment-14-2021-05-06"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-833514675)
 
 [剑指 Offer 68 - II. 二叉树的最近公共祖先](https://leetcode-cn.com/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/)
 
@@ -394,6 +537,8 @@ root 要想是 p、q 的公共祖先，需要满足以下条件
 
 <a id="issue-1-comment-15-2021-05-08"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-835407401)
+
 [965. 单值二叉树](https://leetcode-cn.com/problems/univalued-binary-tree/)
 根据单值二叉树的定义，只要有一个节点值跟其他节点值不一样，就不算是单值二叉树，那在前序遍历的过程中，传入根节点的值，如果发现有节点值不一样的就不是单值二叉树
 
@@ -406,6 +551,8 @@ root 要想是 p、q 的公共祖先，需要满足以下条件
 
 <a id="issue-1-comment-16-2021-05-10"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-836905634)
+
 [面试题 17.12. BiNode](https://leetcode-cn.com/problems/binode-lcci/)
 与之前有一道通过中序遍历构造只有右子树的题目类型，然后就按照思路先进行中序遍历，然后根据中序遍历结果生成结果树，可以通过测试用例但是时间复杂度比较高（进行了递归后还有一次遍历）
 看了题解也是在中序遍历的过程中进行结果树的构建，声明一个头部节点（head）用于拼接结果树和一个记录上个遍历节点（pre）用于替换，pre == null 说明是第一个节点，此时给 pre 赋值然后将它拼到 head 的右子树中，pre != null，就执行替换操作 pre.right = root; pre = root; 直到中序遍历结束
@@ -415,6 +562,8 @@ root 要想是 p、q 的公共祖先，需要满足以下条件
 #### 评论 · 2021.05.13
 
 <a id="issue-1-comment-17-2021-05-13"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-840650971)
 
 [530. 二叉搜索树的最小绝对差](https://leetcode-cn.com/problems/minimum-absolute-difference-in-bst/solution/530-er-cha-sou-suo-shu-de-zui-xiao-jue-d-76ch/)
 记录前一个节点，中序遍历过程中如果前节点为空则将当前节点赋值，如果前节点不为空则比较两个节点值差的绝对值然后与最小值进行比较，最终得出结果
@@ -430,6 +579,8 @@ root 要想是 p、q 的公共祖先，需要满足以下条件
 
 <a id="issue-1-comment-18-2021-05-16"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-841760838)
+
 [剑指 Offer 28. 对称的二叉树](https://leetcode-cn.com/problems/dui-cheng-de-er-cha-shu-lcof/)
 根据题意，以根节点为中线，左右两边的树节点个数对应，已经值对应，那每次递归都传入节点都左、右子节点，然后进行判断，如果左右节点同时为空表示符合条件，如果有一个不为空或者值不想等则表示不符合条件。递归继续条件为将左节点的左子节点与右节点的右子节点比较，右节点的左子节点与左节点的右子节点比较，同时符合则表示符合对称的二叉树条件
 [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/tree/BinTreeTraversal.java)
@@ -437,6 +588,8 @@ root 要想是 p、q 的公共祖先，需要满足以下条件
 #### 评论 · 2021.05.24
 
 <a id="issue-1-comment-19-2021-05-24"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-847144610)
 
 [543. 二叉树的直径](https://leetcode-cn.com/problems/diameter-of-binary-tree/)
 声明结果变量，递归获取二叉树的高度，每次获取的过程中，记录左、右子树的高度 + 1 的值作为结果值（以最大为准），递归结束，得出结果
@@ -446,6 +599,8 @@ root 要想是 p、q 的公共祖先，需要满足以下条件
 #### 评论 · 2021.08.01
 
 <a id="issue-1-comment-20-2021-08-01"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/1#issuecomment-890513073)
 
 [面试题 04.04. 检查平衡性](https://leetcode-cn.com/problems/check-balance-lcci/)
 结合求二叉树高度的方法，分别获取左子树和右子树的深度，然后对比这两个值的差值，如果小于 2 表示平衡，返回当前树的高度，否则表示不平衡，返回 -1
@@ -475,6 +630,8 @@ root 要想是 p、q 的公共祖先，需要满足以下条件
 
 <a id="issue-2-comment-1-2021-04-10"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-817174209)
+
 [263. 丑数](https://leetcode-cn.com/problems/ugly-number/)
 题目文字很简陋，和/或读半天没读明白，大概是给出了丑数的定义，然后让我们判断入参是否为丑数
 
@@ -488,6 +645,8 @@ root 要想是 p、q 的公共祖先，需要满足以下条件
 #### 评论 · 2021.04.11
 
 <a id="issue-2-comment-2-2021-04-11"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-817276823)
 
 [264. 丑数 II](https://leetcode-cn.com/problems/ugly-number-ii/)
 题意是让我们找到从 1 开始，第 n 个丑数
@@ -515,6 +674,8 @@ d[1] = 1 // base case
 
 <a id="issue-2-comment-3-2021-04-12"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-817936190)
+
 [179. 最大数](https://leetcode-cn.com/problems/largest-number/)
 题意是让我们将给定的数组中的数字进行排列，形成一个最大的数
 
@@ -531,6 +692,8 @@ d[1] = 1 // base case
 
 <a id="issue-2-comment-4-2021-04-13"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-818836943)
+
 [783. 二叉搜索树节点最小距离](https://leetcode-cn.com/problems/minimum-distance-between-bst-nodes/)
 二叉搜索树，返回树中任意两个不同节点值之间的最小差值
 
@@ -541,6 +704,8 @@ d[1] = 1 // base case
 #### 评论 · 2021.04.14
 
 <a id="issue-2-comment-5-2021-04-14"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-819630212)
 
 [208. 实现 Trie (前缀树)](https://leetcode-cn.com/problems/implement-trie-prefix-tree/)
 构造类型题目，具体要求去题目里看吧
@@ -554,6 +719,8 @@ d[1] = 1 // base case
 
 <a id="issue-2-comment-6-2021-04-15"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-820524566)
+
 [213. 打家劫舍 II](https://leetcode-cn.com/problems/house-robber-ii/submissions/)
 
 [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/daily/Day20210415.java)
@@ -561,6 +728,8 @@ d[1] = 1 // base case
 #### 评论 · 2021.04.20
 
 <a id="issue-2-comment-7-2021-04-20"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-823372235)
 
 [28. 实现 strStr()](https://leetcode-cn.com/problems/implement-strstr/)
 题意很明确，在 java 中可以直接使用 String.indexOf() 来解决这道题，然后想了一下为什么这个方法的时间是 100%，稍微看了下 indexOf 的代码，里面的实现是将调用的字符串和比较的字符串转换成字符数组进行比较，所以也符合题目的期望
@@ -571,6 +740,8 @@ d[1] = 1 // base case
 
 <a id="issue-2-comment-8-2021-04-30"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-829863000)
+
 [137. 只出现一次的数字 II](https://leetcode-cn.com/problems/single-number-ii/)
 使用 hasdMap 记录遍历的数字和出现的次数，比较容易实现
 
@@ -579,6 +750,8 @@ d[1] = 1 // base case
 #### 评论 · 2021.05.06
 
 <a id="issue-2-comment-9-2021-05-06"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-833495087)
 
 [1720. 解码异或后的数组](https://leetcode-cn.com/problems/decode-xored-array/)
 简单类型的题目，关键在于找到 arr[i + 1] = arr[i] ^ encoded[i]; 这个关系，然后一次遍历得出结果
@@ -589,6 +762,8 @@ d[1] = 1 // base case
 
 <a id="issue-2-comment-10-2021-05-07"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-834505638)
+
 [1486. 数组异或操作](https://leetcode-cn.com/problems/xor-operation-in-an-array/)
 题目提供了计算公式，开始使用暴力解法，先将数组构建出来，然后再对数据进行遍历进行逐位异或的计算操作，但是在写第二个循环的时候发现既然只需要一个异或后的结果值，可以直接在第一次遍历中执行，先将 start 值记录，然后从数组的第二位开始遍历，逐个进行异或运算操作，得出结果值并返回
 
@@ -598,6 +773,8 @@ d[1] = 1 // base case
 
 <a id="issue-2-comment-11-2021-05-08"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-835291580)
+
 [1723. 完成所有工作的最短时间](https://leetcode-cn.com/problems/find-minimum-time-to-finish-all-jobs/)
 之前富途面试的时候被问到过这个题，先白嫖积分....
 
@@ -606,6 +783,8 @@ d[1] = 1 // base case
 #### 评论 · 2021.05.09
 
 <a id="issue-2-comment-12-2021-05-09"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-835832196)
 
 [1482. 制作 m 束花所需的最少天数](https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets/solution/zhi-zuo-m-shu-hua-suo-xu-de-zui-shao-tia-mxci/)
 开始的解题思路是对原数组的每个 item 进行递减，直到为 0，在过程中找到符合 m 的循环次数，然后将结果返回，但是只通过了示例 1 和 2，思考出现问题的原因是，在内层循环每次寻找相邻的 k 的值的逻辑不对（因为从 i+k 开始了），想半天也没想出来...
@@ -618,6 +797,8 @@ d[1] = 1 // base case
 #### 评论 · 2021.05.10
 
 <a id="issue-2-comment-13-2021-05-10"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-836292054)
 
 [872. 叶子相似的树](https://leetcode-cn.com/problems/leaf-similar-trees/)
 叶子相似的定义是两个树的叶子按从左到右的顺序排列后一致，说明两个树为叶子相似的二叉树。
@@ -660,6 +841,8 @@ while(true) {
 
 <a id="issue-2-comment-14-2021-05-11"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-838715889)
+
 [1734. 解码异或后的排列](https://leetcode-cn.com/problems/decode-xored-permutation/)
 这个题目之前做过简单版的（1720. 解码异或后的数组），所以知道要找到结果数组的第一个元素，但是推理能力不够，要是下回遇到尽量想起来吧...
 - 原始数组全部下标从 1 开始到 n 的逐位异或得出的结果记为 total
@@ -673,6 +856,8 @@ while(true) {
 
 <a id="issue-2-comment-15-2021-05-13"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-840635429)
+
 （串了一天....）
 [1310. 子数组异或查询](https://leetcode-cn.com/problems/xor-queries-of-a-subarray/)
 二维数组表示异或的范围，那么只需要遍历取，然后每次进行异或计算即可
@@ -683,6 +868,8 @@ while(true) {
 
 <a id="issue-2-comment-16-2021-05-14"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-841313262)
+
 [12. 整数转罗马数字](https://leetcode-cn.com/problems/integer-to-roman/)
 需要罗列出全部的条件，然后对传入数字进行按罗马数字对应的整数做减法运算，每减一次就拼接上对应的罗马数字直到结束
 
@@ -691,6 +878,8 @@ while(true) {
 #### 评论 · 2021.05.15
 
 <a id="issue-2-comment-17-2021-05-15"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-841708114)
 
 [13. 罗马数字转整数](https://leetcode-cn.com/problems/roman-to-integer/)
 这题主要还是得发现与 4、9 的罗马数 IV、IX 与其他按从小到大的罗马数的区别，这种情况需要判断的点是后一个是否比前一个大，如果是就需要减去前面的数，其他情况就正常加就行
@@ -701,6 +890,8 @@ while(true) {
 
 <a id="issue-2-comment-17-2021-05-16"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-841708114)
+
 [421. 数组中两个数的最大异或值](https://leetcode-cn.com/problems/maximum-xor-of-two-numbers-in-an-array/solution/shu-zu-zhong-liang-ge-shu-de-zui-da-yi-h-n9m9/)
 这题暴力方法是以 O(n^2) 的时间复杂度完成判断，[题解](https://leetcode-cn.com/problems/maximum-xor-of-two-numbers-in-an-array/solution/shu-zu-zhong-liang-ge-shu-de-zui-da-yi-h-n9m9/)没看到明白...（TODO）
 
@@ -710,6 +901,8 @@ while(true) {
 
 <a id="issue-2-comment-18-2021-05-18"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-843247815)
+
 [1442. 形成两个异或相等数组的三元组数目](https://leetcode-cn.com/problems/count-triplets-that-can-form-two-arrays-of-equal-xor)
 
 [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/daily/Day20210518.java)
@@ -718,6 +911,8 @@ while(true) {
 
 <a id="issue-2-comment-19-2021-05-19"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-844234810)
+
 [1738. 找出第 K 大的异或坐标值](https://leetcode-cn.com/problems/find-kth-largest-xor-coordinate-value/)
 
 [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/daily/Day20210519.java)
@@ -725,6 +920,8 @@ while(true) {
 #### 评论 · 2021.05.20
 
 <a id="issue-2-comment-20-2021-05-20"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-844708022)
 
 [692. 前K个高频单词](https://leetcode-cn.com/problems/top-k-frequent-words/)
 - 首先将每个单词以及其出现的次数存到哈希表里（可以使用 getOrDefault(key, defaultVal) 减少是否包含 key 的判断）
@@ -738,6 +935,8 @@ while(true) {
 
 <a id="issue-2-comment-21-2021-06-09"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-857792483)
+
 之前一段时间忙得一批，闲下来就用了一下朋友介绍给我的[刷题插件](https://github.com/shuzijun/leetcode-editor)，方便得飞起，代码模版、题目信息都可以在 ide（我用的 Android Studio）里配置，很方便，哈哈.......
 
 还用[两数之和](https://leetcode-cn.com/problems/two-sum/)测试了一下（[代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/TwoSum.java)），就是题目是英文的看得有点费劲 =-=
@@ -745,6 +944,8 @@ while(true) {
 #### 评论 · 2021.07.02
 
 <a id="issue-2-comment-22-2021-07-02"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-872869105)
 
 [1833. 雪糕的最大数量](https://leetcode-cn.com/problems/maximum-ice-cream-bars/)
 
@@ -756,6 +957,8 @@ while(true) {
 
 <a id="issue-2-comment-23-2021-07-03"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-873610142)
+
 [451. 根据字符出现频率排序](https://leetcode-cn.com/problems/sort-characters-by-frequency/)
 
 利用 HashMap 协助将字符整理起来，key 为字符，value 为出现次数，然后将 key 整理为集合用作排序，通过 List#sort() 传入比较器，(a, b) -> map.get(b) - map.get(a) 达到倒序效果，然后再遍历 list，通过每次拿到的字符，获取出现次数，再拼接对应次数到结果上，得出结果
@@ -765,6 +968,8 @@ while(true) {
 #### 评论 · 2021.07.04
 
 <a id="issue-2-comment-24-2021-07-04"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-873611608)
 
 [645. 错误的集合](https://leetcode-cn.com/problems/set-mismatch/)
 
@@ -777,6 +982,8 @@ while(true) {
 #### 评论 · 2021.07.05
 
 <a id="issue-2-comment-25-2021-07-05"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-874509485)
 
 [101. 对称二叉树](https://leetcode-cn.com/problems/symmetric-tree/)
 
@@ -809,6 +1016,8 @@ while(true) {
 
 <a id="issue-2-comment-26-2021-07-06"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-874509582)
+
 [146. LRU 缓存机制](https://leetcode-cn.com/problems/lru-cache/)
 
 Java 中实现这样的 API 为 LinkedList
@@ -827,6 +1036,8 @@ Java 中实现这样的 API 为 LinkedList
 #### 评论 · 2021.07.07
 
 <a id="issue-2-comment-27-2021-07-07"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-875699244)
 
 [1711. 大餐计数](https://leetcode-cn.com/problems/count-good-meals/)
 
@@ -853,6 +1064,8 @@ public int log2(int val) {
 
 <a id="issue-2-comment-28-2021-07-08"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-876388823)
+
 [930. 和相同的二元子数组](https://leetcode-cn.com/problems/binary-subarrays-with-sum/)
 
 首次接触滑动窗口的题目，看题解看得有点蒙，代码好理解一些，判断如果比指定大的话，右边界就停止滑动，左边界开始滑动
@@ -863,6 +1076,8 @@ public int log2(int val) {
 #### 评论 · 2021.07.09
 
 <a id="issue-2-comment-29-2021-07-09"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-877313201)
 
 [面试题 17.10. 主要元素](https://leetcode-cn.com/problems/find-majority-element-lcci/)
 
@@ -875,6 +1090,8 @@ public int log2(int val) {
 
 <a id="issue-2-comment-30-2021-07-11"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-877662271)
+
 [981. 基于时间的键值存储](https://leetcode-cn.com/problems/time-based-key-value-store/)
 
 `// 待补充`
@@ -884,6 +1101,8 @@ public int log2(int val) {
 #### 评论 · 2021.07.16
 
 <a id="issue-2-comment-31-2021-07-16"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-881524632)
 
 [剑指 Offer 53 - I. 在排序数组中查找数字 I](https://leetcode-cn.com/problems/zai-pai-xu-shu-zu-zhong-cha-zhao-shu-zi-lcof/)
 暴力解法是一次遍历数组，然后判断每个元素与 target 值是否一致，一致则记录次数，遍历结束得出结果，时间复杂度 O(n)
@@ -896,6 +1115,8 @@ public int log2(int val) {
 
 <a id="issue-2-comment-32-2021-07-17"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-881894608)
+
 [剑指 Offer 42. 连续子数组的最大和](https://leetcode-cn.com/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/)
 经典求最值的问题，动态解决，官方题解里的视频说得很清晰，dp[i] 表示前 i 个元素的和，那么 dp[i] 就就可以表示为 d[i - 1] + nums[i]，前 i - 1 个元素加上第 i 个元素，由此得到状态方程 dp[i] = dp[i - 1] + nums[i]，个人觉得这个题目是经典理解动态规划的题目了，哈哈
 
@@ -904,6 +1125,8 @@ public int log2(int val) {
 #### 评论 · 2021.07.19
 
 <a id="issue-2-comment-33-2021-07-19"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-882315859)
 
 [面试题 10.02. 变位词组](https://leetcode-cn.com/problems/group-anagrams-lcci/)
 这个题的关键在于区分出变位词，需要将变位词都放在一起，一种思路就是将每个字符串都转换成字符数组，然后对这个字符数组进行排序，作为哈希表的 key，哈希表的值就为原字符串组合成的集合。遍历后，即可得出结果
@@ -922,6 +1145,8 @@ public int log2(int val) {
 
 <a id="issue-2-comment-34-2021-07-20"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-883241802)
+
 [1877. 数组中最大数对和的最小值](https://leetcode-cn.com/problems/minimize-maximum-pair-sum-in-array/)
 这个是第一次可以跟题解的思路一致的题目....
 开始看这个题目的时候，有点不能理解数对和，多看几次发现，如果要满足题目要求的数对的话，就可以通过将数组排序，然后取前后的数字相加然后取出最大值...实现出来就通过了（再看题解是差不多的代码 :(）
@@ -931,6 +1156,8 @@ public int log2(int val) {
 #### 评论 · 2021.07.21
 
 <a id="issue-2-comment-35-2021-07-21"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-884172497)
 
 [剑指 Offer 52. 两个链表的第一个公共节点](https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/)
 比较难想，这个题我就想出来处理头节点有一个为 null，就不会有相交的情况，原来的思路是在记录两个链表的头节点，然后先遍历链表 a，判断链表上的节点是否会跟链表 b 上的节点相一致，有则返回结果，没有就遍历链表 b，按照遍历链表 a 的方式走一遍，看是否有满足的节点，这个思路的问题是，相交的点前面的节点数是一样的，才成立
@@ -942,6 +1169,8 @@ public int log2(int val) {
 
 <a id="issue-2-comment-36-2021-07-22"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-884994415)
+
 [138. 复制带随机指针的链表](https://leetcode-cn.com/problems/copy-list-with-random-pointer/)
 `//待补充`
 
@@ -951,6 +1180,8 @@ public int log2(int val) {
 
 <a id="issue-2-comment-37-2021-07-23"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-885688361)
+
 [1893. 检查是否区域内所有整数都被覆盖](https://leetcode-cn.com/problems/check-if-all-the-integers-in-a-range-are-covered/)
 
 [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/CheckIfAllTheIntegersInARangeAreCovered.java)
@@ -958,6 +1189,8 @@ public int log2(int val) {
 #### 评论 · 2021.07.24
 
 <a id="issue-2-comment-38-2021-07-24"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-886061699)
 
 [1736. 替换隐藏数字得到的最晚时间](https://leetcode-cn.com/problems/latest-time-by-replacing-hidden-digits/)
 简单替换字符
@@ -968,6 +1201,8 @@ public int log2(int val) {
 
 <a id="issue-2-comment-39-2021-07-26"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-886747413)
+
 [9. 回文数](https://leetcode-cn.com/problems/palindrome-number/)
 转成字符串可以写出来，通过计算还得看题解...
 
@@ -976,6 +1211,8 @@ public int log2(int val) {
 #### 评论 · 2021.07.28
 
 <a id="issue-2-comment-40-2021-07-28"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-888304711)
 
 [863. 二叉树中所有距离为 K 的结点](https://leetcode-cn.com/problems/all-nodes-distance-k-in-binary-tree/)
 一时间并没有思路，感觉算是个二叉树比较综合的题型，题解使用深度优先 + 哈希表
@@ -988,6 +1225,8 @@ public int log2(int val) {
 
 <a id="issue-2-comment-41-2021-08-09"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-895271656)
+
 [112. 路径总和](https://leetcode-cn.com/problems/path-sum/)
 
 [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/PathSum.java)
@@ -995,6 +1234,8 @@ public int log2(int val) {
 #### 评论 · 2021.08.10
 
 <a id="issue-2-comment-42-2021-08-10"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-896121680)
 
 [413. 等差数列划分](https://leetcode-cn.com/problems/arithmetic-slices/)
 
@@ -1004,6 +1245,8 @@ public int log2(int val) {
 
 <a id="issue-2-comment-43-2021-08-11"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-896747665)
+
 [446. 等差数列划分 II - 子序列](https://leetcode-cn.com/problems/arithmetic-slices-ii-subsequence/)
 
 [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ArithmeticSlicesIiSubsequence.java)
@@ -1011,6 +1254,8 @@ public int log2(int val) {
 #### 评论 · 2021.08.12
 
 <a id="issue-2-comment-44-2021-08-12"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-898203016)
 
 [516. 最长回文子序列](https://leetcode-cn.com/problems/longest-palindromic-subsequence/)
 
@@ -1020,6 +1265,8 @@ public int log2(int val) {
 
 <a id="issue-2-comment-45-2021-08-13"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-898203251)
+
 [233. 数字 1 的个数](https://leetcode-cn.com/problems/number-of-digit-one/)
 
 [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/NumberOfDigitOne.java)
@@ -1027,6 +1274,8 @@ public int log2(int val) {
 #### 评论 · 2021.08.16
 
 <a id="issue-2-comment-46-2021-08-16"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-900034234)
 
 [166. 分数到小数](https://leetcode-cn.com/problems/fraction-to-recurring-decimal/)
 
@@ -1036,6 +1285,8 @@ public int log2(int val) {
 
 <a id="issue-2-comment-47-2021-08-17"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-900034744)
+
 [551. 学生出勤记录 I](https://leetcode-cn.com/problems/student-attendance-record-i/)
 
 [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/StudentAttendanceRecordI.java)
@@ -1043,6 +1294,8 @@ public int log2(int val) {
 #### 评论 · 2021.08.19
 
 <a id="issue-2-comment-48-2021-08-19"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-902388253)
 
 [345. 反转字符串中的元音字母](https://leetcode-cn.com/problems/reverse-vowels-of-a-string/)
 反转字符串中的元音字母，分为几个步骤执行
@@ -1055,6 +1308,8 @@ public int log2(int val) {
 #### 评论 · 2021.08.20
 
 <a id="issue-2-comment-49-2021-08-20"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-902405597)
 
 [450. 删除二叉搜索树中的节点](https://leetcode-cn.com/problems/delete-node-in-a-bst/)
 
@@ -1074,6 +1329,8 @@ public int log2(int val) {
 
 <a id="issue-2-comment-50-2021-08-21"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-903206747)
+
 [443. 压缩字符串](https://leetcode-cn.com/problems/string-compression/)
 因为题目要求是需要常量级别的的空间算法，我用 StringBuilder 虽然可以压缩成功，就是嵌套循环，然后记录不一样的字符的下标，然后还需要处理不满足循环条件时的情况，显然这种处理方式并不算优而且 leetcode 上也不能通过用例
 
@@ -1085,6 +1342,8 @@ public int log2(int val) {
 #### 评论 · 2021.08.22
 
 <a id="issue-2-comment-51-2021-08-22"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-903264235)
 
 老是点错关闭了 issue...
 
@@ -1102,6 +1361,8 @@ public int log2(int val) {
 
 <a id="issue-2-comment-52-2021-08-23"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-904271606)
+
 [1646. 获取生成数组中的最大值](https://leetcode-cn.com/problems/get-maximum-in-generated-array/)
 一开始还想着去凑题目中给出的两个关系式，以完成数组元素的赋值，但下标的处理很繁琐（缺乏对题目理解并分析的经验）
 其实题目中两个条件可以适当转换一下，可以得出奇偶关系，然后遍历一次进行赋值即可
@@ -1111,6 +1372,8 @@ public int log2(int val) {
 #### 评论 · 2021.08.24
 
 <a id="issue-2-comment-53-2021-08-24"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-904272898)
 
 [912. 排序数组](https://leetcode-cn.com/problems/sort-an-array/)
 数组的排序，先了解的快排的实现，其实 Arrays.sort 这个方法里包含了冒泡、快排等实现，在工程使用上比较合理
@@ -1127,6 +1390,8 @@ public int log2(int val) {
 
 <a id="issue-2-comment-54-2021-08-24"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-906116066)
+
 [881. 救生艇](https://leetcode-cn.com/problems/boats-to-save-people/)
 
 [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/BoatsToSavePeople.java)
@@ -1135,6 +1400,8 @@ public int log2(int val) {
 
 <a id="issue-2-comment-55-2021-08-29"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-907797576)
+
 [1588. 所有奇数长度子数组的和](https://leetcode-cn.com/problems/sum-of-all-odd-length-subarrays/)
 
 [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/SumOfAllOddLengthSubarrays.java)
@@ -1142,6 +1409,8 @@ public int log2(int val) {
 #### 评论 · 2021.08.30
 
 <a id="issue-2-comment-56-2021-08-30"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-908405368)
 
 [528. 按权重随机选择](https://leetcode-cn.com/problems/random-pick-with-weight/)
 随机选择题目，开始的时候把题目的意思理解错了，~~还以为是下标 i 出现的概率是 i / 整个数组的和，所以在思考上也出现了偏差，尝试着算出每个 item 出现的概率，存在数组中，然后在 pickIndex 的时候，根据生成的随机数查找最接近概率 item 的下标（自然是不对的....）~~
@@ -1155,6 +1424,8 @@ public int log2(int val) {
 #### 评论 · 2021.08.31
 
 <a id="issue-2-comment-57-2021-08-31"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-908911145)
 
 [1109. 航班预订统计](https://leetcode-cn.com/problems/corporate-flight-bookings/)
 这道题目的暴力算法之前有做过，但是具体哪道题有点忘记了，暴力算法思路是遍历二元数组，然后根据每个二元数组的数据，给结果数组的 item 进行累加操作，在 leetcode 上面可以通过测试用例，但耗时 1500 ms 左右
@@ -1186,6 +1457,8 @@ public int log2(int val) {
 
 <a id="issue-3-comment-1-2021-09-03"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/3#issuecomment-915366062)
+
 [面试题 17.14. 最小K个数](https://leetcode-cn.com/problems/smallest-k-lcci/)
 本题只需先排序，然后再遍历 k 次即可找出 k 个数，关键在于排序的实现（可以看看快排和堆排），但我觉得这个题本身是考虑找出最小 k 个数的思路，所以可以直接用 Java API Arrays.sort 来帮助实现排序（冒泡 + 快排的实现），然后再补充找最小 k 个数的逻辑
 
@@ -1194,6 +1467,8 @@ public int log2(int val) {
 #### 评论 · 2021.09.08
 
 <a id="issue-3-comment-2-2021-09-08"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/3#issuecomment-915367964)
 
 [剑指 Offer II 052. 展平二叉搜索树](https://leetcode-cn.com/problems/NYBBNL/)
 今天的题目难度是困难，就挑了一个简单的二叉树来练习一下，这个题是根据中序遍历的序列构建一个只有右子节点的树，比较简单（好像之前也做过）
@@ -1204,6 +1479,8 @@ public int log2(int val) {
 
 <a id="issue-3-comment-3-2021-09-10"></a>
 
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/3#issuecomment-917026154)
+
 [1894. 找到需要补充粉笔的学生编号](https://leetcode-cn.com/problems/find-the-student-that-will-replace-the-chalk/)
 开始的思路有点乱，想着先遍历一边数组，k 减去数组的每个 item，但这样的话无法确定什么时候停止减法的操作，其实此时的 k 并不是最简化的可操作对象，经过一次遍历后可以得到每个学生消耗粉笔后的总数，只需要得到 k 与 total 的余数，就是最简的操作对象，再经过一次遍历即可确定哪位同学需要补充粉笔
 
@@ -1211,9 +1488,528 @@ public int log2(int val) {
 
 ---
 
+## [#5 2026-09 面试刷题提纲（总目录）](https://github.com/ZakAnun/discussing-algorithm/issues/5)
+
+<a id="issue-5-overview"></a>
+
+[在 GitHub 查看原 Issue →](https://github.com/ZakAnun/discussing-algorithm/issues/5)
+
+#### 正文
+
+<a id="issue-5-intro"></a>
+
+**算法面试刷题提纲（2026-09）**
+
+本 Issue 为总目录，各模块已拆分为独立 Topic Issue：
+
+- [2026-09 · 01 哈希/数组](https://github.com/ZakAnun/discussing-algorithm/issues/6) — 1. 哈希 / 数组（4）
+- [2026-09 · 02 链表](https://github.com/ZakAnun/discussing-algorithm/issues/7) — 2. 链表（5 — 客户端最高频）
+- [2026-09 · 03 二叉树](https://github.com/ZakAnun/discussing-algorithm/issues/8) — 3. 二叉树（5）
+- [2026-09 · 04 栈/队列](https://github.com/ZakAnun/discussing-algorithm/issues/9) — 4. 栈 / 队列（2）
+- [2026-09 · 05 二分查找](https://github.com/ZakAnun/discussing-algorithm/issues/10) — 5. 二分查找（2）
+- [2026-09 · 06 双指针/滑动窗口](https://github.com/ZakAnun/discussing-algorithm/issues/11) — 6. 双指针 / 滑动窗口（3）
+- [2026-09 · 07 动态规划](https://github.com/ZakAnun/discussing-algorithm/issues/12) — 7. 动态规划（4 — 只刷基础经典）
+- [2026-09 · 08 设计题](https://github.com/ZakAnun/discussing-algorithm/issues/13) — 8. 设计题（1 — 性价比最高）
+- [2026-09 · 09 BFS/DFS/回溯](https://github.com/ZakAnun/discussing-algorithm/issues/14) — 9. BFS / DFS / 回溯（3）
+
+代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+---
+
+请在对应 Topic Issue 下记录刷题笔记。
+
+---
+
+## [#6 2026-09 · 01 哈希/数组](https://github.com/ZakAnun/discussing-algorithm/issues/6)
+
+<a id="issue-6-overview"></a>
+
+[在 GitHub 查看原 Issue →](https://github.com/ZakAnun/discussing-algorithm/issues/6)
+
+↑ 返回 [面试刷题提纲速查表](#interview-outline-2026-09) · 代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+#### 正文
+
+<a id="issue-6-intro"></a>
+
+**2026-09 · 01 哈希/数组**
+
+面试刷题提纲 · 1. 哈希 / 数组（4）
+
+代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+| 题 | 难度 | 考点 | LeetCode | 代码 |
+| --- | --- | --- | --- | --- |
+| [两数之和](https://leetcode-cn.com/problems/two-sum/) | 简单 | 哈希映射（热身第一题） | [#1](https://leetcode-cn.com/problems/two-sum/) | [TwoSum.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/TwoSum.java) |
+| [最长连续序列](https://leetcode-cn.com/problems/longest-consecutive-sequence/) | 中等 | 哈希集合 | [#128](https://leetcode-cn.com/problems/longest-consecutive-sequence/) | [LongestConsecutiveSequence.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LongestConsecutiveSequence.java) |
+| [三数之和](https://leetcode-cn.com/problems/3sum/) | 中等 | 排序 + 双指针（高频） | [#15](https://leetcode-cn.com/problems/3sum/) | [ThreeSum.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ThreeSum.java) |
+| [合并区间](https://leetcode-cn.com/problems/merge-intervals/) | 中等 | 排序 + 区间（可绑定看板项目） | [#56](https://leetcode-cn.com/problems/merge-intervals/) | [MergeIntervals.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/MergeIntervals.java) |
+
+---
+
+在本 Issue 下按日期补充刷题笔记，格式示例：`
+
+#### 正文 · 2026.09.17
+
+<a id="issue-6-2026-09-17"></a>
+
+`
+
+#### 评论 · 2026.09.21
+
+<a id="issue-6-comment-1-2026-09-21"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/6#issuecomment-5763171988)
+
+[两数之和](https://leetcode-cn.com/problems/two-sum/) 关键是循环过程中将数组信息记录到 HashMap 中，通过与 target 的差值对比，判断 map 中的 key 是否包含对应的差值，由于当次的遍历就能拿到差值的下标以及当前的下标，因此可以直接返回结果。
+
+[最长连续序列](https://leetcode-cn.com/problems/longest-consecutive-sequence/) 关键是先将原有数组进行去重，实现上可以通过 Set 这个数据结构将元素 add 到 Set 集合中，然后根据这个集合进行判断，因为题目中连续的定义为 i+1，因此可以通过判断 Set 集合中是否包含 i-1 进而判断是否需要进入到循环计数，如果如果不包含就作为第一个数开始进行计数，并且在内层循环中更新当前数以及记录的最长数，取最大的结果。需要注意的是获取到去重的 Set 集合后，就需要遍历这个 Set 集合，而不是遍历原题的数组。
+
+#### 评论 · 2026.09.23
+
+<a id="issue-6-comment-2-2026-09-23"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/6#issuecomment-5794419450)
+
+[三数之和](https://leetcode-cn.com/problems/3sum/) 重点是要将入参数组进行排序，排序后的数组可以方便确定三元组时减少重复的情况。轮询的终点实际上是倒数第二个元素（n - 2），另一个关键点是处理数组中存在重复元素的情况，另外三元组中的剩余两个元素通过 l、r 两个指针逼近中心找到结果元素，通过 l = i + 1，r = n - 1 确认区间范围，一旦拿到结果三个元素之和 sum == 0，区间就需要开始收缩（l++，r--），此外还需要确保剩余区间的内容也一并排除掉重复的情况 while(l < r && nums[l] == nums[l - 1]) -> l++；while(l < r && nums[r] == nums[r + 1]) -> r--; 如果 sum 不满足条件（为 0）那么移动 l++、r--
+
+[合并区间](https://leetcode-cn.com/problems/merge-intervals/) 重点也是要将二位数组中每个 item 的 start 边界进行排序，排序以后只需要根据 end 边界的大小确认是否需要进行区间合并。只是需要记忆一部份 java 的语法糖，通过比较器进行排序的 api，Arrays.sort(intervals, (a, b) -> a[0] - b[0]) 这种形式是 intervals 从小到大进行排序；因为过程中是通过 List<int[]>（new ArrayList()）进行中间元素的操作，在获取最终结果的时候是通过 list.toArray() 的方式返回一个二位数组，list.toArray(new int[list.size()][0]); 进行返回结果
+
+#### 评论 #3（2026-09-23）
+
+<a id="issue-6-comment-3-0"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/6#issuecomment-5794650737)
+
+## 哈希 / 数组 · 概括总结
+
+这一章练的是一件事：**尽量不要暴力枚举，用结构把查找和判断变简单。**
+
+### 三条路
+
+| 分支 | 什么时候用 | 怎么做 |
+|------|------------|--------|
+| **哈希** | 要快速问「在不在 / 互补是谁」 | `Map`/`Set` 预处理，一遍扫 |
+| **排序 + 双指针** | 多个数求和、要去重组合 | 先排序，固定一个，两边夹 |
+| **排序 + 扫末尾** | 区间能否衔接合并 | 按起点排，只跟结果最后一段比 |
+
+### 四题对应
+
+- **两数之和**：`Map` 查 `target - x`
+- **最长连续序列**：`Set` 去重，只从没有 `x-1` 的起点往后数
+- **三数之和**：排序后固定 `i`，右边双指针，跳过重复
+- **合并区间**：按 `start` 排序，能接上就改末尾 `end`
+
+### 做题口诀
+
+> 要下标、查互补 → 哈希；要组合、可打乱顺序 → 排序夹逼；是区间 → 排序后只维护末尾。
+> 要下标慎排序；要夹逼或合并先排序。
+> 要全集且值相同算重复 → 去重；只要一个解 → 通常不去
+
+### 一些知识点
+
+HashSet 底层就是 HashMap，只是只玩 key，value 是占位。
+Arrays.sort 底层是双轴快排，所以可以放心使用（时间复杂度一般 O(n log n)）
+
+---
+
+## [#7 2026-09 · 02 链表](https://github.com/ZakAnun/discussing-algorithm/issues/7)
+
+<a id="issue-7-overview"></a>
+
+[在 GitHub 查看原 Issue →](https://github.com/ZakAnun/discussing-algorithm/issues/7)
+
+↑ 返回 [面试刷题提纲速查表](#interview-outline-2026-09) · 代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+#### 正文
+
+<a id="issue-7-intro"></a>
+
+**2026-09 · 02 链表**
+
+面试刷题提纲 · 2. 链表（5 — 客户端最高频）
+
+代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+| 题 | 难度 | 考点 | LeetCode | 代码 |
+| --- | --- | --- | --- | --- |
+| [反转链表](https://leetcode-cn.com/problems/reverse-linked-list/) | 简单 | 必考，迭代+递归都要会 | [#206](https://leetcode-cn.com/problems/reverse-linked-list/) | [ReverseLinkedList.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ReverseLinkedList.java) |
+| [环形链表 II](https://leetcode-cn.com/problems/linked-list-cycle-ii/) | 中等 | 快慢指针（高频） | [#142](https://leetcode-cn.com/problems/linked-list-cycle-ii/) | [LinkedListCycleIi.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LinkedListCycleIi.java) |
+| [删除链表倒数第 N 个节点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/) | 中等 | 快慢指针 | [#19](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/) | [RemoveNthNodeFromEndOfList.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/RemoveNthNodeFromEndOfList.java) |
+| [回文链表](https://leetcode-cn.com/problems/palindrome-linked-list/) | 简单 | 快慢指针 + 反转 | [#234](https://leetcode-cn.com/problems/palindrome-linked-list/) | [PalindromeLinkedList.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/PalindromeLinkedList.java) |
+| [复制带随机指针的链表](https://leetcode-cn.com/problems/copy-list-with-random-pointer/) | 中等 | 哈希 / 拼接拆分 | [#138](https://leetcode-cn.com/problems/copy-list-with-random-pointer/) | [CopyListWithRandomPointer.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/CopyListWithRandomPointer.java) |
+
+---
+
+在本 Issue 下按日期补充刷题笔记，格式示例：`
+
+#### 正文 · 2026.09.17
+
+<a id="issue-7-2026-09-17"></a>
+
+`
+
+#### 评论 · 2026.09.25
+
+<a id="issue-7-comment-1-2026-09-25"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/7#issuecomment-5830235590)
+
+[反转链表](https://leetcode-cn.com/problems/reverse-linked-list/) 原地翻转的方式，记录 prev、cur、next 指针，原地翻转以后返回 prev 结果，操作的步骤先拿到下一个节点后操作当前节点（断掉原来的关系），然后更新 prev，最后将 cur 后移动。翻转链表是操作其他相对复杂的链表操作的基础。
+
+[环形链表 II](https://leetcode-cn.com/problems/linked-list-cycle-ii/) 关键是怎么判断环，判断环的方式可以通过快、慢指针，快指针单次走两步，慢指针单词走一步，当快、慢指针为同一引用时可以认为存在环，如果快指针走到 null 时则无环。找到相遇点后，再从 head 开始与相遇点同步开始，再次相遇后就是环的入口。（快慢相遇判有环；一头拉回齐步走，再遇就是入口）
+
+[删除链表倒数第 N 个节点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/) 引入一个 dummy 节点，主要用于保护前驱节点，这次的快指针走指定 n + 1 步（因为引入了 dummy 节点），然后慢指针从 head 开始走，当快指针走完，就是需要删除的节点，
+
+[回文链表](https://leetcode-cn.com/problems/palindrome-linked-list/) 同样的快慢指针，慢指针一步走，快指针两步走，快指针结束后，慢指针就是在中间的位置，此时从中间位置对剩余的链表执行翻转操作，然后 head 和 middle 位置同步开始走，分别判断每一个节点的 val 进行确认，一旦出现不一致，则不是回文
+
+[复制带随机指针的链表](https://leetcode-cn.com/problems/copy-list-with-random-pointer/) 引入 HashMap 数据结构，第一遍将链表的节点信息全部存起来，然后通过这个 map 补充链表的 next、random 信息
+
+---
+
+## [#8 2026-09 · 03 二叉树](https://github.com/ZakAnun/discussing-algorithm/issues/8)
+
+<a id="issue-8-overview"></a>
+
+[在 GitHub 查看原 Issue →](https://github.com/ZakAnun/discussing-algorithm/issues/8)
+
+↑ 返回 [面试刷题提纲速查表](#interview-outline-2026-09) · 代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+#### 正文
+
+<a id="issue-8-intro"></a>
+
+**2026-09 · 03 二叉树**
+
+面试刷题提纲 · 3. 二叉树（5）
+
+代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+| 题 | 难度 | 考点 | LeetCode | 代码 |
+| --- | --- | --- | --- | --- |
+| [层序遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/) | 中等 | BFS + 队列 | [#102](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/) | [BinaryTreeLevelOrderTraversal.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/BinaryTreeLevelOrderTraversal.java) |
+| [最大深度](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/) | 简单 | 递归 | [#104](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/) | [MaximumDepthOfBinaryTree.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/MaximumDepthOfBinaryTree.java) |
+| [验证二叉搜索树](https://leetcode-cn.com/problems/validate-binary-search-tree/) | 中等 | 中序 / 上下界 | [#98](https://leetcode-cn.com/problems/validate-binary-search-tree/) | [ValidateBinarySearchTree.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ValidateBinarySearchTree.java) |
+| [最近公共祖先](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/) | 中等 | 高频 | [#236](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/) | [LowestCommonAncestorOfABinaryTree.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LowestCommonAncestorOfABinaryTree.java) |
+| [从前序与中序构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | 中等 | 递归分治 | [#105](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | [ConstructBinaryTreeFromPreorderAndInorderTraversal.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ConstructBinaryTreeFromPreorderAndInorderTraversal.java) |
+
+---
+
+在本 Issue 下按日期补充刷题笔记，格式示例：`
+
+#### 正文 · 2026.09.17
+
+<a id="issue-8-2026-09-17"></a>
+
+`
+
+#### 评论 · 2026.09.27
+
+<a id="issue-8-comment-1-2026-09-27"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/8#issuecomment-5851231142)
+
+[层序遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/) 刚好区分一下 BFS（宽度优先）、DFS（深度优先），层序则是宽度优先的例子，要实现能够获取到层序遍历的序列，需要获取到每一层信息以后通过队列这个数据结构协助完成整个流程。队列每次处理的元素都是每一层的元素。
+
+[最大深度](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/) 节点为空即当前没有，返回零。递归获取左子树深度，递归获取右子树深度，返回左子树、右子树深度中最大的值 + 1，因为当前已有节点因此包含当前层数
+
+[验证二叉搜索树](https://leetcode-cn.com/problems/validate-binary-search-tree/) 与最大深度的解题思路有点类似，分别判断左子树、右子树是否能够满足二叉搜索树的条件，需要注意的是单次的判断条件，需要判断在区间外的值，val <= low || val >= high 则认为不满足二叉搜索树的定义
+
+[最近公共祖先](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/) 同样的通过递归判断左、右子树是否拿到符合条件的节点（命中 p/q 或空则返回），如果左子树、右子树都不为空时，就找到结果了，否则继续查找，如果左子树为空就找右子树，反之就找左子树
+
+[从前序与中序构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) 前序遍历提供根节点（结果序列的第一个）、中序遍历提供左、右子树。步骤：从前序序列取树的根节点（第一个元素） -> 在中序序列中找到根节点的位置，该位置之前就是左子树，该位置之后就是右子树 -> 再通过已找到的左、右子树在前序序列中找根节点 以此类推，切到没有子节点就可以结束递归了（1. 前序第一个是根、2. 中序里根左边几个 = leftSize、3. 前序：根后面 leftSize 个是左，再往后是右、4. 中序：根左边是左，根右边是右）v_v ，本质上是切割每一个子树的序列推进，最终获取到复原后的二叉树
+
+---
+
+## [#9 2026-09 · 04 栈/队列](https://github.com/ZakAnun/discussing-algorithm/issues/9)
+
+<a id="issue-9-overview"></a>
+
+[在 GitHub 查看原 Issue →](https://github.com/ZakAnun/discussing-algorithm/issues/9)
+
+↑ 返回 [面试刷题提纲速查表](#interview-outline-2026-09) · 代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+#### 正文
+
+<a id="issue-9-intro"></a>
+
+**2026-09 · 04 栈/队列**
+
+面试刷题提纲 · 4. 栈 / 队列（2）
+
+代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+| 题 | 难度 | 考点 | LeetCode | 代码 |
+| --- | --- | --- | --- | --- |
+| [最小栈](https://leetcode-cn.com/problems/min-stack/) | 中等 | 辅助栈设计 | [#155](https://leetcode-cn.com/problems/min-stack/) | [MinStack.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/MinStack.java) |
+| [每日温度](https://leetcode-cn.com/problems/daily-temperatures/) | 中等 | 单调栈（高频模板） | [#739](https://leetcode-cn.com/problems/daily-temperatures/) | [DailyTemperatures.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/DailyTemperatures.java) |
+
+---
+
+在本 Issue 下按日期补充刷题笔记，格式示例：`
+
+#### 正文 · 2026.09.17
+
+<a id="issue-9-2026-09-17"></a>
+
+`
+
+#### 评论 · 2026.09.28
+
+<a id="issue-9-comment-1-2026-09-28"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/9#issuecomment-5869992047)
+
+[最小栈](https://leetcode-cn.com/problems/min-stack/) 使用 Deque、ArrayDeque 进行实现，引入一个 dataStack、一个 minStack，minStack push 先与栈顶判断取最小值，其他操作两个栈同步即可。ArrayDeque 在两端增删都是摊还 O(1) 当栈用很合适，节省掉 LinkedList 的节点开销
+
+[每日温度](https://leetcode-cn.com/problems/daily-temperatures/) 从场景转化成具体的问题，这道题是要下一个更大的元素（遇到更高温度时，栈顶日期的等待天数被确定），下标就是第几天；更热出现在第 i 天、等待的人是第 prev 天；中间隔了几天 = 两个「第几天」相减
+
+---
+
+## [#10 2026-09 · 05 二分查找](https://github.com/ZakAnun/discussing-algorithm/issues/10)
+
+<a id="issue-10-overview"></a>
+
+[在 GitHub 查看原 Issue →](https://github.com/ZakAnun/discussing-algorithm/issues/10)
+
+↑ 返回 [面试刷题提纲速查表](#interview-outline-2026-09) · 代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+#### 正文
+
+<a id="issue-10-intro"></a>
+
+**2026-09 · 05 二分查找**
+
+面试刷题提纲 · 5. 二分查找（2）
+
+代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+| 题 | 难度 | 考点 | LeetCode | 代码 |
+| --- | --- | --- | --- | --- |
+| [搜索插入位置](https://leetcode-cn.com/problems/search-insert-position/) | 简单 | 基础二分 | [#35](https://leetcode-cn.com/problems/search-insert-position/) | [SearchInsertPosition.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/SearchInsertPosition.java) |
+| [搜索旋转排序数组](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/) | 中等 | 高频，二分变形 | [#33](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/) | [SearchInRotatedSortedArray.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/SearchInRotatedSortedArray.java) |
+
+---
+
+在本 Issue 下按日期补充刷题笔记，格式示例：`
+
+#### 正文 · 2026.09.17
+
+<a id="issue-10-2026-09-17"></a>
+
+`
+
+#### 评论 · 2026.09.29
+
+<a id="issue-10-comment-1-2026-09-29"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/10#issuecomment-5890909137)
+
+[搜索插入位置](https://leetcode-cn.com/problems/search-insert-position/) 关键知识点，有序数组上做标准二分，时间复杂度一般是 O(logn)，因此本题要考察的是二分的实现以及时间复杂度的记忆。关键步骤：1. 区间 left、right 框住可能的答案范围、2. 取中点比较、3. mid 的值比 target 小了，就加左边丢掉（left = mid + 1），反之将右边丢掉（right = mid - 1)
+
+[搜索旋转排序数组](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/) 因为标准 O(logn) 的二分是需要有序为前提，这个题目需要进行多一步判断，在原有的判读基础上补充 nums[left]、nums[right] 的边界判断，确认被翻转的区间在哪部分，先判断左半 [left, mid] 是否升序、左半有序：看 target 是否落在左半数值范围内、右半 [mid, right] 有序：看 target 是否落在右半数值范围内，判断这些主要是为了有效控制区间
+
+---
+
+## [#11 2026-09 · 06 双指针/滑动窗口](https://github.com/ZakAnun/discussing-algorithm/issues/11)
+
+<a id="issue-11-overview"></a>
+
+[在 GitHub 查看原 Issue →](https://github.com/ZakAnun/discussing-algorithm/issues/11)
+
+↑ 返回 [面试刷题提纲速查表](#interview-outline-2026-09) · 代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+#### 正文
+
+<a id="issue-11-intro"></a>
+
+**2026-09 · 06 双指针/滑动窗口**
+
+面试刷题提纲 · 6. 双指针 / 滑动窗口（3）
+
+代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+| 题 | 难度 | 考点 | LeetCode | 代码 |
+| --- | --- | --- | --- | --- |
+| [无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/) | 中等 | 滑动窗口（必考模板） | [#3](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/) | [LongestSubstringWithoutRepeatingCharacters.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LongestSubstringWithoutRepeatingCharacters.java) |
+| [长度最小的子数组](https://leetcode-cn.com/problems/minimum-size-subarray-sum/) | 中等 | 滑动窗口 | [#209](https://leetcode-cn.com/problems/minimum-size-subarray-sum/) | [MinimumSizeSubarraySum.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/MinimumSizeSubarraySum.java) |
+| [盛最多水的容器](https://leetcode-cn.com/problems/container-with-most-water/) | 中等 | 双指针 | [#11](https://leetcode-cn.com/problems/container-with-most-water/) | [ContainerWithMostWater.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ContainerWithMostWater.java) |
+
+---
+
+在本 Issue 下按日期补充刷题笔记，格式示例：`
+
+#### 正文 · 2026.09.17
+
+<a id="issue-11-2026-09-17"></a>
+
+`
+
+#### 评论 · 2026.09.30
+
+<a id="issue-11-comment-1-2026-09-30"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/11#issuecomment-5914346246)
+
+[无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/) 滑动窗口可以通过 map 来记录每一个判断过的窗口，right 为每个选择操作的窗口，主要是操作 left 节点，窗口存在不符合要求的情况就需要移动 left，最后取每个区间内个数（right - left + 1）作为本题的结果，需要注意的是 lastIndex.containsKey(c) && lastIndex.get(c) >= left（>= 用来确认重复发生在当前窗口内，等于 left 时左端也算窗口里）
+
+#### 评论 · 2026.09.31
+
+<a id="issue-11-comment-2-2026-09-31"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/11#issuecomment-5924510434)
+
+[长度最小的子数组](https://leetcode-cn.com/problems/minimum-size-subarray-sum/) 依然是通过滑动窗口解决这个问题，但是数据是操作数组，因此可以记录窗口结果从 map 替换成和。正整数数组上，最小窗口使 sum(窗口) ≥ target；没有则 0。步骤：右扩加和；够了就左缩求更短；缩到不够为止；从没够过就返回 0。
+
+[盛最多水的容器](https://leetcode-cn.com/problems/container-with-most-water/) 左右两边同时获取面积，关键是下一步的窗口调整，因为面积是根据小的那根确定的，因此移动窗口范围时应该判断 height[left] < height[right] -> left++ 因为想要换一个更高的，否则 right--。保留高边、换掉矮边，才可能超过当前最优。
+
+---
+
+## [#12 2026-09 · 07 动态规划](https://github.com/ZakAnun/discussing-algorithm/issues/12)
+
+<a id="issue-12-overview"></a>
+
+[在 GitHub 查看原 Issue →](https://github.com/ZakAnun/discussing-algorithm/issues/12)
+
+↑ 返回 [面试刷题提纲速查表](#interview-outline-2026-09) · 代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+#### 正文
+
+<a id="issue-12-intro"></a>
+
+**2026-09 · 07 动态规划**
+
+面试刷题提纲 · 7. 动态规划（4 — 只刷基础经典）
+
+代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+| 题 | 难度 | 考点 | LeetCode | 代码 |
+| --- | --- | --- | --- | --- |
+| [爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/) | 简单 | DP 入门 | [#70](https://leetcode-cn.com/problems/climbing-stairs/) | [ClimbingStairs.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ClimbingStairs.java) |
+| [最大子数组和](https://leetcode-cn.com/problems/maximum-subarray/) | 中等 | Kadane（高频） | [#53](https://leetcode-cn.com/problems/maximum-subarray/) | [MaximumSubarray.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/MaximumSubarray.java) |
+| [打家劫舍](https://leetcode-cn.com/problems/house-robber/) | 中等 | 一维 DP | [#198](https://leetcode-cn.com/problems/house-robber/) | [HouseRobber.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/HouseRobber.java) |
+| [最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/) | 中等 | 高频，O(n²) 即可 | [#300](https://leetcode-cn.com/problems/longest-increasing-subsequence/) | [LongestIncreasingSubsequence.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LongestIncreasingSubsequence.java) |
+
+---
+
+在本 Issue 下按日期补充刷题笔记，格式示例：`
+
+#### 正文 · 2026.09.17
+
+<a id="issue-12-2026-09-17"></a>
+
+`
+
+#### 评论 · 2026.10.03
+
+<a id="issue-12-comment-1-2026-10-03"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/12#issuecomment-5970573259)
+
+[爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/) 动态规划要找到状态方程，但是不知道怎么推出来这个方程。dp[i] = dp[i-1] + dp[i-2] 这个方程推导顺序：1、判断决策是什么（每次走 1 或 2）；2、定状态 → dp[i] 表示什么（到第 i 阶的方法数）；3、写出方程 → 最后一步只有两种来源 → dp[i] = dp[i-1] + dp[i-2]；4、补边界和循环；
+
+[最大子数组和](https://leetcode-cn.com/problems/maximum-subarray/) 这道题一开始还感觉是需要使用滑动窗口进行解题，但滑动窗口的解法还需要与目标值进行对比、参考，而本题需要的是求最值。因此一般来说求方案数、最大、最小，且由最小规模拼出的话可以往 dp（动态规划）靠拢，与简单的 dp 题型的顺序一致。如果想不出来只能如实说明情况了...（应该是要靠多做题可以解决 =-=）
+
+[打家劫舍](https://leetcode-cn.com/problems/house-robber/) 开始理解错了，区分成了奇数、偶数取最大，但实际上还隐含了能够间隔多几个房间进行获取，dp[i] = 偷到第 i 间（下标 i）时能得到的最大金额、不偷 i → dp[i-1]；偷 i → dp[i-2] + nums[i]、dp[i] = max(dp[i-1], dp[i-2] + nums[i])
+
+[最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/) 状态：lisEndingAt[i] = 以 nums[i] 结尾时，最长递增子序列有多长，lisEndingAt[i] 带着「必须以 i 结尾」的约束，方便转移（接在某个 j 后面）， 算完「以 i 结尾」这一格后，更新全局最长。内嵌循环的时间复杂度优化方式（内部改用二分查找）可以由 O(n^2) 降到 O(nlogn)
+
+---
+
+## [#13 2026-09 · 08 设计题](https://github.com/ZakAnun/discussing-algorithm/issues/13)
+
+<a id="issue-13-overview"></a>
+
+[在 GitHub 查看原 Issue →](https://github.com/ZakAnun/discussing-algorithm/issues/13)
+
+↑ 返回 [面试刷题提纲速查表](#interview-outline-2026-09) · 代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+#### 正文
+
+<a id="issue-13-intro"></a>
+
+**2026-09 · 08 设计题**
+
+面试刷题提纲 · 8. 设计题（1 — 性价比最高）
+
+代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+| 题 | 难度 | 考点 | LeetCode | 代码 |
+| --- | --- | --- | --- | --- |
+| [LRU 缓存](https://leetcode-cn.com/problems/lru-cache/) | 中等 | 哈希 + 双向链表（极高频，可绑定 Android LruCache） | [#146](https://leetcode-cn.com/problems/lru-cache/) | [LruCache.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LruCache.java) |
+
+---
+
+在本 Issue 下按日期补充刷题笔记，格式示例：`
+
+#### 正文 · 2026.09.17
+
+<a id="issue-13-2026-09-17"></a>
+
+`
+
+#### 评论 · 2026.10.04
+
+<a id="issue-13-comment-1-2026-10-04"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/13#issuecomment-5975966188)
+
+[LRU 缓存](https://leetcode-cn.com/problems/lru-cache/) LRU 淘汰最久没被访问的数据；需要使用 HashMap O(1) 按 key 找节点，使用双向链表 O(1) 维护顺序（头 = 最近用，尾 = 最久未用），命中 / 更新：节点移到头部，容量满再插入：删尾部，并从 Map 去掉。设计还需要包含总容量（capacity）和当前大小（size），以判断是否需要删尾部。实战中应该使用 LinkedHashMap 或 Caffeine 实现相关业务功能
+
+---
+
+## [#14 2026-09 · 09 BFS/DFS/回溯](https://github.com/ZakAnun/discussing-algorithm/issues/14)
+
+<a id="issue-14-overview"></a>
+
+[在 GitHub 查看原 Issue →](https://github.com/ZakAnun/discussing-algorithm/issues/14)
+
+↑ 返回 [面试刷题提纲速查表](#interview-outline-2026-09) · 代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+#### 正文
+
+<a id="issue-14-intro"></a>
+
+**2026-09 · 09 BFS/DFS/回溯**
+
+面试刷题提纲 · 9. BFS / DFS / 回溯（3）
+
+代码目录：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+| 题 | 难度 | 考点 | LeetCode | 代码 |
+| --- | --- | --- | --- | --- |
+| [岛屿数量](https://leetcode-cn.com/problems/number-of-islands/) | 中等 | DFS/BFS（必考） | [#200](https://leetcode-cn.com/problems/number-of-islands/) | [NumberOfIslands.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/NumberOfIslands.java) |
+| [全排列](https://leetcode-cn.com/problems/permutations/) | 中等 | 回溯模板 | [#46](https://leetcode-cn.com/problems/permutations/) | [Permutations.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/Permutations.java) |
+| [子集](https://leetcode-cn.com/problems/subsets/) | 中等 | 回溯 | [#78](https://leetcode-cn.com/problems/subsets/) | [Subsets.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/Subsets.java) |
+
+---
+
+在本 Issue 下按日期补充刷题笔记，格式示例：`
+
+#### 正文 · 2026.09.17
+
+<a id="issue-14-2026-09-17"></a>
+
+`
+
+#### 评论 · 2026.10.04
+
+<a id="issue-14-comment-1-2026-10-04"></a>
+
+[在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/14#issuecomment-5978662006)
+
+[岛屿数量](https://leetcode-cn.com/problems/number-of-islands/) 需要先将题意整理出来，格子里 '1' 是陆地，'0' 是水，上下左右连在一起的陆地算一座岛，需要求的是有多少座岛。整体思路是遍历这个二维数组，发现 item 为 '1' 后记录岛屿数量，因为上下左右连着的算是一座岛因此，需要将相连的岛屿信息都设置好。怎么区分 DFS、BFS？DFS 是一条路走到底后再走别的（递归），BFS 一层层扩，先处理完邻居，再处理剩余的（队列）
+
+[全排列](https://leetcode-cn.com/problems/permutations/) DFS 的变种，整体流程：选定当前下标 → DFS 穷举后面所有补全 → 子树结束 → 撤销当前标记 → 再试同层下一个下标。区别于上一题是在罗列完单个结果集合以后需要撤销当前标记避免结果遗漏。
+
+[子集](https://leetcode-cn.com/problems/subsets/) 全排列的变形，放开了结果集的获取条件，因此递归过程中每次都是一个结果集
+
+---
+
 ## 相关链接
 
 - [GitHub 仓库](https://github.com/ZakAnun/discussing-algorithm)
 - [Issues 讨论区](https://github.com/ZakAnun/discussing-algorithm/issues)
+- [2026-09 面试提纲总目录 Issue #5](https://github.com/ZakAnun/discussing-algorithm/issues/5)
 - [LeetCode 中国站](https://leetcode-cn.com/)
 - [labuladong 算法小抄](https://github.com/labuladong/fucking-algorithm)
