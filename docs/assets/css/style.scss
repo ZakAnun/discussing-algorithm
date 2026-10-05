@@ -3,16 +3,55 @@
 
 @import "{{ site.theme }}";
 
-/* Architect 主题正文偏窄，宽表格需单独处理 */
-.main-content {
-  max-width: 1100px;
+/* 全宽正文：去掉 Architect 默认右侧 sidebar 后的布局 */
+header .inner,
+#content-wrapper .inner,
+#site-footer .inner {
+  max-width: min(1280px, 96vw);
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+}
+
+#content-wrapper .inner.clearfix::before,
+#content-wrapper .inner.clearfix::after {
+  display: none;
+}
+
+#main-content {
+  width: 100% !important;
+  float: none !important;
+  max-width: none !important;
+  padding-right: 0 !important;
+}
+
+#site-footer {
+  margin-top: 2.5rem;
+  padding: 1.25rem 0 2rem;
+  border-top: 1px solid #dfe2e5;
+  background: #f6f8fa;
+  text-align: center;
+  color: #586069;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+#site-footer p {
+  margin: 0.35rem 0;
+}
+
+#site-footer a {
+  color: #0366d6;
 }
 
 .table-scroll {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin: 1rem 0 1.5rem;
-  padding: 0.25rem;
+  padding: 0.35rem;
   border: 1px solid #dfe2e5;
   border-radius: 6px;
   background: #fafbfc;
@@ -31,8 +70,7 @@
   word-break: break-word;
   vertical-align: top;
   line-height: 1.5;
-  padding: 0.55rem 0.75rem;
-  max-width: 22rem;
+  padding: 0.55rem 0.85rem;
 }
 
 .table-scroll th {
@@ -43,10 +81,9 @@
 .table-scroll td:nth-child(1),
 .table-scroll td:nth-child(3) {
   white-space: nowrap;
-  max-width: none;
 }
 
-/* Issue 正文里自带的题目表：允许横向滚动，避免七列挤成一团 */
+/* Issue 正文里的题目表：横向滚动，不压列宽 */
 .main-content table {
   display: block;
   overflow-x: auto;
