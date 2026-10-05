@@ -1,12 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Z">
   <rect width="32" height="32" rx="7" fill="#2e7bcf"/>
-  <text
-    x="16"
-    y="23"
+  <!-- 纯路径 Z：favicon 里不用 text，避免无字体时被画反或乱码 -->
+  <path
     fill="#ffffff"
-    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-    font-size="22"
-    font-weight="700"
-    text-anchor="middle"
-  >Z</text>
+    d="M 8 7 H 24 V 12 H 8 Z
+       M 20 12 L 24 12 L 12 21 L 8 21 Z
+       M 8 20 H 24 V 25 H 8 Z"
+  />
 </svg>
