@@ -207,7 +207,7 @@ def build_method_body(class_name, ret, method, kind, demo, extra):
 def build_solution(class_name, ret, method):
     if needs_min_stack(class_name):
         return f'''class {class_name} {{
-    // TODO: 实现最小栈
+    // 在此实现最小栈
 }}
 
 class Solution {{
@@ -239,84 +239,84 @@ class Solution {{
     if class_name == "ConstructBinaryTreeFromPreorderAndInorderTraversal":
         return f'''class Solution {{
     public BinaryTreeNode {method}(int[] preorder, int[] inorder) {{
-        // TODO: 递归分治
+        // 递归分治
         {body}
     }}
 }}'''
     if class_name == "LowestCommonAncestorOfABinaryTree":
         return f'''class Solution {{
     public BinaryTreeNode {method}(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q) {{
-        // TODO: 最近公共祖先
+        // 后序递归
         {body}
     }}
 }}'''
     if class_name == "BinaryTreeLevelOrderTraversal":
         return f'''class Solution {{
     public java.util.List<java.util.List<Integer>> {method}(BinaryTreeNode root) {{
-        // TODO: BFS 层序遍历
+        // BFS 层序遍历
         return new java.util.ArrayList<>();
     }}
 }}'''
     if class_name == "ThreeSum":
         return f'''class Solution {{
     public java.util.List<java.util.List<Integer>> {method}(int[] nums) {{
-        // TODO: 排序 + 双指针
+        // 排序 + 双指针
         return new java.util.ArrayList<>();
     }}
 }}'''
     if class_name == "Permutations":
         return f'''class Solution {{
     public java.util.List<java.util.List<Integer>> {method}(int[] nums) {{
-        // TODO: 回溯
+        // 回溯
         return new java.util.ArrayList<>();
     }}
 }}'''
     if class_name == "Subsets":
         return f'''class Solution {{
     public java.util.List<java.util.List<Integer>> {method}(int[] nums) {{
-        // TODO: 回溯
+        // 回溯
         return new java.util.ArrayList<>();
     }}
 }}'''
     if class_name == "MergeIntervals":
         return f'''class Solution {{
     public int[][] {method}(int[][] intervals) {{
-        // TODO: 排序 + 合并区间
+        // 排序 + 合并区间
         {body}
     }}
 }}'''
     if class_name == "ClimbingStairs":
         return f'''class Solution {{
     public int {method}(int n) {{
-        // TODO: DP 入门
+        // DP 入门
         {body}
     }}
 }}'''
     if class_name == "SearchInsertPosition":
         return f'''class Solution {{
     public int {method}(int[] nums, int target) {{
-        // TODO: 基础二分
+        // 基础二分
         {body}
     }}
 }}'''
     if class_name == "SearchInRotatedSortedArray":
         return f'''class Solution {{
     public int {method}(int[] nums, int target) {{
-        // TODO: 旋转数组二分
+        // 旋转数组二分
         {body}
     }}
 }}'''
     if class_name == "MinimumSizeSubarraySum":
         return f'''class Solution {{
     public int {method}(int target, int[] nums) {{
-        // TODO: 滑动窗口
+        // 滑动窗口
         {body}
     }}
 }}'''
     if class_name == "RemoveNthNodeFromEndOfList":
         return f'''class Solution {{
     public ListNode {method}(ListNode head, int n) {{
-        // TODO: 快慢指针
+        // 快慢指针
         {body}
     }}
 }}'''
@@ -338,7 +338,6 @@ class Solution {{
 
     return f'''class Solution {{
     public {ret} {method}({params}) {{
-        // TODO
         {body}
     }}
 }}'''

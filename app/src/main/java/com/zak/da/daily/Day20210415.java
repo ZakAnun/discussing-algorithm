@@ -28,7 +28,7 @@ public class Day20210415 {
         System.out.println("最高能拿到: " + result);
     }
 
-    // TODO: 重温
+    /** 环形：拆成「不含尾屋」「不含头屋」两段线性 {@link #robRange}，取较大值。 */
     public static int rob(int[] num) {
         int length = num.length;
         if (length == 1) {

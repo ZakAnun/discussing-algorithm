@@ -855,7 +855,7 @@ public class BinTreeTraversal {
     }
 
     /**
-     * 637. 二叉树的层平均值（BFS）TODO: 补充 DFS 解法
+     * 637. 二叉树的层平均值（BFS 层序）
      *
      * @param root 二叉树
      *
@@ -891,6 +891,38 @@ public class BinTreeTraversal {
         }
 
         return result;
+    }
+
+    /**
+     * 637. 二叉树的层平均值（DFS：按深度累加 sum/count，再求平均）
+     */
+    public static List<Double> averageOfLevelsDFS(BinaryTreeNode root) {
+        List<Double> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+        List<Long> sums = new ArrayList<>();
+        List<Integer> counts = new ArrayList<>();
+        dfsLevelAverage(root, 0, sums, counts);
+        for (int i = 0; i < sums.size(); i++) {
+            result.add(sums.get(i) / (double) counts.get(i));
+        }
+        return result;
+    }
+
+    private static void dfsLevelAverage(
+            BinaryTreeNode node, int depth, List<Long> sums, List<Integer> counts) {
+        if (node == null) {
+            return;
+        }
+        while (sums.size() <= depth) {
+            sums.add(0L);
+            counts.add(0);
+        }
+        sums.set(depth, sums.get(depth) + node.getValue());
+        counts.set(depth, counts.get(depth) + 1);
+        dfsLevelAverage(node.getLeft(), depth + 1, sums, counts);
+        dfsLevelAverage(node.getRight(), depth + 1, sums, counts);
     }
 
     /**

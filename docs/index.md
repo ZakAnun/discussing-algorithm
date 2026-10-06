@@ -398,17 +398,17 @@ N 叉树定义为一个节点可以对应多个子节点，可能文字说明不
 **总结一下: **今天看了一下，题库的筛选里 - 树 - 遍历的筛选做的差不多，剩下的
 
 [1028. 从先序遍历还原二叉树](https://leetcode-cn.com/problems/recover-a-tree-from-preorder-traversal/)
-// TODO: 题解
+题意：先序字符串用 `-` 表示深度（每多一个 `-` 深一层）。用栈维护「当前路径上的节点」：读到数字则新建节点；根据 `-` 的个数先弹栈到正确深度，再挂到栈顶父节点的左/右（左子若空则挂左，否则挂右）。与手工解析缩进先序是一回事。
 
 [面试题 04.09. 二叉搜索树序列](https://leetcode-cn.com/problems/bst-sequences-lcci/)
-// TODO: 题解
+题意：给定 BST，求所有合法插入顺序。回溯：当前可选「左子树或右子树中尚未使用的根值」作为下一个插入值；选完后递归左右子树各自剩余的插入序列（Cracking the Coding Interview 经典分治 + 回溯）。
 
-[1130. 叶值的最小代价生成树](https://leetcode-cn.com/problems/minimum-cost-tree-from-leaf-values/) 
-// TODO: 题解
+[1130. 叶值的最小代价生成树](https://leetcode-cn.com/problems/minimum-cost-tree-from-leaf-values/)
+题意：只能合并相邻叶子，代价为两叶乘积，求最小总代价。单调栈找每个叶子的左右更小邻居，DP：`dp[i]=min over j` 的 `dp[i..j] + max*min` 类合并；或按「总是合并当前相邻最小乘积对」的贪心（见官方题解）。与「合并石子」不同，关键是相邻约束 + 乘积代价。
 
 （其他要充钱的题目，暂时不做...）
 
-上面三道题看完之后能想到的解题方式都是想将题目尽可能地转换成前面刷过的题目去解决，但最终发现都差点意思（做不出来），看了题解后跟前面的方式也有区别，所以决定换个筛选条件，扩充一下解题方式，然后再来做这些题目（ :-( ）
+上面三道题当时做不出来，后来对照题解：1028 偏栈/字符串解析，04.09 偏回溯拆子序列，1130 偏单调栈 + DP，和「普通遍历题」套路不一样，所以当时换筛选先扩充题型再刷。
 
 #### 评论 · 2021.04.11
 
@@ -898,8 +898,12 @@ while(true) {
 
 [在 GitHub 打开此段讨论 →](https://github.com/ZakAnun/discussing-algorithm/issues/2#issuecomment-841708114)
 
-[421. 数组中两个数的最大异或值](https://leetcode-cn.com/problems/maximum-xor-of-two-numbers-in-an-array/solution/shu-zu-zhong-liang-ge-shu-de-zui-da-yi-h-n9m9/)
-这题暴力方法是以 O(n^2) 的时间复杂度完成判断，[题解](https://leetcode-cn.com/problems/maximum-xor-of-two-numbers-in-an-array/solution/shu-zu-zhong-liang-ge-shu-de-zui-da-yi-h-n9m9/)没看到明白...（TODO）
+[421. 数组中两个数的最大异或值](https://leetcode-cn.com/problems/maximum-xor-of-two-numbers-in-an-array/)
+暴力：双重循环枚举 pair，取 `nums[i] ^ nums[j]` 最大值，O(n²)，见仓库 [Day20210516.java](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/daily/Day20210516.java)。
+
+O(n) 进阶：按二进制位从高到低建 0/1 Trie；对每个数在 Trie 里贪心走「与当前位相反」的分支（不存在则走同向），累加每一位的贡献，即得与其它数能构成的最大异或。核心是按位最大化，而不是排序后双指针。
+
+[题解参考](https://leetcode-cn.com/problems/maximum-xor-of-two-numbers-in-an-array/solution/shu-zu-zhong-liang-ge-shu-de-zui-da-yi-h-n9m9/)
 
 [代码链接](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/daily/Day20210516.java)
 
