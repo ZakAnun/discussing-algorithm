@@ -12,6 +12,65 @@ FIRST_TOPIC_ISSUE_NUM = 6
 # (中文名, 难度, 考点, LeetCode题号, slug, Java类名)
 SectionItem = tuple[str, str, str, int, str, str]
 
+# Topic 核心要点（Pages 首页速查表上方；口诀 / 备案与面试附录对齐）
+# motto: 一句话口诀；backup: 忘题时先想什么；complexity: 复杂度直觉
+TOPIC_CORES: list[dict[str, str]] = [
+    {
+        "topic": "哈希/数组",
+        "motto": "别暴力扫；连续 / 区间 → Set 或排序",
+        "backup": "能 O(1) 查吗？区间要先排序吗？",
+        "complexity": "扫一遍 O(n)",
+    },
+    {
+        "topic": "链表",
+        "motto": "指针游戏；倒数 / 环 → 快慢针；random → HashMap 两遍",
+        "backup": "dummy？快慢针？改 next 前存 successor？",
+        "complexity": "一般 O(n)",
+    },
+    {
+        "topic": "二叉树",
+        "motto": "深度/验证 → 递归+边界；层序 → BFS；LCA → 后序；建树 → 前序根+中序分左右",
+        "backup": "递归返回什么？BFS 用 queue + 每层 size？",
+        "complexity": "O(n)",
+    },
+    {
+        "topic": "栈/队列",
+        "motto": "最小值 → 同步最小栈；下一个更大 → 单调栈存下标",
+        "backup": "设计题双栈？「下一个更大」→ 单调栈存下标",
+        "complexity": "均摊 O(1) / O(n)",
+    },
+    {
+        "topic": "二分查找",
+        "motto": "有序 → while(l<=r)；旋转 → 至少一半有序，判 target 在哪半",
+        "backup": "l<=r，旋转数组哪半边有序？",
+        "complexity": "O(log n)",
+    },
+    {
+        "topic": "双指针/滑动窗口",
+        "motto": "连续子串/子数组 → 扩右收左；盛水 → 移较短边",
+        "backup": "右扩、不满足则左缩；盛水移短板",
+        "complexity": "O(n)",
+    },
+    {
+        "topic": "动态规划",
+        "motto": "写清 dp 含义；子数组最大和 → Kadane",
+        "backup": "dp[i] 一句话含义 + 从 i-1/i-2 转移",
+        "complexity": "看维度",
+    },
+    {
+        "topic": "设计题",
+        "motto": "LRU = HashMap 定位 + 双向链表管顺序",
+        "backup": "get/put 都要 moveToHead；满则删尾",
+        "complexity": "get/put O(1)",
+    },
+    {
+        "topic": "BFS/DFS/回溯",
+        "motto": "网格 '1' → DFS 沉岛；排列 used；子集 选/不选 或 start",
+        "backup": "沉岛 DFS；回溯 选→递归→撤销",
+        "complexity": "视状态空间",
+    },
+]
+
 SECTIONS: list[dict] = [
     {
         "title": "1. 哈希 / 数组（4）",

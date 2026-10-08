@@ -14,6 +14,7 @@ from interview_sections import (
     INDEX_ISSUE_NUM,
     ISSUE_PREFIX,
     SECTIONS,
+    TOPIC_CORES,
     topic_issue_number,
 )
 
@@ -191,36 +192,76 @@ def index_note_for_slug(
     return sep.join(parts)
 
 
+def build_topic_cores_block() -> list[str]:
+    """9 个 Topic 核心要点（放在题目速查表之前）。"""
+    cores_anchor = "interview-topic-cores"
+    lines = [
+        f"### Topic 核心要点",
+        "",
+        f'<a id="{cores_anchor}"></a>',
+        "",
+        "进考场先扫本表：每个 Topic **口诀 → 备案（忘题时先问自己）→ 复杂度直觉**。"
+        " 面试陈述顺序：题意边界 → 模型 → 复杂度 → 编码 → 样例 + 边界。",
+        "",
+        '<div class="table-scroll" markdown="1">',
+        "",
+        "| Topic | 核心口诀 | 备案（忘题先问） | 复杂度直觉 |",
+        "| --- | --- | --- | --- |",
+    ]
+    for idx, core in enumerate(TOPIC_CORES, start=1):
+        issue_num = topic_issue_number(idx)
+        topic_link = (
+            f"{idx}. [{core['topic']}](#{anchor_id(issue_num, 'overview')})"
+        )
+        lines.append(
+            f"| {topic_link} | {core['motto']} | {core['backup']} | {core['complexity']} |"
+        )
+    lines.extend(["", "</div>", ""])
+    return lines
+
+
 def build_interview_hub(
     issues_by_num: dict[int, dict],
     notes_index: dict[str, list[dict]],
 ) -> tuple[list[str], list[str]]:
-    """面试提纲速查表 + 各 Topic 子目录。"""
+    """面试提纲：Topic 核心要点 + 题目速查表 + 各 Topic 子目录。"""
     hub_anchor = "interview-outline-2026-09"
+    cores_anchor = "interview-topic-cores"
     lines = [
         f"## {ISSUE_PREFIX} 面试刷题提纲速查",
         "",
-        f"<a id=\"{hub_anchor}\"></a>",
+        f'<a id="{hub_anchor}"></a>',
         "",
-        "下表可直达 **题解 Java 源码**、对应 **Topic Issue 归档**，以及 Issue **评论笔记**在本页的锚点。",
+        "先看 **[Topic 核心要点](#" + cores_anchor + ")**，再按下表直达 **题解 Java 源码**、"
+        "**Topic Issue 归档** 与 Issue **评论笔记**。",
         "",
         f"总目录 Issue：[#{INDEX_ISSUE_NUM}]({BASE}/issues/{INDEX_ISSUE_NUM}) · "
         f"[本页归档](#{anchor_id(INDEX_ISSUE_NUM, 'overview')})",
         "",
-        "（表格较宽时可 **左右滑动** 查看；「笔记」为页内锚点，完整讨论见对应 Issue。）",
-        "",
-        '<div class="table-scroll" markdown="1">',
-        "",
-        "| 模块 | 题目 | 难度 | 题解 | Issue · 笔记 |",
-        "| --- | --- | --- | --- | --- |",
     ]
+    lines.extend(build_topic_cores_block())
+    lines.extend(
+        [
+            "### 题目速查表",
+            "",
+            "（表格较宽时可 **左右滑动** 查看；「笔记」为页内锚点，完整讨论见对应 Issue。）",
+            "",
+            '<div class="table-scroll" markdown="1">',
+            "",
+            "| 模块 | 题目 | 难度 | 题解 | Issue · 笔记 |",
+            "| --- | --- | --- | --- | --- |",
+        ]
+    )
 
-    topic_toc = [f"- [{ISSUE_PREFIX} 面试刷题提纲速查](#{hub_anchor})"]
+    topic_toc = [
+        f"- [{ISSUE_PREFIX} 面试刷题提纲速查](#{hub_anchor})",
+        f"  - [Topic 核心要点](#{cores_anchor})",
+        f"  - [题目速查表](#{hub_anchor})",
+    ]
 
     for topic_idx, section in enumerate(SECTIONS, start=1):
         issue_num = topic_issue_number(topic_idx)
         issue = issues_by_num.get(issue_num)
-        issue_title = issue["title"] if issue else section["topic"]
         issue_page = f"#{anchor_id(issue_num, 'overview')}"
         issue_gh = f"{BASE}/issues/{issue_num}"
         topic_toc.append(
@@ -349,7 +390,7 @@ def build_page(issues):
         "按 [labuladong 的刷题思路](https://github.com/labuladong/fucking-algorithm) 进行练习。",
         "",
         "本页完整归档 GitHub Issues 中的刷题笔记（含正文与全部评论）。"
-        f" **{ISSUE_PREFIX} 面试提纲** 见下方速查表，可跳转题解源码与评论笔记。",
+        f" **{ISSUE_PREFIX} 面试提纲** 见下方：**Topic 核心要点** + 题目速查表，可跳转题解源码与评论笔记。",
         "",
         "---",
         "",

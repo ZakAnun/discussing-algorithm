@@ -7,7 +7,7 @@ title: discussing-algorithm
 
 算法刷题记录与讨论总结，题目主要来自 [LeetCode 中国站](https://leetcode-cn.com/)，按 [labuladong 的刷题思路](https://github.com/labuladong/fucking-algorithm) 进行练习。
 
-本页完整归档 GitHub Issues 中的刷题笔记（含正文与全部评论）。 **2026-09 面试提纲** 见下方速查表，可跳转题解源码与评论笔记。
+本页完整归档 GitHub Issues 中的刷题笔记（含正文与全部评论）。 **2026-09 面试提纲** 见下方：**Topic 核心要点** + 题目速查表，可跳转题解源码与评论笔记。
 
 ---
 
@@ -15,9 +15,33 @@ title: discussing-algorithm
 
 <a id="interview-outline-2026-09"></a>
 
-下表可直达 **题解 Java 源码**、对应 **Topic Issue 归档**，以及 Issue **评论笔记**在本页的锚点。
+先看 **[Topic 核心要点](#interview-topic-cores)**，再按下表直达 **题解 Java 源码**、**Topic Issue 归档** 与 Issue **评论笔记**。
 
 总目录 Issue：[#5](https://github.com/ZakAnun/discussing-algorithm/issues/5) · [本页归档](#issue-5-overview)
+
+### Topic 核心要点
+
+<a id="interview-topic-cores"></a>
+
+进考场先扫本表：每个 Topic **口诀 → 备案（忘题时先问自己）→ 复杂度直觉**。 面试陈述顺序：题意边界 → 模型 → 复杂度 → 编码 → 样例 + 边界。
+
+<div class="table-scroll" markdown="1">
+
+| Topic | 核心口诀 | 备案（忘题先问） | 复杂度直觉 |
+| --- | --- | --- | --- |
+| 1. [哈希/数组](#issue-6-overview) | 别暴力扫；连续 / 区间 → Set 或排序 | 能 O(1) 查吗？区间要先排序吗？ | 扫一遍 O(n) |
+| 2. [链表](#issue-7-overview) | 指针游戏；倒数 / 环 → 快慢针；random → HashMap 两遍 | dummy？快慢针？改 next 前存 successor？ | 一般 O(n) |
+| 3. [二叉树](#issue-8-overview) | 深度/验证 → 递归+边界；层序 → BFS；LCA → 后序；建树 → 前序根+中序分左右 | 递归返回什么？BFS 用 queue + 每层 size？ | O(n) |
+| 4. [栈/队列](#issue-9-overview) | 最小值 → 同步最小栈；下一个更大 → 单调栈存下标 | 设计题双栈？「下一个更大」→ 单调栈存下标 | 均摊 O(1) / O(n) |
+| 5. [二分查找](#issue-10-overview) | 有序 → while(l<=r)；旋转 → 至少一半有序，判 target 在哪半 | l<=r，旋转数组哪半边有序？ | O(log n) |
+| 6. [双指针/滑动窗口](#issue-11-overview) | 连续子串/子数组 → 扩右收左；盛水 → 移较短边 | 右扩、不满足则左缩；盛水移短板 | O(n) |
+| 7. [动态规划](#issue-12-overview) | 写清 dp 含义；子数组最大和 → Kadane | dp[i] 一句话含义 + 从 i-1/i-2 转移 | 看维度 |
+| 8. [设计题](#issue-13-overview) | LRU = HashMap 定位 + 双向链表管顺序 | get/put 都要 moveToHead；满则删尾 | get/put O(1) |
+| 9. [BFS/DFS/回溯](#issue-14-overview) | 网格 '1' → DFS 沉岛；排列 used；子集 选/不选 或 start | 沉岛 DFS；回溯 选→递归→撤销 | 视状态空间 |
+
+</div>
+
+### 题目速查表
 
 （表格较宽时可 **左右滑动** 查看；「笔记」为页内锚点，完整讨论见对应 Issue。）
 
@@ -62,6 +86,8 @@ title: discussing-algorithm
 ## 目录
 
 - [2026-09 面试刷题提纲速查](#interview-outline-2026-09)
+  - [Topic 核心要点](#interview-topic-cores)
+  - [题目速查表](#interview-outline-2026-09)
   - [Topic 01 哈希/数组 (#6)](#issue-6-overview) · [GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/6)
   - [Topic 02 链表 (#7)](#issue-7-overview) · [GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/7)
   - [Topic 03 二叉树 (#8)](#issue-8-overview) · [GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/8)
