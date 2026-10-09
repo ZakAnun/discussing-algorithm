@@ -20,6 +20,21 @@
       "problemMatcher": []
     },
     {
+      "label": "Generate GitHub Pages",
+      "type": "shell",
+      "command": "bash scripts/run-generate-pages.sh",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
       "label": "Gradle: assembleDebug",
       "type": "shell",
       "command": "./gradlew assembleDebug",

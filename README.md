@@ -28,18 +28,14 @@ scripts/
 docs/                            # GitHub Pages
 ```
 
-## 本地运行
-
-需 Java 11 跑 Gradle（编译目标 Java 8）。仓库根目录：
+## 常用命令
 
 ```bash
+# 跑一题
 bash scripts/run-demo.sh app/src/main/java/com/zak/da/template/leetcode/editor/cn/TwoSum.java
+
+# 更新 Pages
+bash scripts/run-generate-pages.sh
 ```
 
-## 更新 Pages
-
-```bash
-cd scripts && python3 generate-pages.py
-```
-
-提交 `docs/index.md` 并 push `master` 后生效。
+提交 `docs/index.md` 并 push `master` 后 Pages 生效。

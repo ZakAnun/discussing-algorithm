@@ -25,5 +25,11 @@
   },
   "code-runner.runInTerminal": true,
   "code-runner.clearPreviousOutput": true,
-  "xml.server.preferBinary": true
+  "xml.server.preferBinary": true,
+
+  "python.defaultInterpreterPath": "${env:HOME}/.pyenv/versions/3.13.0/bin/python",
+  "python.terminal.activateEnvironment": false,
+  "terminal.integrated.env.osx": {
+    "PATH": "${env:HOME}/.pyenv/versions/3.13.0/bin:${env:PATH}"
+  }
 }
