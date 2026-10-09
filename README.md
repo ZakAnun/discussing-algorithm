@@ -1,15 +1,45 @@
 # discussing-algorithm
 
-## 说明
-- 如无特殊标注，题目均来自[leetcode-cn](https://leetcode-cn.com/)
-- 按着 [labuladong](https://github.com/labuladong/fucking-algorithm) 的刷题思路，刷一下算法题
-- 讨论方式以 issues 的形式开展，欢迎留言～  
+个人算法刷题与面试复习仓库：Java 题解 + GitHub Issues 笔记 + Pages 归档。
 
-## 调整
-### 2021.08.23 
-- 兼容 kt 的运行（原先的项目结构跑不了 kt 的 application就照这 Android 的项目结构重新调整了一下以便用 kt 编写并运行）
-  - 过程中遇到了个运行问题，要修改 .idea/gradle.xml 文件，具体查看[这里](https://juejin.cn/post/6844904085112487950)
-- 回看 issue 发现总结的比较混乱和费劲，一开始为了省事，甚至将多个题目都写在了一个文件里，现在重温的时候感觉比较费劲
-  - 虽然引入了 [leetcode-editor](https://github.com/shuzijun/leetcode-editor) 帮助创建文件，但是在一个 issue 里看还是比较繁杂
-  - issue 下个月开始以年份-月份（2021-09）命名，对应月份刷的题就放到里面去记录，回看时以时间线为主（先试试看...） 
+## 工程作用
 
+| 模块 | 作用 |
+|------|------|
+| 面试主线 | 2026-09 · 9 Topic / 29 题 |
+| Issues | 按 Topic 记思路（[#5](https://github.com/ZakAnun/discussing-algorithm/issues/5) 总目录，[#6](https://github.com/ZakAnun/discussing-algorithm/issues/6)–[#14](https://github.com/ZakAnun/discussing-algorithm/issues/14)） |
+| Pages | [在线速查](https://zakanun.github.io/discussing-algorithm/)：核心要点 + 题解链接 |
+| 历史代码 | 早期每日一题、树练习等 |
+
+题目来自 [LeetCode 中国站](https://leetcode-cn.com/)，思路参考 [labuladong](https://github.com/labuladong/fucking-algorithm)。欢迎在 Issue 讨论。
+
+**29 题路径**：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+## 目录
+
+```text
+app/src/main/java/com/zak/da/
+  template/leetcode/editor/cn/   # 题解（含 29 题）
+  tree/  daily/                  # 早期练习
+scripts/
+  generate-pages.py              # 生成 docs/index.md
+  interview_sections.py          # 提纲与核心要点数据
+  run-demo.sh                    # 单题运行
+docs/                            # GitHub Pages
+```
+
+## 本地运行
+
+需 Java 11 跑 Gradle（编译目标 Java 8）。仓库根目录：
+
+```bash
+bash scripts/run-demo.sh app/src/main/java/com/zak/da/template/leetcode/editor/cn/TwoSum.java
+```
+
+## 更新 Pages
+
+```bash
+cd scripts && python3 generate-pages.py
+```
+
+提交 `docs/index.md` 并 push `master` 后生效。
