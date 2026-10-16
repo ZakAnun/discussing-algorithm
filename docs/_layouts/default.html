@@ -34,21 +34,22 @@
 
     <div id="content-wrapper">
       <div class="inner clearfix" id="page-layout">
-        <button type="button" id="sidebar-panel-toggle" class="sidebar-panel-toggle" aria-controls="page-sidebar" aria-expanded="true" title="展开或收起侧边导航">
-          <span class="sidebar-panel-toggle-icon" aria-hidden="true">☰</span>
-          <span class="sidebar-panel-toggle-label">导航</span>
-        </button>
-        <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
-        <aside id="page-sidebar" class="page-sidebar" aria-label="侧边导航">
-          {% include interview-sidebar.html %}
-        </aside>
         <section id="main-content">
           {{ content }}
         </section>
       </div>
     </div>
 
-    <script src="{{ '/assets/js/sidebar-nav.js' | relative_url }}?v=1" defer></script>
+    <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+    <aside id="page-sidebar" class="page-sidebar" aria-label="侧边导航">
+      {% include interview-sidebar.html %}
+    </aside>
+    <button type="button" id="sidebar-panel-toggle" class="sidebar-panel-toggle" aria-controls="page-sidebar" aria-expanded="false" title="展开或收起导航">
+      <span class="sidebar-panel-toggle-icon" aria-hidden="true">☰</span>
+      <span class="sidebar-panel-toggle-label">导航</span>
+    </button>
+
+    <script src="{{ '/assets/js/sidebar-nav.js' | relative_url }}?v=2" defer></script>
 
     <footer id="site-footer">
       <div class="inner">

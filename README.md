@@ -40,4 +40,4 @@ bash scripts/run-demo.sh app/src/main/java/com/zak/da/template/leetcode/editor/c
 bash scripts/run-generate-pages.sh
 ```
 
-提交 `docs/index.md`、`docs/_includes/interview-sidebar.html` 及布局/CSS 后 push `master`，Pages 生效。左侧 **导航** 按钮可收起整栏；分组用 **▸** 展开/折叠。
+提交 `docs/index.md`、`docs/_includes/interview-sidebar.html` 及布局/CSS 后 push `master`，Pages 生效。右下角 **导航** 打开右侧悬浮抽屉（不占正文宽度）；分组用 **▸** 展开/折叠。
