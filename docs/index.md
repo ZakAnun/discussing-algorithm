@@ -30,6 +30,7 @@ title: discussing-algorithm
 3. 卡壳再打开题解 Java；坑点以本节为准，展开见 [Issue 笔记](#issue-6-comment-3-0) 链接。
 4. 新题推演四问：属于哪 Topic → motto 哪句 → 状态/path 一句话 → 与本 Topic 哪题同型。
 
+<a id="interview-review-topic-1"></a>
 #### 1. 哈希/数组
 
 - **代表题（D+1）**：[三数之和](https://leetcode-cn.com/problems/3sum/) · [题解 `ThreeSum`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ThreeSum.java)  
@@ -44,6 +45,7 @@ title: discussing-algorithm
 - **闭卷验收**：20 分钟闭卷写出三数之和（含去重）；30 秒口述两数之和 Map 查 target−x
 - **Issue 详笔记**：[Issue #6 · 概括总结](#issue-6-comment-3-0) · [Topic 归档](#issue-6-overview)
 
+<a id="interview-review-topic-2"></a>
 #### 2. 链表
 
 - **代表题（D+1）**：[环形链表 II](https://leetcode-cn.com/problems/linked-list-cycle-ii/) · [题解 `LinkedListCycleIi`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LinkedListCycleIi.java)  
@@ -58,6 +60,7 @@ title: discussing-algorithm
 - **闭卷验收**：15 分钟闭卷写出环入口 + 迭代反转；口述 dummy 快指针 n+1 步
 - **Issue 详笔记**：[Issue #7 · 2026.09.25](#issue-7-comment-1-2026-09-25) · [Topic 归档](#issue-7-overview)
 
+<a id="interview-review-topic-3"></a>
 #### 3. 二叉树
 
 - **代表题（D+1）**：[从前序与中序构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) · [题解 `ConstructBinaryTreeFromPreorderAndInorderTraversal`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ConstructBinaryTreeFromPreorderAndInorderTraversal.java)  
@@ -72,6 +75,7 @@ title: discussing-algorithm
 - **闭卷验收**：25 分钟闭卷写出前序+中序建树或 LCA 其一；口述 BST 上下界
 - **Issue 详笔记**：[Issue #8 · 2026.09.27](#issue-8-comment-1-2026-09-27) · [Topic 归档](#issue-8-overview)
 
+<a id="interview-review-topic-4"></a>
 #### 4. 栈/队列
 
 - **代表题（D+1）**：[每日温度](https://leetcode-cn.com/problems/daily-temperatures/) · [题解 `DailyTemperatures`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/DailyTemperatures.java)  
@@ -85,6 +89,7 @@ title: discussing-algorithm
 - **闭卷验收**：15 分钟闭卷写出单调栈版每日温度 + 最小栈 push/pop 同步
 - **Issue 详笔记**：[Issue #9 · 2026.09.28](#issue-9-comment-1-2026-09-28) · [Topic 归档](#issue-9-overview)
 
+<a id="interview-review-topic-5"></a>
 #### 5. 二分查找
 
 - **代表题（D+1）**：[搜索旋转排序数组](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/) · [题解 `SearchInRotatedSortedArray`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/SearchInRotatedSortedArray.java)  
@@ -98,6 +103,7 @@ title: discussing-algorithm
 - **闭卷验收**：15 分钟闭卷写出旋转数组二分；口述插入位置 return left
 - **Issue 详笔记**：[Issue #10 · 2026.09.29](#issue-10-comment-1-2026-09-29) · [Topic 归档](#issue-10-overview)
 
+<a id="interview-review-topic-6"></a>
 #### 6. 双指针/滑动窗口
 
 - **代表题（D+1）**：[无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/) · [题解 `LongestSubstringWithoutRepeatingCharacters`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LongestSubstringWithoutRepeatingCharacters.java)  
@@ -111,6 +117,7 @@ title: discussing-algorithm
 - **闭卷验收**：20 分钟闭卷写出无重复子串 + 最小长度子数组；口述盛水为何移短板
 - **Issue 详笔记**：[Issue #11 · 2026.09.30](#issue-11-comment-1-2026-09-30) · [Topic 归档](#issue-11-overview)
 
+<a id="interview-review-topic-7"></a>
 #### 7. 动态规划
 
 - **代表题（D+1）**：[最大子数组和](https://leetcode-cn.com/problems/maximum-subarray/) · [题解 `MaximumSubarray`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/MaximumSubarray.java)  
@@ -125,6 +132,7 @@ title: discussing-algorithm
 - **闭卷验收**：20 分钟闭卷写出 Kadane + 打家劫舍；能写 LIS 的 O(n²) 双重循环
 - **Issue 详笔记**：[Issue #12 · 2026.10.03](#issue-12-comment-1-2026-10-03) · [Topic 归档](#issue-12-overview)
 
+<a id="interview-review-topic-8"></a>
 #### 8. 设计题
 
 - **闭卷题**：[LRU 缓存](https://leetcode-cn.com/problems/lru-cache/) · [题解 `LruCache`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LruCache.java)
@@ -137,6 +145,7 @@ title: discussing-algorithm
 - **闭卷验收**：25 分钟闭卷写出 Map+哑结点双向链表 LRU，或白板讲清 get/put 流程
 - **Issue 详笔记**：[Issue #13 · 2026.10.04](#issue-13-comment-1-2026-10-04) · [Topic 归档](#issue-13-overview)
 
+<a id="interview-review-topic-9"></a>
 #### 9. BFS/DFS/回溯
 
 - **代表题（D+1）**：[岛屿数量](https://leetcode-cn.com/problems/number-of-islands/) · [题解 `NumberOfIslands`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/NumberOfIslands.java)  

@@ -36,8 +36,8 @@ docs/                            # GitHub Pages
 # 跑一题
 bash scripts/run-demo.sh app/src/main/java/com/zak/da/template/leetcode/editor/cn/TwoSum.java
 
-# 更新 Pages
+# 更新 Pages（含 index.md 与侧边导航 include）
 bash scripts/run-generate-pages.sh
 ```
 
-提交 `docs/index.md` 并 push `master` 后 Pages 生效。
+提交 `docs/index.md`、`docs/_includes/interview-sidebar.html` 及布局/CSS 后 push `master`，Pages 生效。左侧 **导航** 按钮可收起整栏；分组用 **▸** 展开/折叠。

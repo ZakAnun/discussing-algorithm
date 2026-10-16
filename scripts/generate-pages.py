@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """从 GitHub Issues 生成 docs/index.md（GitHub Pages 完整内容页）。"""
 
+import html
 import json
 import re
 import subprocess
@@ -25,6 +26,7 @@ REPO = "ZakAnun/discussing-algorithm"
 BASE = f"https://github.com/{REPO}"
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "index.md"
+SIDEBAR_INCLUDE = ROOT / "docs" / "_includes" / "interview-sidebar.html"
 CN_DIR = ROOT / "app/src/main/java/com/zak/da/template/leetcode/editor/cn"
 
 DATE_RE = re.compile(r"\*\*(\d{4}\.\d{2}\.\d{2})\*\*")
@@ -264,6 +266,7 @@ def build_topic_review_block() -> list[str]:
                 f"- **代表题（D+1）**：{anchor}  \n"
                 f"- **轮转题（D+3）**：{relay}"
             )
+        lines.append(f'<a id="interview-review-topic-{idx}"></a>')
         lines.append(f"#### {idx}. {core['topic']}")
         lines.append("")
         lines.append(relay_line)
@@ -508,6 +511,80 @@ def build_page(issues):
     return "\n".join(lines)
 
 
+def write_interview_sidebar(issues: list[dict]) -> None:
+    """生成左侧可折叠导航（与提纲数据同步）。"""
+    lines = [
+        '<nav class="sidebar-nav" aria-label="页面导航">',
+        '  <p class="sidebar-nav-heading">本页导航</p>',
+        "",
+        '  <details class="sidebar-group" open>',
+        f"    <summary>{ISSUE_PREFIX} 面试提纲</summary>",
+        '    <ul class="sidebar-list">',
+        '      <li><a href="#interview-outline-2026-09">提纲速查</a></li>',
+        '      <li><a href="#interview-topic-review">闭卷复习卡</a></li>',
+        '      <li><a href="#interview-topic-cores">Topic 核心要点</a></li>',
+        "    </ul>",
+        "",
+        '    <details class="sidebar-group sidebar-group-nested" open>',
+        "      <summary>9 Topic · 题解</summary>",
+    ]
+    for topic_idx, section in enumerate(SECTIONS, start=1):
+        issue_num = topic_issue_number(topic_idx)
+        topic_label = html.escape(section["topic"])
+        overview = anchor_id(issue_num, "overview")
+        review = f"interview-review-topic-{topic_idx}"
+        lines.append('      <details class="sidebar-group sidebar-group-nested">')
+        lines.append(f"        <summary>{topic_idx}. {topic_label}</summary>")
+        lines.append('        <ul class="sidebar-list">')
+        lines.append(f'          <li><a href="#{review}">复习卡</a></li>')
+        lines.append(f'          <li><a href="#{overview}">Issue #{issue_num}</a></li>')
+        for cn, _diff, _point, _num, _slug, class_name in section["items"]:
+            cn_esc = html.escape(cn)
+            code_url = f"{GITHUB_CN}/{class_name}.java"
+            lines.append(
+                f'          <li><a href="{code_url}" target="_blank" rel="noopener">'
+                f"{cn_esc}</a></li>"
+            )
+        lines.append("        </ul>")
+        lines.append("      </details>")
+    lines.extend(
+        [
+            "    </details>",
+            "  </details>",
+            "",
+            '  <details class="sidebar-group">',
+            "    <summary>Issue 归档</summary>",
+            '    <ul class="sidebar-list">',
+        ]
+    )
+    for issue in issues:
+        num = issue["number"]
+        title = html.escape(issue.get("title") or f"Issue {num}")
+        if len(title) > 42:
+            title = title[:39] + "…"
+        overview = anchor_id(num, "overview")
+        lines.append(f'      <li><a href="#{overview}">#{num} {title}</a></li>')
+    lines.extend(
+        [
+            "    </ul>",
+            "  </details>",
+            "",
+            '  <details class="sidebar-group">',
+            "    <summary>相关链接</summary>",
+            '    <ul class="sidebar-list">',
+            f'      <li><a href="{BASE}/issues/{INDEX_ISSUE_NUM}">提纲 Issue #{INDEX_ISSUE_NUM}</a></li>',
+            f'      <li><a href="{BASE}/issues">Issues 讨论区</a></li>',
+            '      <li><a href="https://leetcode-cn.com/">LeetCode</a></li>',
+            "    </ul>",
+            "  </details>",
+            "</nav>",
+            "",
+        ]
+    )
+    SIDEBAR_INCLUDE.parent.mkdir(parents=True, exist_ok=True)
+    SIDEBAR_INCLUDE.write_text("\n".join(lines), encoding="utf-8")
+
+
 def main():
     issues = gh_api(f"repos/{REPO}/issues?state=all&per_page=100")
     issues = [i for i in issues if "pull_request" not in i]
@@ -515,7 +592,9 @@ def main():
 
     content = build_page(issues)
     OUTPUT.write_text(content, encoding="utf-8")
+    write_interview_sidebar(issues)
     print(f"Generated {OUTPUT} ({len(content)} chars)", file=sys.stderr)
+    print(f"Generated {SIDEBAR_INCLUDE}", file=sys.stderr)
 
 
 if __name__ == "__main__":
