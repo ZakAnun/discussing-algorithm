@@ -7,7 +7,7 @@ title: discussing-algorithm
 
 算法刷题记录与讨论总结，题目主要来自 [LeetCode 中国站](https://leetcode-cn.com/)，按 [labuladong 的刷题思路](https://github.com/labuladong/fucking-algorithm) 进行练习。
 
-本页完整归档 GitHub Issues 中的刷题笔记（含正文与全部评论）。 **2026-09 面试提纲** 见下方：**Topic 核心要点** + 题目速查表，可跳转题解源码与评论笔记。
+本页完整归档 GitHub Issues 中的刷题笔记（含正文与全部评论）。 **2026-09 面试提纲** 复习请先看 **闭卷复习卡**，再查核心要点与题解链接。
 
 ---
 
@@ -15,9 +15,142 @@ title: discussing-algorithm
 
 <a id="interview-outline-2026-09"></a>
 
-先看 **[Topic 核心要点](#interview-topic-cores)**，再按下表直达 **题解 Java 源码**、**Topic Issue 归档** 与 Issue **评论笔记**。
+复习入口：**[闭卷复习卡](#interview-topic-review)**（代表题 / 坑 / 验收）→ **[Topic 核心要点](#interview-topic-cores)** → 题目速查表 → Issue 详笔记。
 
 总目录 Issue：[#5](https://github.com/ZakAnun/discussing-algorithm/issues/5) · [本页归档](#issue-5-overview)
+
+### 闭卷复习卡（9 Topic）
+
+<a id="interview-topic-review"></a>
+
+**用法（比通读 Issue 更有效）**
+
+1. **先遮住题解**：只看本节 + [核心要点](#interview-topic-cores)，闭卷写 **代表题**。
+2. **D+1** 写代表题，**D+3** 写 **轮转题**，**D+7** 九 Topic 各练 15 分钟骨架。
+3. 卡壳再打开题解 Java；坑点以本节为准，展开见 [Issue 笔记](#issue-6-comment-3-0) 链接。
+4. 新题推演四问：属于哪 Topic → motto 哪句 → 状态/path 一句话 → 与本 Topic 哪题同型。
+
+#### 1. 哈希/数组
+
+- **代表题（D+1）**：[三数之和](https://leetcode-cn.com/problems/3sum/) · [题解 `ThreeSum`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ThreeSum.java)  
+- **轮转题（D+3）**：[最长连续序列](https://leetcode-cn.com/problems/longest-consecutive-sequence/) · [题解 `LongestConsecutiveSequence`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LongestConsecutiveSequence.java)
+- **认型**：查互补、在不在 → 哈希；连续整数段 → Set 只从链头数；多数字和/去重组合 → 排序+双指针；区间能否接 → 按起点排序
+- **口诀 / 备案**：别暴力扫；连续 / 区间 → Set 或排序 · _能 O(1) 查吗？区间要先排序吗？_
+- **常见坑（Issue 提炼）**：
+  - 最长连续序列：遍历 Set 而非原数组；只从没有 x-1 的位置往后数
+  - 三数之和：i 固定后 l/r 夹逼；sum==0 后跳过重复下标
+  - 合并区间：按 start 排序，只跟结果里最后一段比 end
+  - 要返回下标时不能先排序（两数之和）
+- **闭卷验收**：20 分钟闭卷写出三数之和（含去重）；30 秒口述两数之和 Map 查 target−x
+- **Issue 详笔记**：[Issue #6 · 概括总结](#issue-6-comment-3-0) · [Topic 归档](#issue-6-overview)
+
+#### 2. 链表
+
+- **代表题（D+1）**：[环形链表 II](https://leetcode-cn.com/problems/linked-list-cycle-ii/) · [题解 `LinkedListCycleIi`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LinkedListCycleIi.java)  
+- **轮转题（D+3）**：[反转链表](https://leetcode-cn.com/problems/reverse-linked-list/) · [题解 `ReverseLinkedList`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ReverseLinkedList.java)
+- **认型**：改 next → 先存后继；倒数第 k / 环 → dummy+快慢针；random → Map 两遍建链
+- **口诀 / 备案**：指针游戏；倒数 / 环 → 快慢针；random → HashMap 两遍 · _dummy？快慢针？改 next 前存 successor？_
+- **常见坑（Issue 提炼）**：
+  - 反转：先 next=cur.next 再改 cur.next，最后 cur=next
+  - 环入口：快慢相遇后，head 与相遇点同步走再遇即入口
+  - 删倒数第 n 个：dummy，快指针先走 n+1 步
+  - 复制 random：第一遍 Map 旧→新，第二遍接 next/random
+- **闭卷验收**：15 分钟闭卷写出环入口 + 迭代反转；口述 dummy 快指针 n+1 步
+- **Issue 详笔记**：[Issue #7 · 2026.09.25](#issue-7-comment-1-2026-09-25) · [Topic 归档](#issue-7-overview)
+
+#### 3. 二叉树
+
+- **代表题（D+1）**：[从前序与中序构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) · [题解 `ConstructBinaryTreeFromPreorderAndInorderTraversal`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/ConstructBinaryTreeFromPreorderAndInorderTraversal.java)  
+- **轮转题（D+3）**：[最近公共祖先](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/) · [题解 `LowestCommonAncestorOfABinaryTree`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LowestCommonAncestorOfABinaryTree.java)
+- **认型**：按层 → BFS+queue+每层 size；深度 → 递归 max(左,右)+1；BST → 上下界；LCA → 后序看左右返回值
+- **口诀 / 备案**：深度/验证 → 递归+边界；层序 → BFS；LCA → 后序；建树 → 前序根+中序分左右 · _递归返回什么？BFS 用 queue + 每层 size？_
+- **常见坑（Issue 提炼）**：
+  - 验证 BST：val 与 (low,high) 比，不能只看父节点
+  - 层序：入队前判 null，一层处理 size 次
+  - LCA：左右都非空则当前为答案，否则返回非空一侧
+  - 建树：前序[0] 为根，中序定位 leftSize，再切前/中序子数组
+- **闭卷验收**：25 分钟闭卷写出前序+中序建树或 LCA 其一；口述 BST 上下界
+- **Issue 详笔记**：[Issue #8 · 2026.09.27](#issue-8-comment-1-2026-09-27) · [Topic 归档](#issue-8-overview)
+
+#### 4. 栈/队列
+
+- **代表题（D+1）**：[每日温度](https://leetcode-cn.com/problems/daily-temperatures/) · [题解 `DailyTemperatures`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/DailyTemperatures.java)  
+- **轮转题（D+3）**：[最小栈](https://leetcode-cn.com/problems/min-stack/) · [题解 `MinStack`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/MinStack.java)
+- **认型**：下一个更大/更小 → 单调栈存下标；O(1) 最小值 → 同步 min 栈
+- **口诀 / 备案**：最小值 → 同步最小栈；下一个更大 → 单调栈存下标 · _设计题双栈？「下一个更大」→ 单调栈存下标_
+- **常见坑（Issue 提炼）**：
+  - 每日温度：栈存下标，当前更高时弹栈算 i−prev
+  - 最小栈：push 时 minStack 同步 push min(x, 栈顶)
+  - 场景翻译：「等几天更暖」= 下一个更大元素距离
+- **闭卷验收**：15 分钟闭卷写出单调栈版每日温度 + 最小栈 push/pop 同步
+- **Issue 详笔记**：[Issue #9 · 2026.09.28](#issue-9-comment-1-2026-09-28) · [Topic 归档](#issue-9-overview)
+
+#### 5. 二分查找
+
+- **代表题（D+1）**：[搜索旋转排序数组](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/) · [题解 `SearchInRotatedSortedArray`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/SearchInRotatedSortedArray.java)  
+- **轮转题（D+3）**：[搜索插入位置](https://leetcode-cn.com/problems/search-insert-position/) · [题解 `SearchInsertPosition`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/SearchInsertPosition.java)
+- **认型**：有序 → while(l<=r)；旋转 → 至少一半有序，判 target 落在哪半
+- **口诀 / 备案**：有序 → while(l<=r)；旋转 → 至少一半有序，判 target 在哪半 · _l<=r，旋转数组哪半边有序？_
+- **常见坑（Issue 提炼）**：
+  - 搜索插入位置：结束时 return left（不是 0）
+  - 旋转数组：先判 [left,mid] 或 [mid,right] 哪段有序，再缩区间
+  - 有序前提不满足时不能裸二分
+- **闭卷验收**：15 分钟闭卷写出旋转数组二分；口述插入位置 return left
+- **Issue 详笔记**：[Issue #10 · 2026.09.29](#issue-10-comment-1-2026-09-29) · [Topic 归档](#issue-10-overview)
+
+#### 6. 双指针/滑动窗口
+
+- **代表题（D+1）**：[无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/) · [题解 `LongestSubstringWithoutRepeatingCharacters`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LongestSubstringWithoutRepeatingCharacters.java)  
+- **轮转题（D+3）**：[长度最小的子数组](https://leetcode-cn.com/problems/minimum-size-subarray-sum/) · [题解 `MinimumSizeSubarraySum`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/MinimumSizeSubarraySum.java)
+- **认型**：窗口合法条件明确（无重复 / sum≥target）→ 扩右收左；无目标、要最大面积/和 → 别硬套窗口（盛水移短板）
+- **口诀 / 备案**：连续子串/子数组 → 扩右收左；盛水 → 移较短边 · _右扩、不满足则左缩；盛水移短板_
+- **常见坑（Issue 提炼）**：
+  - 无重复子串：lastIndex.get(c) >= left 才算窗口内重复
+  - 最小长度子数组：正整数 sum≥target 时左缩求更短；从未达标 return 0
+  - 盛水：移较短边，left<right 不是 left<=right
+- **闭卷验收**：20 分钟闭卷写出无重复子串 + 最小长度子数组；口述盛水为何移短板
+- **Issue 详笔记**：[Issue #11 · 2026.09.30](#issue-11-comment-1-2026-09-30) · [Topic 归档](#issue-11-overview)
+
+#### 7. 动态规划
+
+- **代表题（D+1）**：[最大子数组和](https://leetcode-cn.com/problems/maximum-subarray/) · [题解 `MaximumSubarray`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/MaximumSubarray.java)  
+- **轮转题（D+3）**：[打家劫舍](https://leetcode-cn.com/problems/house-robber/) · [题解 `HouseRobber`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/HouseRobber.java)
+- **认型**：能由更小规模拼 → 先写 dp 含义一句；最后一步有哪些选择 → 转移
+- **口诀 / 备案**：写清 dp 含义；子数组最大和 → Kadane · _dp[i] 一句话含义 + 从 i-1/i-2 转移_
+- **常见坑（Issue 提炼）**：
+  - 最大子数组：dp=以 i 结尾最大和，答案要另存 maxEndingHere 的全局 max
+  - 打家劫舍：max(dp[i-1], dp[i-2]+nums[i])，不是奇偶两条链
+  - 爬楼梯：滚动变量是 dp[i-1]/dp[i-2]，答案在 oneStepBack
+  - LIS：lisEndingAt[i] 必须以 i 结尾，答案 max(表)
+- **闭卷验收**：20 分钟闭卷写出 Kadane + 打家劫舍；能写 LIS 的 O(n²) 双重循环
+- **Issue 详笔记**：[Issue #12 · 2026.10.03](#issue-12-comment-1-2026-10-03) · [Topic 归档](#issue-12-overview)
+
+#### 8. 设计题
+
+- **闭卷题**：[LRU 缓存](https://leetcode-cn.com/problems/lru-cache/) · [题解 `LruCache`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/LruCache.java)
+- **认型**：O(1) 查 + 按访问顺序淘汰 → Map 定位 + 双向链表维序
+- **口诀 / 备案**：LRU = HashMap 定位 + 双向链表管顺序 · _get/put 都要 moveToHead；满则删尾_
+- **常见坑（Issue 提炼）**：
+  - get/put 命中都要 moveToHead；满容 insert 先删 tail 再 map.remove
+  - 手写链表是为 O(1) 按节点删；JDK LinkedList 按值删是 O(n)
+  - 写不出代码也要能口述 Map+链表分工与四步操作
+- **闭卷验收**：25 分钟闭卷写出 Map+哑结点双向链表 LRU，或白板讲清 get/put 流程
+- **Issue 详笔记**：[Issue #13 · 2026.10.04](#issue-13-comment-1-2026-10-04) · [Topic 归档](#issue-13-overview)
+
+#### 9. BFS/DFS/回溯
+
+- **代表题（D+1）**：[岛屿数量](https://leetcode-cn.com/problems/number-of-islands/) · [题解 `NumberOfIslands`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/NumberOfIslands.java)  
+- **轮转题（D+3）**：[全排列](https://leetcode-cn.com/problems/permutations/) · [题解 `Permutations`](https://github.com/ZakAnun/discussing-algorithm/blob/master/app/src/main/java/com/zak/da/template/leetcode/editor/cn/Permutations.java)
+- **认型**：网格连通块 → 计数+DFS/BFS 标掉；枚举排列 → used+选满再收；子集 → 入口即收集+start
+- **口诀 / 备案**：网格 '1' → DFS 沉岛；排列 used；子集 选/不选 或 start · _沉岛 DFS；回溯 选→递归→撤销_
+- **常见坑（Issue 提炼）**：
+  - 岛屿：见 '1' 则 islands++ 再 sink；先改 '0' 再四向递归防死循环
+  - 全排列：path 选满 n 才收集；递归返回必须撤销 path/used
+  - 子集：一进 backtrack 就 add(path)；for 从 start 到 n-1
+- **闭卷验收**：20 分钟闭卷写出沉岛 DFS + 全排列回溯；口述子集与排列收集时机差别
+- **Issue 详笔记**：[Issue #14 · 2026.10.04](#issue-14-comment-1-2026-10-04) · [Topic 归档](#issue-14-overview)
+
+---
 
 ### Topic 核心要点
 
@@ -86,6 +219,7 @@ title: discussing-algorithm
 ## 目录
 
 - [2026-09 面试刷题提纲速查](#interview-outline-2026-09)
+  - [闭卷复习卡](#interview-topic-review)
   - [Topic 核心要点](#interview-topic-cores)
   - [题目速查表](#interview-outline-2026-09)
   - [Topic 01 哈希/数组 (#6)](#issue-6-overview) · [GitHub](https://github.com/ZakAnun/discussing-algorithm/issues/6)

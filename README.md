@@ -8,12 +8,14 @@
 |------|------|
 | 面试主线 | 2026-09 · 9 Topic / 29 题 |
 | Issues | 按 Topic 记思路（[#5](https://github.com/ZakAnun/discussing-algorithm/issues/5) 总目录，[#6](https://github.com/ZakAnun/discussing-algorithm/issues/6)–[#14](https://github.com/ZakAnun/discussing-algorithm/issues/14)） |
-| Pages | [在线速查](https://zakanun.github.io/discussing-algorithm/)：核心要点 + 题解链接 |
+| Pages | [在线速查](https://zakanun.github.io/discussing-algorithm/)：**闭卷复习卡** + 核心要点 + 题解链接 |
 | 历史代码 | 早期每日一题、树练习等 |
 
 题目来自 [LeetCode 中国站](https://leetcode-cn.com/)，思路参考 [labuladong](https://github.com/labuladong/fucking-algorithm)。欢迎在 Issue 讨论。
 
 **29 题路径**：`app/src/main/java/com/zak/da/template/leetcode/editor/cn/`
+
+**间隔复习**：Pages 顶部 [闭卷复习卡](https://zakanun.github.io/discussing-algorithm/#interview-topic-review) — 每 Topic 1 道代表题 + 1 道轮转题 + 坑点 + 验收标准（数据在 `scripts/interview_sections.py` 的 `TOPIC_REVIEW`）。
 
 ## 目录
 

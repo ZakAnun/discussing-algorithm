@@ -9,12 +9,15 @@ import time
 from pathlib import Path
 
 from interview_sections import (
+    BASE_URL,
     FIRST_TOPIC_ISSUE_NUM,
     GITHUB_CN,
     INDEX_ISSUE_NUM,
     ISSUE_PREFIX,
     SECTIONS,
     TOPIC_CORES,
+    TOPIC_REVIEW,
+    item_by_class,
     topic_issue_number,
 )
 
@@ -220,6 +223,65 @@ def build_topic_cores_block() -> list[str]:
     return lines
 
 
+def problem_link(class_name: str) -> str:
+    item = item_by_class(class_name)
+    if not item:
+        return class_name
+    cn, _diff, _point, num, slug, cls = item
+    lc = f"{BASE_URL}/{slug}/"
+    code = f"{GITHUB_CN}/{cls}.java"
+    return f"[{cn}]({lc}) · [题解 `{cls}`]({code})"
+
+
+def build_topic_review_block() -> list[str]:
+    """9 Topic 闭卷复习卡（代表题 / 轮转题 / 坑 / 验收；详笔记链到 Issue 归档）。"""
+    review_anchor = "interview-topic-review"
+    lines = [
+        "### 闭卷复习卡（9 Topic）",
+        "",
+        f'<a id="{review_anchor}"></a>',
+        "",
+        "**用法（比通读 Issue 更有效）**",
+        "",
+        "1. **先遮住题解**：只看本节 + [核心要点](#interview-topic-cores)，闭卷写 **代表题**。",
+        "2. **D+1** 写代表题，**D+3** 写 **轮转题**，**D+7** 九 Topic 各练 15 分钟骨架。",
+        "3. 卡壳再打开题解 Java；坑点以本节为准，展开见 [Issue 笔记](#issue-6-comment-3-0) 链接。",
+        "4. 新题推演四问：属于哪 Topic → motto 哪句 → 状态/path 一句话 → 与本 Topic 哪题同型。",
+        "",
+    ]
+    for idx, (core, review) in enumerate(zip(TOPIC_CORES, TOPIC_REVIEW), start=1):
+        issue_num = topic_issue_number(idx)
+        issue_notes = review["issue_notes"]
+        note_link = (
+            f"[Issue {issue_notes[0]} · {issue_notes[1]}](#{issue_notes[2]})"
+        )
+        anchor = problem_link(review["anchor_class"])
+        relay = problem_link(review["relay_class"])
+        if review["anchor_class"] == review["relay_class"]:
+            relay_line = f"- **闭卷题**：{anchor}"
+        else:
+            relay_line = (
+                f"- **代表题（D+1）**：{anchor}  \n"
+                f"- **轮转题（D+3）**：{relay}"
+            )
+        lines.append(f"#### {idx}. {core['topic']}")
+        lines.append("")
+        lines.append(relay_line)
+        lines.append(f"- **认型**：{review['triggers']}")
+        lines.append(f"- **口诀 / 备案**：{core['motto']} · _{core['backup']}_")
+        lines.append("- **常见坑（Issue 提炼）**：")
+        for p in review["pitfalls"]:
+            lines.append(f"  - {p}")
+        lines.append(f"- **闭卷验收**：{review['acceptance']}")
+        lines.append(
+            f"- **Issue 详笔记**：{note_link} · "
+            f"[Topic 归档](#{anchor_id(issue_num, 'overview')})"
+        )
+        lines.append("")
+    lines.extend(["---", ""])
+    return lines
+
+
 def build_interview_hub(
     issues_by_num: dict[int, dict],
     notes_index: dict[str, list[dict]],
@@ -227,18 +289,20 @@ def build_interview_hub(
     """面试提纲：Topic 核心要点 + 题目速查表 + 各 Topic 子目录。"""
     hub_anchor = "interview-outline-2026-09"
     cores_anchor = "interview-topic-cores"
+    review_anchor = "interview-topic-review"
     lines = [
         f"## {ISSUE_PREFIX} 面试刷题提纲速查",
         "",
         f'<a id="{hub_anchor}"></a>',
         "",
-        "先看 **[Topic 核心要点](#" + cores_anchor + ")**，再按下表直达 **题解 Java 源码**、"
-        "**Topic Issue 归档** 与 Issue **评论笔记**。",
+        "复习入口：**[闭卷复习卡](#" + review_anchor + ")**（代表题 / 坑 / 验收）→ "
+        "**[Topic 核心要点](#" + cores_anchor + ")** → 题目速查表 → Issue 详笔记。",
         "",
         f"总目录 Issue：[#{INDEX_ISSUE_NUM}]({BASE}/issues/{INDEX_ISSUE_NUM}) · "
         f"[本页归档](#{anchor_id(INDEX_ISSUE_NUM, 'overview')})",
         "",
     ]
+    lines.extend(build_topic_review_block())
     lines.extend(build_topic_cores_block())
     lines.extend(
         [
@@ -255,6 +319,7 @@ def build_interview_hub(
 
     topic_toc = [
         f"- [{ISSUE_PREFIX} 面试刷题提纲速查](#{hub_anchor})",
+        f"  - [闭卷复习卡](#{review_anchor})",
         f"  - [Topic 核心要点](#{cores_anchor})",
         f"  - [题目速查表](#{hub_anchor})",
     ]
@@ -390,7 +455,7 @@ def build_page(issues):
         "按 [labuladong 的刷题思路](https://github.com/labuladong/fucking-algorithm) 进行练习。",
         "",
         "本页完整归档 GitHub Issues 中的刷题笔记（含正文与全部评论）。"
-        f" **{ISSUE_PREFIX} 面试提纲** 见下方：**Topic 核心要点** + 题目速查表，可跳转题解源码与评论笔记。",
+        f" **{ISSUE_PREFIX} 面试提纲** 复习请先看 **闭卷复习卡**，再查核心要点与题解链接。",
         "",
         "---",
         "",

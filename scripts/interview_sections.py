@@ -71,6 +71,123 @@ TOPIC_CORES: list[dict[str, str]] = [
     },
 ]
 
+# 闭卷复习卡（与 TOPIC_CORES 同序 9 项；坑点摘自 Issue #6–#14 笔记）
+# anchor_class / relay_class：Java 类名，对应 SECTIONS 中题目
+TOPIC_REVIEW: list[dict] = [
+    {
+        "anchor_class": "ThreeSum",
+        "relay_class": "LongestConsecutiveSequence",
+        "triggers": "查互补、在不在 → 哈希；连续整数段 → Set 只从链头数；多数字和/去重组合 → 排序+双指针；区间能否接 → 按起点排序",
+        "pitfalls": [
+            "最长连续序列：遍历 Set 而非原数组；只从没有 x-1 的位置往后数",
+            "三数之和：i 固定后 l/r 夹逼；sum==0 后跳过重复下标",
+            "合并区间：按 start 排序，只跟结果里最后一段比 end",
+            "要返回下标时不能先排序（两数之和）",
+        ],
+        "acceptance": "20 分钟闭卷写出三数之和（含去重）；30 秒口述两数之和 Map 查 target−x",
+        "issue_notes": ("#6", "概括总结", "issue-6-comment-3-0"),
+    },
+    {
+        "anchor_class": "LinkedListCycleIi",
+        "relay_class": "ReverseLinkedList",
+        "triggers": "改 next → 先存后继；倒数第 k / 环 → dummy+快慢针；random → Map 两遍建链",
+        "pitfalls": [
+            "反转：先 next=cur.next 再改 cur.next，最后 cur=next",
+            "环入口：快慢相遇后，head 与相遇点同步走再遇即入口",
+            "删倒数第 n 个：dummy，快指针先走 n+1 步",
+            "复制 random：第一遍 Map 旧→新，第二遍接 next/random",
+        ],
+        "acceptance": "15 分钟闭卷写出环入口 + 迭代反转；口述 dummy 快指针 n+1 步",
+        "issue_notes": ("#7", "2026.09.25", "issue-7-comment-1-2026-09-25"),
+    },
+    {
+        "anchor_class": "ConstructBinaryTreeFromPreorderAndInorderTraversal",
+        "relay_class": "LowestCommonAncestorOfABinaryTree",
+        "triggers": "按层 → BFS+queue+每层 size；深度 → 递归 max(左,右)+1；BST → 上下界；LCA → 后序看左右返回值",
+        "pitfalls": [
+            "验证 BST：val 与 (low,high) 比，不能只看父节点",
+            "层序：入队前判 null，一层处理 size 次",
+            "LCA：左右都非空则当前为答案，否则返回非空一侧",
+            "建树：前序[0] 为根，中序定位 leftSize，再切前/中序子数组",
+        ],
+        "acceptance": "25 分钟闭卷写出前序+中序建树或 LCA 其一；口述 BST 上下界",
+        "issue_notes": ("#8", "2026.09.27", "issue-8-comment-1-2026-09-27"),
+    },
+    {
+        "anchor_class": "DailyTemperatures",
+        "relay_class": "MinStack",
+        "triggers": "下一个更大/更小 → 单调栈存下标；O(1) 最小值 → 同步 min 栈",
+        "pitfalls": [
+            "每日温度：栈存下标，当前更高时弹栈算 i−prev",
+            "最小栈：push 时 minStack 同步 push min(x, 栈顶)",
+            "场景翻译：「等几天更暖」= 下一个更大元素距离",
+        ],
+        "acceptance": "15 分钟闭卷写出单调栈版每日温度 + 最小栈 push/pop 同步",
+        "issue_notes": ("#9", "2026.09.28", "issue-9-comment-1-2026-09-28"),
+    },
+    {
+        "anchor_class": "SearchInRotatedSortedArray",
+        "relay_class": "SearchInsertPosition",
+        "triggers": "有序 → while(l<=r)；旋转 → 至少一半有序，判 target 落在哪半",
+        "pitfalls": [
+            "搜索插入位置：结束时 return left（不是 0）",
+            "旋转数组：先判 [left,mid] 或 [mid,right] 哪段有序，再缩区间",
+            "有序前提不满足时不能裸二分",
+        ],
+        "acceptance": "15 分钟闭卷写出旋转数组二分；口述插入位置 return left",
+        "issue_notes": ("#10", "2026.09.29", "issue-10-comment-1-2026-09-29"),
+    },
+    {
+        "anchor_class": "LongestSubstringWithoutRepeatingCharacters",
+        "relay_class": "MinimumSizeSubarraySum",
+        "triggers": "窗口合法条件明确（无重复 / sum≥target）→ 扩右收左；无目标、要最大面积/和 → 别硬套窗口（盛水移短板）",
+        "pitfalls": [
+            "无重复子串：lastIndex.get(c) >= left 才算窗口内重复",
+            "最小长度子数组：正整数 sum≥target 时左缩求更短；从未达标 return 0",
+            "盛水：移较短边，left<right 不是 left<=right",
+        ],
+        "acceptance": "20 分钟闭卷写出无重复子串 + 最小长度子数组；口述盛水为何移短板",
+        "issue_notes": ("#11", "2026.09.30", "issue-11-comment-1-2026-09-30"),
+    },
+    {
+        "anchor_class": "MaximumSubarray",
+        "relay_class": "HouseRobber",
+        "triggers": "能由更小规模拼 → 先写 dp 含义一句；最后一步有哪些选择 → 转移",
+        "pitfalls": [
+            "最大子数组：dp=以 i 结尾最大和，答案要另存 maxEndingHere 的全局 max",
+            "打家劫舍：max(dp[i-1], dp[i-2]+nums[i])，不是奇偶两条链",
+            "爬楼梯：滚动变量是 dp[i-1]/dp[i-2]，答案在 oneStepBack",
+            "LIS：lisEndingAt[i] 必须以 i 结尾，答案 max(表)",
+        ],
+        "acceptance": "20 分钟闭卷写出 Kadane + 打家劫舍；能写 LIS 的 O(n²) 双重循环",
+        "issue_notes": ("#12", "2026.10.03", "issue-12-comment-1-2026-10-03"),
+    },
+    {
+        "anchor_class": "LruCache",
+        "relay_class": "LruCache",
+        "triggers": "O(1) 查 + 按访问顺序淘汰 → Map 定位 + 双向链表维序",
+        "pitfalls": [
+            "get/put 命中都要 moveToHead；满容 insert 先删 tail 再 map.remove",
+            "手写链表是为 O(1) 按节点删；JDK LinkedList 按值删是 O(n)",
+            "写不出代码也要能口述 Map+链表分工与四步操作",
+        ],
+        "acceptance": "25 分钟闭卷写出 Map+哑结点双向链表 LRU，或白板讲清 get/put 流程",
+        "issue_notes": ("#13", "2026.10.04", "issue-13-comment-1-2026-10-04"),
+    },
+    {
+        "anchor_class": "NumberOfIslands",
+        "relay_class": "Permutations",
+        "triggers": "网格连通块 → 计数+DFS/BFS 标掉；枚举排列 → used+选满再收；子集 → 入口即收集+start",
+        "pitfalls": [
+            "岛屿：见 '1' 则 islands++ 再 sink；先改 '0' 再四向递归防死循环",
+            "全排列：path 选满 n 才收集；递归返回必须撤销 path/used",
+            "子集：一进 backtrack 就 add(path)；for 从 start 到 n-1",
+        ],
+        "acceptance": "20 分钟闭卷写出沉岛 DFS + 全排列回溯；口述子集与排列收集时机差别",
+        "issue_notes": ("#14", "2026.10.04", "issue-14-comment-1-2026-10-04"),
+    },
+]
+
 SECTIONS: list[dict] = [
     {
         "title": "1. 哈希 / 数组（4）",
@@ -156,6 +273,14 @@ SECTIONS: list[dict] = [
         ],
     },
 ]
+
+
+def item_by_class(class_name: str) -> SectionItem | None:
+    for section in SECTIONS:
+        for item in section["items"]:
+            if item[5] == class_name:
+                return item
+    return None
 
 
 def topic_issue_number(topic_index: int) -> int:
